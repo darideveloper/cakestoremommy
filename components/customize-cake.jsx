@@ -1,9 +1,9 @@
 import Section from "./section"
 
-export default function Hero () {
+export default function CustomizeCake () {
   return (
     <Section
-      title="Hero"
+      title="Customize Cake"
       titleVisible={false}
     >
     </Section>
