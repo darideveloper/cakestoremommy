@@ -4,7 +4,7 @@ import { titleFont } from '@/lib/fonts'
 export default function Section ({children, title, titleVisible = true}) {
   return (
     <section>
-      <h2 className={!titleVisible && "hidden " + titleFont.className}>{title}</h2>
+      <h2 className={titleVisible ? "" : "hidden " + titleFont.className}>{title}</h2>
       {children}
     </section>
   )

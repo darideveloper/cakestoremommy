@@ -1,10 +1,11 @@
 import Section from "./section"
 
-export default function WhyUs () {
+export default function Gallery () {
   return (
     <Section
-      title="WhyUs"
+      title="Gallery"
     >
+      <p>content</p>
     </Section>
   )
 }

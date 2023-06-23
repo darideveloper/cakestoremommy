@@ -1,6 +1,6 @@
 import { regularFont } from '@/lib/fonts'
-import Header from '@/components/header'
-import Footer from '@/components/footer'
+import Header from '@/sections/header'
+import Footer from '@/sections/footer'
 
 export default function RootLayout({ children }) {
   return (

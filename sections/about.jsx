@@ -5,6 +5,7 @@ export default function About () {
     <Section
       title="About"
     >
+      <p>content</p>
     </Section>
   )
 }

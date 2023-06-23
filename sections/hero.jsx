@@ -6,6 +6,7 @@ export default function Hero () {
       title="Hero"
       titleVisible={false}
     >
+
     </Section>
   )
 }

@@ -6,6 +6,7 @@ export default function CustomizeCake () {
       title="Customize Cake"
       titleVisible={false}
     >
+      <p>content</p>
     </Section>
   )
 }

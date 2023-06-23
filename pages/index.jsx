@@ -1,9 +1,9 @@
-import Layout from '@/components/layout'
-import About from '@/components/about'
-import CustomizeCake from '@/components/customize-cake'
-import Gallery from '@/components/gallery'
-import Hero from '@/components/hero'
-import WhyUs from '@/components/why-us'
+import Layout from '@/layouts/root-layout'
+import About from '@/sections/about'
+import CustomizeCake from '@/sections/customize-cake'
+import Gallery from '@/sections/gallery'
+import Hero from '@/sections/hero'
+import WhyUs from '@/sections/why-us'
 
 export default function Index () {
   return (
