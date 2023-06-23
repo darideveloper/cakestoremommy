@@ -21,7 +21,8 @@ module.exports = {
     colors: {
       "white": "#fffbf3",
       "pink": "#f6d7d8",
-      "green": "#b8cec5"
+      "green": "#b8cec5",
+      "brown": "#8b5c4d",
     },
   },
   plugins: [],
