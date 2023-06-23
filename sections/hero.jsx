@@ -11,12 +11,20 @@ export default function Hero () {
     <Section
       title="Hero"
       titleVisible={false}
-      extraClasses=""
+      extraClasses={`
+        flex flex-col justify-center
+        sm:flex-row sm:justify-between sm:items-center sm:w-10/12 sm:mx-auto
+        md:justify-center
+      `}
     >
 
       <img 
         src="/images/hero.gif"
-        className="w-10/12 mx-auto mb-32"
+        className={`
+          w-full mx-auto mb-32
+          sm:w-6/12 sm:mx-0 sm:my-0
+          md:-ml-8
+        `}
       />
 
 
