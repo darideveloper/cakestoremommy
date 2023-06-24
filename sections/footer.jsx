@@ -9,8 +9,6 @@ export default function Footer () {
 
   useEffect(() => {
     setContactsData(getContactsData())
-
-    console.log(contactsData)
   }, [])
 
   return (

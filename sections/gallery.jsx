@@ -1,22 +1,18 @@
+import PropTypes from 'prop-types'
 import { useEffect, useState } from "react"
-import Section from "@/sections/section"
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide'
-import { getGalleryImages } from "../database/gallery"
 import Image from 'next/image'
+import Section from "@/sections/section"
 import ButtonLink from "../components/button-link"
 
 // Default theme
 import '@splidejs/react-splide/css'
 
-export default function Gallery() {
+export default function Gallery({ title, alt, images }) {
 
-  const [images, setImages] = useState([])
-  const [perPage, setPerPage] = useState(0)
+  const [perPage, setPerPage] = useState(2)
 
   useEffect(() => {
-
-    // Cargar datos cuando el componente se monte
-    setImages(getGalleryImages())
 
     function updatePerPage() {
       const width = window.innerWidth
@@ -27,12 +23,6 @@ export default function Gallery() {
         setPerPage(3)
       }
       else setPerPage(5)
-
-      // Drag on first slide to fix bug
-      setTimeout(() => {
-        document.querySelector('.splide__slide').style.transform = 'translateX(-10px)'
-        document.querySelector('.splide__slide').click()
-      }, 1000)
     }
     updatePerPage()
 
@@ -45,7 +35,7 @@ export default function Gallery() {
 
   return (
     <Section
-      title="Gallery"
+      title={title}
       container={false}
     >
 
@@ -66,16 +56,16 @@ export default function Gallery() {
                 >
                   <Image
                     src={`/images/${image}`}
-                    alt="cake image"
+                    alt={alt}
                     width={500}
                     height={350}
                     className={`
-                w-10/12 h-10/12
-                shadow-xl
-                shadow-black
-                rounded-2xl
-                inline-block
-                `}
+                      w-10/12 h-10/12
+                      shadow-xl
+                      shadow-black
+                      rounded-2xl
+                      inline-block
+                    `}
                   />
                 </SplideSlide>
               ))}
@@ -87,7 +77,7 @@ export default function Gallery() {
               text="View All"
               href="/gallery"
               type="primary"
-              extraClasses = "border-4 border-pink"
+              extraClasses="border-4 border-pink"
               small={true}
             />
           </div>
@@ -95,4 +85,10 @@ export default function Gallery() {
       }
     </Section>
   )
+}
+
+Gallery.propTypes = {
+  title: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  images: PropTypes.array.isRequired,
 }

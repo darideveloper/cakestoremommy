@@ -11,7 +11,7 @@ export default function Cta ({title, description, image}) {
         flex items-center justify-between flex-col-reverse
         w-11/12 max-w-md
         mx-auto
-        px-6 py-6
+        px-5 py-6
         bg-pink
         rounded-2xl
         shadow-xl

@@ -1,7 +1,8 @@
+import PropTypes from "prop-types"
 import Section from "@/sections/section"
 import ButtonLink from "@/components/button-link"
 
-export default function Hero() {
+export default function Hero({btnPrimaryText, btnSecondaryText}) {
 
   const arrowIcon = (
     <path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z" />
@@ -32,14 +33,14 @@ export default function Hero() {
       `}>
         <ButtonLink
           href="/comming-soon"
-          text="Order Now"
+          text={btnPrimaryText}
           type="primary"
           iconPath={arrowIcon}
         />
 
         <ButtonLink
           href="/comming-soon"
-          text="Cakes for $100"
+          text={btnSecondaryText}
           type="secondary"
           iconPath={arrowIcon}
         />
@@ -47,4 +48,9 @@ export default function Hero() {
 
     </Section>
   )
+}
+
+Hero.propTypes = {
+  btnPrimaryText: PropTypes.string.isRequired,
+  btnSecondaryText: PropTypes.string.isRequired,
 }

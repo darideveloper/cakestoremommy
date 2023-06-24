@@ -1,16 +1,11 @@
-import { useEffect, useState } from "react"
+import PropTypes from "prop-types"
 import Section from "@/sections/section"
 import Wave from "@/components/wave"
-import { getCardsData } from "@/database/why-us"
 import Card from "@/components/card"
 
-export default function WhyUs() {
+export default function WhyUs({title, cardsData}) {
 
-  const [cardsData, setCardsData] = useState([])
-
-  useEffect(() => {
-    setCardsData(getCardsData())
-  }, [])
+  console.log (cardsData)
 
   return (
     <div
@@ -28,7 +23,7 @@ export default function WhyUs() {
         opacity={true}
       />
       <Section
-        title="Why Us"
+        title={title}
         extraClasses={`
           mb-0
           lg:my-5
@@ -65,4 +60,9 @@ export default function WhyUs() {
       />
     </div>
   )
+}
+
+WhyUs.propTypes = {
+  title: PropTypes.string.isRequired,
+  cardsData: PropTypes.array.isRequired,
 }

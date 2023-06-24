@@ -2,8 +2,6 @@ import PropTypes from 'prop-types'
 
 export default function ContactIcon ({link, icon}) {
 
-  console.log ({link, icon})
-
   return (
     <>
       <a 
