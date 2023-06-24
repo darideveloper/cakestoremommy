@@ -7,20 +7,33 @@ export default function ButtonLink({ text, href, type, iconPath, extraClasses = 
   const fillColor = type === 'primary' ? 'fill-brown' : 'fill-white'
 
   return (
-    <div className="button-wrapper inline-block w-64">
+    <div className={`
+        button-wrapper inline-block w-64
+        md:w-72
+      `}>
       <a
         href={href}
         className={`
+          group
           flex items-center justify-between 
           text-md font-bold uppercase
           w-full py-3
-          rounded-xl shadow-lg ${textColor} ${bgColor}
-          hover:shadow-xl hover:bg-opacity-80 duration-200
+          rounded-2xl shadow-lg ${textColor} ${bgColor}
+          hover:shadow-xl hover:bg-opacity-90 duration-200
+          md:py-6 md:text-lg md:rounded-3xl
         `}>
-        <div className="text-wrapper w-48">
+        <div className={`
+            text-wrapper w-48
+            md:w-56
+          `}>
           <span className='mr-5 text-center w-full inline-block'>{text}</span>
         </div>
-        <svg viewBox="0 0 24 24" className={`w-8 px-2 ${fillColor}`}>
+        <svg viewBox="0 0 24 24" className={`
+          w-8 px-2 
+          ${fillColor}
+          group-hover:-translate-x-3
+          duration-200
+          `}>
           {iconPath}
         </svg>
       </a>

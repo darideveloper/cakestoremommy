@@ -1,10 +1,10 @@
 import Section from "./section"
 import ButtonLink from "@/components/button-link"
 
-export default function Hero () {
+export default function Hero() {
 
   const arrowIcon = (
-    <path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/>
+    <path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z" />
   )
 
   return (
@@ -13,22 +13,23 @@ export default function Hero () {
       titleVisible={false}
       extraClasses={`
         flex flex-col justify-center
-        sm:flex-row sm:justify-between sm:items-center sm:w-10/12 sm:mx-auto
-        md:justify-center
       `}
     >
 
-      <img 
+      <img
         src="/images/hero.gif"
         className={`
           w-full mx-auto mb-32
-          sm:w-6/12 sm:mx-0 sm:my-0
-          md:-ml-8
         `}
       />
 
 
-      <div className="buttons flex flex-col h-28 items-center justify-between">
+      <div className={`
+        buttons 
+        flex flex-col items-center justify-between
+        h-28
+        sm:flex-row sm:justify-center sm:gap-5
+      `}>
         <ButtonLink
           href="/comming-soon"
           text="Order Now"
