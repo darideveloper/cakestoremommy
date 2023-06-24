@@ -19,7 +19,7 @@ export default function Hero() {
       <img
         src="/images/hero.gif"
         className={`
-          w-full mx-auto mb-32
+          w-full mx-auto mb-32 max-w-4xl
         `}
       />
 
