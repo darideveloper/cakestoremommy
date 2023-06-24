@@ -1,4 +1,4 @@
-export function getGalleryData () {
+export function getGalleryImages () {
   return [
     "gallery-1.jpg",
     "gallery-2.jpg",

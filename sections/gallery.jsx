@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import Section from "./section"
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide'
-import { getGalleryData } from "../database/gallery"
+import { getGalleryImages } from "../database/gallery"
 
 // Default theme
 import '@splidejs/react-splide/css'
@@ -14,7 +14,7 @@ export default function Gallery() {
   useEffect(() => {
     
     // Cargar datos cuando el componente se monte
-    setImages(getGalleryData())
+    setImages(getGalleryImages())
 
     function updatePerPage () {
       const width = window.innerWidth
