@@ -23,6 +23,7 @@ module.exports = {
       "pink": "#f6d7d8",
       "green": "#b8cec5",
       "brown": "#8b5c4d",
+      "black": "#aba8a2",
     },
   },
   plugins: [],

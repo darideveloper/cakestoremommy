@@ -2,9 +2,19 @@ import PropTypes from 'prop-types'
 import { titleFont } from '@/lib/fonts'
 
 export default function Section ({children, title, titleVisible = true, extraClasses = ""}) {
+  
+  const displayTitle = titleVisible ? "" : "hidden"
+  
   return (
-    <section className={extraClasses}>
-      <h2 className={titleVisible ? "" : "hidden " + `${titleFont.className}`}>{title}</h2>
+    <section className={`${extraClasses} mb-20`}>
+      <h2 className={`
+          ${displayTitle}
+          ${titleFont.className}
+          text-3xl uppercase text-center font-medium text-brown
+          mb-14
+
+        `
+      }>{title}</h2>
       {children}
     </section>
   )
