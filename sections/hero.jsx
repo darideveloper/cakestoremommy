@@ -27,7 +27,7 @@ export default function Hero() {
       <div className={`
         buttons 
         flex flex-col items-center justify-between
-        h-28
+        h-32
         sm:flex-row sm:justify-center sm:gap-5
       `}>
         <ButtonLink

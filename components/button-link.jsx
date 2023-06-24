@@ -17,7 +17,7 @@ export default function ButtonLink({ text, href, type, iconPath, extraClasses = 
           group
           flex items-center justify-between 
           text-md font-bold uppercase
-          w-full py-3
+          w-full py-4
           rounded-2xl shadow-lg ${textColor} ${bgColor}
           hover:shadow-xl hover:bg-opacity-90 duration-200
           md:py-6 md:text-lg md:rounded-3xl
