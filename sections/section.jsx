@@ -13,7 +13,7 @@ export default function Section ({children, title, titleVisible = true, extraCla
           ${displayTitle}
           ${titleFont.className}
           text-3xl uppercase text-center font-medium text-brown
-          mb-14
+          mb-10
 
         `
       }>{title}</h2>

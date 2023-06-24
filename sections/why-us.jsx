@@ -19,7 +19,7 @@ export default function WhyUs() {
       className={`
         wrapper-section
         bg-pink
-        w-screen
+        container mx-auto
       `}>
       <Wave
         extraClasses="fill-white"
@@ -27,17 +27,31 @@ export default function WhyUs() {
       />
       <Section
         title="Why Us"
-        extraClasses=""
+        extraClasses={`
+          lg:-my-14
+          xl:-my-20
+        `} 
+        container={false}
       >
 
-        {cardsData.map((card, index) => 
-          <Card
-            key={index}
-            title={card.title}
-            body={card.body}
-            image={card.image}
-          />
-        )}
+        <div 
+          className={`
+            cards
+            flex flex-col items-center justify-center
+            gap-10
+            w-10/12 mx-auto
+            lg:flex-row lg:justify-around lg:items-start
+          `}>
+          {cardsData.map((card, index) => 
+            <Card
+              key={index}
+              title={card.title}
+              body={card.body}
+              image={card.image}
+            />
+          )}
+        </div>
+
         
       </Section>
       <Wave

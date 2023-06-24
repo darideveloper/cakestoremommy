@@ -6,7 +6,10 @@ export default function Card ({title, body, image}) {
     <article
       className={`
         flex items-center justify-center flex-col
-        mb-14
+        w-11/12
+        sm:w-full
+        sm:flex-row sm:gap-8
+        lg:flex-col lg:gap-0
       `}>
       <Image
         src={`/images/${image}`}
@@ -14,9 +17,18 @@ export default function Card ({title, body, image}) {
         height={100}
         alt="Why Us icon"
         className={`
+          mt-10
+          sm:w-1/6
+          lg:w-1/3
+          xl:w-1/4
         `}
       />
-      <div className="text text-center mt-5">
+      <div className={`
+          text 
+          text-center mt-5
+          sm:w-5/6
+          md:w-11/12
+        `}>
         <h2
           className="text-xl font-bold text-brown my-5"
         >
