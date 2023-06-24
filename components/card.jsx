@@ -29,11 +29,11 @@ export default function Card ({title, body, image}) {
           sm:w-5/6
           md:w-11/12
         `}>
-        <h2
+        <h3
           className="text-xl font-bold text-brown my-5"
         >
           {title}
-        </h2>
+        </h3>
         <p>{body}</p>
       </div>
     </article>
