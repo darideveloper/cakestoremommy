@@ -1,4 +1,4 @@
-import Section from "./section"
+import Section from "@/sections/section"
 import ButtonLink from "@/components/button-link"
 
 export default function Hero() {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import Section from "./section"
+import Section from "@/sections/section"
 import Wave from "@/components/wave"
 import { getCardsData } from "@/database/why-us"
 import Card from "@/components/card"

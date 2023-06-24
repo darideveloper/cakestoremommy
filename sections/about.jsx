@@ -1,4 +1,4 @@
-import Section from "./section"
+import Section from "@/sections/section"
 import { alternativeFont } from "@/lib/fonts"
 
 export default function About() {

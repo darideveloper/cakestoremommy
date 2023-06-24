@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import Section from "./section"
+import Section from "@/sections/section"
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide'
 import { getGalleryImages } from "../database/gallery"
 import Image from 'next/image'
