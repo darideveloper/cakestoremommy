@@ -3,7 +3,7 @@ import { titleFont, alternativeFont } from "@/lib/fonts"
 import ContactIcon from "@/components/contact-icon"
 import { getContactsData } from "@/database/footer"
 
-export default function Footer () {
+export default function Footer() {
 
   const [contactsData, setContactsData] = useState([])
 
@@ -17,41 +17,57 @@ export default function Footer () {
         bg-pink
       `}
     >
-      <div className={`container text-center pt-5 text-brown mx-auto`}>
-        <h2 
-          className={`
-            ${titleFont.className}
-            text-2xl uppercase
-          `}
-        >
-          Contact us
-        </h2>
-        <address>
-          <a 
-            href="tel:+1-551-250-1566"
-            className="opacity-60"
-          >551-250-1566</a>
-        </address>
-        <p className={`
-          ${alternativeFont.className}
-          text-4xl
-          my-4
-        `}>Follow Us</p>
+      <div className={`
+          container 
+          text-center pt-5 text-brown mx-auto
+        `}>
 
         <div className={`
-          socials
-          flex items-center justify-center gap-5
+          widgets
+          flex flex-col items-center justify-center
+          md:flex-row md:gap-10
         `}>
-          {contactsData.map((contact, index) => (
-            <ContactIcon 
-              key={index}
-              link={contact.link}
-              icon={contact.icon}
-            />
-          ))}
+
+          <div className="contact-us">
+            <h2
+              className={`
+                ${titleFont.className}
+                text-2xl uppercase
+              `}
+            >
+              Contact us
+            </h2>
+            <address>
+              <a
+                href="tel:+1-551-250-1566"
+                className="opacity-60"
+              >551-250-1566</a>
+            </address>
+          </div>
+          <div className="follow-us">
+            <p className={`
+              ${alternativeFont.className}
+              text-4xl
+              my-6
+              md:text-2xl md:my-0 md:uppercase
+            `}>Follow Us</p>
+
+            <div className={`
+              socials
+              flex items-center justify-center gap-5
+            `}>
+              {contactsData.map((contact, index) => (
+                <ContactIcon
+                  key={index}
+                  link={contact.link}
+                  icon={contact.icon}
+                />
+              ))}
+            </div>
+          </div>
         </div>
 
-        <small 
+        <small
           className={`
             center
             mt-10 inline-block
