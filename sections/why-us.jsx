@@ -40,7 +40,7 @@ export default function WhyUs() {
           className={`
             cards
             flex flex-col items-center justify-center
-            w-10/12 mx-auto
+            w-10/12 mx-auto max-w-6xl
             md:flex-row md:justify-around md:items-start
           `}>
           {cardsData.map((card, index) => 

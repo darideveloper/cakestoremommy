@@ -26,14 +26,14 @@ export default function Card ({title, body, image}) {
           text 
           mt-5
           xs:w-5/6 xs:pl-5
-          md:w-11/12
+          md:w-11/12 md:pl-0 md:text-center
         `}>
         <h3
-          className="text-md font-bold text-brown my-2"
+          className="text-md lg:text-lg font-bold text-brown my-2"
         >
           {title}
         </h3>
-        <p className='text-xs'>{body}</p>
+        <p className='text-xs lg:text-md'>{body}</p>
       </div>
     </article>
   )

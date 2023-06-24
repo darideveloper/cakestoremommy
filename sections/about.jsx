@@ -7,7 +7,7 @@ export default function About() {
       title="About Us"
       extraClasses="pt-14"
     >
-      <div className="text w-10/12 max-w-3xl mx-auto text-sm text-brown">
+      <div className="text w-10/12 max-w-4xl mx-auto text-sm text-brown">
         <p 
           className={`
             ${alternativeFont.className}
