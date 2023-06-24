@@ -5,10 +5,10 @@ export default function Card ({title, body, image}) {
   return (
     <article
       className={`
-        flex items-center justify-center flex-col
+        flex items-center justify-between flex-col
         w-11/12
-        xs:w-full xs:flex-row xs:gap-8
-        lg:flex-col lg:gap-0
+        xs:w-full xs:flex-row
+        md:flex-col
       `}>
       <Image
         src={`/images/${image}`}
@@ -18,22 +18,22 @@ export default function Card ({title, body, image}) {
         className={`
           mt-10
           xs:w-1/6
-          lg:w-1/3
+          md:w-1/3
           xl:w-1/4
         `}
       />
       <div className={`
           text 
-          text-center mt-5
-          xs:w-4/6
+          mt-5
+          xs:w-5/6 xs:pl-5
           md:w-11/12
         `}>
         <h3
-          className="text-xl font-bold text-brown my-5"
+          className="text-md font-bold text-brown my-2"
         >
           {title}
         </h3>
-        <p>{body}</p>
+        <p className='text-xs'>{body}</p>
       </div>
     </article>
   )

@@ -19,8 +19,8 @@ export default function Cta ({title, description, image}) {
         xs:flex-row
       `}>
       <div className="text">  
-        <h3 className='text-2xl text-brown font-bold uppercase'>{title}</h3>
-        <p className='text-brown opacity-40'>{description}</p>
+        <h3 className='text-xl text-brown font-bold uppercase'>{title}</h3>
+        <p className='text-sm text-brown opacity-40'>{description}</p>
       </div>
       <Image 
         src={`/images/${image}`}

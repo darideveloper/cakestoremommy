@@ -20,11 +20,11 @@ export default function WhyUs() {
         w-full
       `}>
       <Wave
-        extraClasses="fill-white lg:hidden"
+        extraClasses="fill-white md:hidden"
         flip={true}
       />
       <Wave
-        extraClasses="fill-white h-10 w-full hidden lg:block"
+        extraClasses="fill-white h-10 w-full hidden md:block"
         opacity={true}
       />
       <Section
@@ -40,9 +40,8 @@ export default function WhyUs() {
           className={`
             cards
             flex flex-col items-center justify-center
-            gap-10
             w-10/12 mx-auto
-            lg:flex-row lg:justify-around lg:items-start
+            md:flex-row md:justify-around md:items-start
           `}>
           {cardsData.map((card, index) => 
             <Card
@@ -57,10 +56,10 @@ export default function WhyUs() {
         
       </Section>
       <Wave
-        extraClasses="fill-white lg:hidden"
+        extraClasses="fill-white md:hidden"
       />
       <Wave
-        extraClasses="fill-white h-10 w-full hidden lg:block"
+        extraClasses="fill-white h-10 w-full hidden md:block"
         flip={true}
         opacity={true}
       />

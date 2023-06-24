@@ -4,6 +4,7 @@ import Link from 'next/link'
 export default function ButtonLink({ text, href, type, iconPath, extraClasses = "", small = false }) {
 
   const textColor = type === 'primary' ? 'text-brown' : ' text-white'
+  const textSize = small ? 'text-sm md:text-lg' : 'text-md md:text-lg'
   const bgColor = type === 'primary' ? 'bg-white' : ' bg-green'
   const fillColor = type === 'primary' ? 'fill-brown' : 'fill-white'
   const sizeWrapper = small ? 'w-56 md:w-64' : 'w-64 md:w-72'
@@ -19,11 +20,11 @@ export default function ButtonLink({ text, href, type, iconPath, extraClasses = 
         className={`
           group
           flex items-center justify-between 
-          text-md font-bold uppercase
+          ${textSize} font-bold uppercase
           w-full ${paddingY}
           rounded-2xl shadow-lg ${textColor} ${bgColor}
           hover:shadow-xl hover:bg-opacity-90 duration-200
-          md:text-lg md:rounded-3xl
+          md:rounded-3xl
           ${extraClasses}          
         `}>
         <div className={`
