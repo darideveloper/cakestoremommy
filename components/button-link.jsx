@@ -23,19 +23,21 @@ export default function ButtonLink({ text, href, type, iconPath, extraClasses = 
           md:py-6 md:text-lg md:rounded-3xl
         `}>
         <div className={`
-            text-wrapper w-48
-            md:w-56
+            text-wrapper w-full
+            md:w-64
           `}>
           <span className='mr-5 text-center w-full inline-block'>{text}</span>
         </div>
-        <svg viewBox="0 0 24 24" className={`
-          w-8 px-2 
-          ${fillColor}
-          group-hover:-translate-x-3
-          duration-200
-          `}>
-          {iconPath}
-        </svg>
+        <div className="icon w-12">
+          <svg viewBox="0 0 24 24" className={`
+            w-8 px-2 
+            ${fillColor}
+            group-hover:-translate-x-3
+            duration-200
+            `}>
+            {iconPath}
+          </svg>
+        </div>
       </a>
     </div>
   )

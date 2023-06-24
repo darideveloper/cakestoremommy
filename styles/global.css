@@ -11,3 +11,7 @@ body {
 .splide__pagination__page.is-active {
     background-color: #f6d7d8 !important;
 }
+
+.debug {
+    border: 1px solid red;
+}
