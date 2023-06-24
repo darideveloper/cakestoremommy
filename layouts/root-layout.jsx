@@ -4,7 +4,7 @@ import Footer from '@/sections/footer'
 
 export default function RootLayout({ children }) {
   return (
-    <div className="container mx-auto">
+    <div className="mx-auto">
       <Header />
       <main className={regularFont.className}>
         {children}

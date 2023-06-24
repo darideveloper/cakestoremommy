@@ -38,6 +38,7 @@ export default function Gallery() {
   return (
     <Section
       title="Gallery"
+      container={false}
     >
 
       <Splide hasTrack={false} options={{

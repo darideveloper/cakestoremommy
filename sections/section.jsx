@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types'
 import { titleFont } from '@/lib/fonts'
 
-export default function Section ({children, title, titleVisible = true, extraClasses = ""}) {
+export default function Section ({children, title, titleVisible = true, extraClasses = "", container = true}) {
   
   const displayTitle = titleVisible ? "" : "hidden"
   const titleClass = title.toLowerCase().replace(" ", "-")
+  const containerClass = container ? "container mx-auto" : ""
 
   return (
-    <section className={`${titleClass} ${extraClasses} mb-20`}>
+    <section className={`${titleClass} ${extraClasses} ${containerClass} mb-20`}>
       <h2 className={`
           ${displayTitle}
           ${titleFont.className}
@@ -25,5 +26,6 @@ Section.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
   titleVisible: PropTypes.bool,
-  extraClasses: PropTypes.string
+  extraClasses: PropTypes.string,
+  container: PropTypes.bool
 }
