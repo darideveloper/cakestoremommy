@@ -16,7 +16,7 @@ export default function Cta ({title, description, image}) {
         rounded-2xl
         shadow-xl
         hover:shadow-2xl hover:-translate-y-2 duration-300
-        sm:flex-row
+        xs:flex-row
       `}>
       <div className="text">  
         <h3 className='text-2xl text-brown font-bold uppercase'>{title}</h3>

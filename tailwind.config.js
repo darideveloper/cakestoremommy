@@ -25,6 +25,14 @@ module.exports = {
       "brown": "#8b5c4d",
       "black": "#aba8a2",
     },
+    screens: {
+      'xs': '550px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    }
   },
   plugins: [],
 }
