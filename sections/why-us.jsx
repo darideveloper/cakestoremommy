@@ -12,8 +12,6 @@ export default function WhyUs() {
     setCardsData(getCardsData())
   }, [])
 
-  console.log(cardsData)
-
   return (
     <div
       className={`

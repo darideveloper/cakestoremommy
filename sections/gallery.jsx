@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Section from "./section"
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide'
 import { getGalleryImages } from "../database/gallery"
+import Image from 'next/image'
 
 // Default theme
 import '@splidejs/react-splide/css'
@@ -9,7 +10,7 @@ import '@splidejs/react-splide/css'
 export default function Gallery() {
 
   const [images, setImages] = useState([])
-  const [perPage, setPerPage] = useState(2)
+  const [perPage, setPerPage] = useState(0)
 
   useEffect(() => {
     
@@ -24,7 +25,13 @@ export default function Gallery() {
       else if (width < 1024) { 
         setPerPage(3)
       } 
-      else setPerPage(5)      
+      else setPerPage(5)
+      
+      // Drag on first slide to fix bug
+      setTimeout(() => {
+        document.querySelector('.splide__slide').style.transform = 'translateX(-10px)'
+        document.querySelector('.splide__slide').click ()
+      }, 1000)
     }
     updatePerPage ()
 
@@ -41,10 +48,10 @@ export default function Gallery() {
       container={false}
     >
 
-      <Splide hasTrack={false} options={{
+      {images.length > 0 && <Splide hasTrack={false} options={{
         type: 'loop',
         arrows: false,
-        perPage: perPage,
+        perPage: perPage,        
       }}>
         <SplideTrack>
           {images.map((image, index) => (
@@ -52,9 +59,11 @@ export default function Gallery() {
               key={index}
               className="flex items-center justify-center py-10 px-0"
             >
-              <img
+              <Image
                 src={`/images/${image}`}
                 alt="cake image"
+                width={500}
+                height={350}
                 className={`
                   w-10/12 h-10/12
                   shadow-xl
@@ -66,7 +75,7 @@ export default function Gallery() {
             </SplideSlide>
           ))}
         </SplideTrack>
-      </Splide>
+      </Splide>}
     </Section>
   )
 }
