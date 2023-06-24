@@ -63,6 +63,7 @@ export async function getStaticProps() {
         title: "Gallery",
         alt: "Cake image gallery item",
         images: galleryImages,
+        viewAll: "View All",
       },
       "CustomizeCake": {
         title: "Customize Cake",
@@ -107,6 +108,7 @@ export async function getStaticProps() {
         title: "Galería",
         alt: "Elemento de galería de imágenes de pasteles",
         images: galleryImages,
+        viewAll: "Ver Todo",
       },
       "CustomizeCake": {
         title: "Personaliza tu pastel",

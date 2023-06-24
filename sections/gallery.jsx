@@ -8,7 +8,7 @@ import ButtonLink from "../components/button-link"
 // Default theme
 import '@splidejs/react-splide/css'
 
-export default function Gallery({ title, alt, images }) {
+export default function Gallery({ title, alt, images, viewAll }) {
 
   const [perPage, setPerPage] = useState(2)
 
@@ -74,7 +74,7 @@ export default function Gallery({ title, alt, images }) {
 
           <div className="button-wrapper flex items-center justify-center mt-4">
             <ButtonLink
-              text="View All"
+              text={viewAll}
               href="/gallery"
               type="primary"
               extraClasses="border-4 border-pink"
