@@ -4,9 +4,10 @@ import { titleFont } from '@/lib/fonts'
 export default function Section ({children, title, titleVisible = true, extraClasses = ""}) {
   
   const displayTitle = titleVisible ? "" : "hidden"
-  
+  const titleClass = title.toLowerCase().replace(" ", "-")
+
   return (
-    <section className={`${extraClasses} mb-20`}>
+    <section className={`${titleClass} ${extraClasses} mb-20`}>
       <h2 className={`
           ${displayTitle}
           ${titleFont.className}
