@@ -17,17 +17,21 @@ export default function WhyUs() {
       className={`
         wrapper-section
         bg-pink
-        container mx-auto
+        w-full
       `}>
       <Wave
-        extraClasses="fill-white"
+        extraClasses="fill-white lg:hidden"
         flip={true}
+      />
+      <Wave
+        extraClasses="fill-white h-10 w-full hidden lg:block"
+        opacity={true}
       />
       <Section
         title="Why Us"
         extraClasses={`
-          lg:-my-14
-          xl:-my-20
+          mb-0
+          lg:my-5
         `} 
         container={false}
       >
@@ -53,7 +57,12 @@ export default function WhyUs() {
         
       </Section>
       <Wave
-        extraClasses="fill-white"
+        extraClasses="fill-white lg:hidden"
+      />
+      <Wave
+        extraClasses="fill-white h-10 w-full hidden lg:block"
+        flip={true}
+        opacity={true}
       />
     </div>
   )
