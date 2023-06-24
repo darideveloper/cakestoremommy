@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import Link from 'next/link'
 
 export default function ButtonLink({ text, href, type, iconPath, extraClasses = "", small = false }) {
 
@@ -13,7 +14,7 @@ export default function ButtonLink({ text, href, type, iconPath, extraClasses = 
         button-wrapper inline-block
         ${sizeWrapper}
       `}>
-      <a
+      <Link
         href={href}
         className={`
           group
@@ -45,7 +46,7 @@ export default function ButtonLink({ text, href, type, iconPath, extraClasses = 
             </svg>
           </div>
         }
-      </a>
+      </Link>
     </div>
   )
 }

@@ -1,4 +1,5 @@
-import Section from "./section"
+import Section from "@/sections/section"
+import Cta from "@/components/cta"
 
 export default function CustomizeCake () {
   return (
@@ -6,7 +7,11 @@ export default function CustomizeCake () {
       title="Customize Cake"
       titleVisible={false}
     >
-      <p>content</p>
+      <Cta 
+        title="Customize Cake"
+        description="Custom cake ordering form"
+        image="cta-cake.png"
+      />
     </Section>
   )
 }
