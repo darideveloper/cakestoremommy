@@ -22,7 +22,7 @@ export default function Card({ title, body, image, index }) {
         className={`
           mt-10
           xs:w-1/6
-          md:w-1/3
+          md:w-1/3 md:h-36
           xl:w-1/4
         `}
       />
