@@ -1,7 +1,10 @@
 import Image from 'next/image'
+import { LangContext } from '@/context/lang'
+import { useContext } from 'react'
 
 export default function LangButtons () {
   
+  const { setLang } = useContext(LangContext)
   const langs = ["en", "es"]
   
   return (
@@ -9,7 +12,7 @@ export default function LangButtons () {
       {langs.map((lang, index) => (
         <button 
           key={index}
-          onClick={() => { console.log(lang) }}  
+          onClick={() => { setLang(lang) }}  
         >
           <Image 
             src={`/images/flag-${lang}.svg`} 
