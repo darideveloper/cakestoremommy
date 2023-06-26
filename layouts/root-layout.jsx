@@ -19,7 +19,15 @@ export default function RootLayout({ children }) {
   
   const data = {
     "en": {
-      "Header": {},
+      "Header": {
+        "menuItems": [
+          { name: 'Order Now', path: '/order' },
+          { name: 'Home', path: '/' },
+          { name: 'About', path: '/#about' },
+          { name: 'Gallery', path: '/#gallery' },
+          { name: 'Contact', path: '/#contact' },
+        ]
+      },
       "Footer": {
         "title": "Contact us",
         "subtitle": "Follow Us",
@@ -29,7 +37,15 @@ export default function RootLayout({ children }) {
       },
     },
     "es": {
-      "Header": {},
+      "Header": {
+        "menuItems": [
+          { name: 'Ordernar Ahora', path: '/order' },
+          { name: 'Inicio', path: '/' },
+          { name: 'Acerca de', path: '/#about' },
+          { name: 'Galería', path: '/#gallery' },
+          { name: 'Contacto', path: '/#contact' },
+        ]
+      },
       "Footer": {
         "title": "Contáctanos",
         "subtitle": "Síguenos",
@@ -45,7 +61,9 @@ export default function RootLayout({ children }) {
   
   return (
     <div className="mx-auto">
-      <Header />
+      <Header 
+        {...dataLang.Header}
+      />
       <main className={regularFont.className}>
         {children}
       </main>

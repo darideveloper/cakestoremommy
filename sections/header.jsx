@@ -5,15 +5,7 @@ import Link from 'next/link'
 import Line from '@/components/line'
 import LangButtons from '@/components/lang-buttons'
 
-export default function Header() {
-
-  const menuItems = [
-    { name: 'Order Now', path: '/order' },
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/#about' },
-    { name: 'Gallery', path: '/#gallery' },
-    { name: 'Contact', path: '/#contact' },
-  ]
+export default function Header({menuItems}) {
 
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -111,4 +103,8 @@ export default function Header() {
       </div>
     </header>
   )
+}
+
+Header.propTypes = {
+  menuItems: PropTypes.arrayOf(PropTypes.object).isRequired
 }
