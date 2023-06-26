@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Line from '@/components/line'
 import LangButtons from '@/components/lang-buttons'
 
-export default function Header({menuItems}) {
+export default function Header({ menuItems }) {
 
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -35,19 +35,21 @@ export default function Header({menuItems}) {
           />
         </button>
 
-        <h1
-          className={`
+        <Link href="/">
+          <h1
+            className={`
             ${titleFont.className}
             font-bold text-sm text-brown text-center line-clamp-3
             xs:text-lg
             flex justify-center items-center
             md:flex-col 
           `}
-        >
-          <span className='mx-1 md:-my-1'>CAKE</span>
-          <span className='mx-1 md:-my-1'>STORE</span>
-          <span className='mx-1 md:-my-1'>MOMMY</span>
-        </h1>
+          >
+            <span className='mx-1 md:-my-1'>CAKE</span>
+            <span className='mx-1 md:-my-1'>STORE</span>
+            <span className='mx-1 md:-my-1'>MOMMY</span>
+          </h1>
+        </Link>
 
         <nav className={`
           duration-300 transition-transform
@@ -72,14 +74,14 @@ export default function Header({menuItems}) {
                 flex flex-col justify-center items-start gap-1
                 md:hidden
               `}
-              >
-              <svg 
+            >
+              <svg
                 viewBox="0 0 24 24"
                 className='fill-brown w-8 h-8'
               >
                 <path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z" />
               </svg>
-              
+
             </button>
             {menuItems.map((item, index) => (
               <li
