@@ -15,10 +15,12 @@ export default function WhyUs({title, cardsData}) {
       <Wave
         extraClasses="fill-white md:hidden"
         flip={true}
+        type="circle"
       />
       <Wave
         extraClasses="fill-white h-10 w-full hidden md:block"
         opacity={true}
+        type="opacity"
       />
       <Section
         title={title}
@@ -50,11 +52,12 @@ export default function WhyUs({title, cardsData}) {
       </Section>
       <Wave
         extraClasses="fill-white md:hidden"
+        type="circle"
       />
       <Wave
         extraClasses="fill-white h-10 w-full hidden md:block"
         flip={true}
-        opacity={true}
+        type="opacity"
       />
     </div>
   )

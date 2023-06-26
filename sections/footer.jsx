@@ -25,7 +25,7 @@ export default function Footer({ title, subtitle, phone, copyright, socialIcons 
       <Wave 
         extraClasses={`hidden md:inline-block fill-white h-10 w-full mb-5`}
         flip={false}
-        opacity={true}
+        type="opacity"
       />
 
       <div className={`

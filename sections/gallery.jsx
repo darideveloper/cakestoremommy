@@ -37,6 +37,7 @@ export default function Gallery({ title, alt, images, viewAll }) {
     <Section
       title={title}
       container={false}
+      extraClasses="pt-28"
     >
 
       {images.length > 0
