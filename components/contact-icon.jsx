@@ -22,7 +22,7 @@ export default function ContactIcon ({link, icon}) {
   )
 }
 
-ContactIcon.PropTypes = {
+ContactIcon.propTypes = {
   link: PropTypes.string.isRequired,
   icon: PropTypes.element.isRequired
 }

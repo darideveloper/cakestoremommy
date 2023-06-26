@@ -19,15 +19,29 @@ export default function Cta ({title, description, image, link}) {
         hover:shadow-2xl hover:-translate-y-2 duration-300
         xs:flex-row
       `}>
-      <div className="text">  
-        <h3 className={`text-xl text-brown font-bold uppercase ${titleFont.className}`}>{title}</h3>
-        <p className='text-sm text-brown opacity-40'>{description}</p>
+      <div className="text text-center xs:text-left">  
+        <h3 
+          className={`text-xl text-brown font-bold uppercase ${titleFont.className}`}
+          data-aos="fade-right"
+          data-aos-delay="100"
+        >
+          {title}
+        </h3>
+        <p 
+          className='text-sm text-brown opacity-40'
+          data-aos="fade-right"
+          data-aos-delay="300"
+        >
+          {description}
+        </p>
       </div>
       <Image 
         src={`/images/${image}`}
         alt="Chake image"
         width={120}
         height={120}
+        data-aos="fade-left"
+        data-aos-delay="700"
       />
     </Link>
         

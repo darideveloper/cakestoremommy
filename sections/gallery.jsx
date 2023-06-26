@@ -68,6 +68,8 @@ export default function Gallery({ title, alt, images, viewAll }) {
                       rounded-2xl
                       inline-block
                     `}
+                    data-aos="zoom-in"
+                    data-aos-delay={100*index}
                   />
                 </SplideSlide>
               ))}

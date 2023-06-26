@@ -6,7 +6,7 @@ export default function About({title, textDecoration, textA, textB}) {
   return (
     <Section
       title={title}
-      extraClasses="pt-14"
+      extraClasses="pt-24 pb-14 w-full overflow-hidden"
       id='about'
     >
       <div className="text w-10/12 max-w-4xl mx-auto text-sm text-brown">
@@ -14,7 +14,12 @@ export default function About({title, textDecoration, textA, textB}) {
           className={`
             ${alternativeFont.className}
             text-3xl text-right my-6 text-brown
-          `}>{textDecoration}</p>
+          `}
+          data-aos="fade-left"
+          data-aos-delay="200"
+          >
+            {textDecoration}
+          </p>
         <div 
           className={`
             content 

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import Image from "next/image"
 import { titleFont } from '@/lib/fonts'
 
-export default function Card ({title, body, image}) {
+export default function Card({ title, body, image, index }) {
   return (
     <article
       className={`
@@ -10,7 +10,10 @@ export default function Card ({title, body, image}) {
         w-11/12
         xs:w-full xs:flex-row
         md:flex-col
-      `}>
+      `}
+      data-aos="zoom-out"
+      data-aos-delay={200*index}
+    >
       <Image
         src={`/images/${image}`}
         width={100}
@@ -42,5 +45,8 @@ export default function Card ({title, body, image}) {
 }
 
 Card.propTypes = {
-
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
 }

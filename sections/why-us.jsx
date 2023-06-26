@@ -11,6 +11,7 @@ export default function WhyUs({title, cardsData}) {
         wrapper-section
         bg-pink
         w-full
+        mt-36
       `}>
       <Wave
         extraClasses="fill-white md:hidden"
@@ -45,6 +46,7 @@ export default function WhyUs({title, cardsData}) {
               title={card.title}
               body={card.body}
               image={card.image}
+              index={index}
             />
           )}
         </div>

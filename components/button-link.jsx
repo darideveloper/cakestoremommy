@@ -12,10 +12,13 @@ export default function ButtonLink({ text, href, type, iconPath, extraClasses = 
   const paddingY = small ? 'py-3 md:py-4' : 'py-4 md:py-6'
 
   return (
-    <div className={`
+    <div 
+      className={`
         button-wrapper inline-block
         ${sizeWrapper}
-      `}>
+      `}
+      data-aos="fade-up"
+      >
       <Link
         href={href}
         className={`

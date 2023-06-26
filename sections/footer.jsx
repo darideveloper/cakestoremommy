@@ -46,7 +46,10 @@ export default function Footer({ title, subtitle, phone, copyright, socialIcons 
           md:flex-row md:gap-10
         `}>
 
-            <div className="contact-us">
+            <div 
+              className="contact-us"
+              data-aos="fade-up"
+            >
               <h2
                 className={`
                 ${titleFont.className}
@@ -62,7 +65,12 @@ export default function Footer({ title, subtitle, phone, copyright, socialIcons 
                 >{phone}</Link>
               </address>
             </div>
-            <div className="follow-us">
+
+            <div 
+              className="follow-us"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               <p className={`
               ${alternativeFont.className}
               text-5xl

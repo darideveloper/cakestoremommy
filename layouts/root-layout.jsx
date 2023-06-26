@@ -1,11 +1,15 @@
 import { regularFont } from '@/lib/fonts'
-import Header from '@/sections/header'
-import Footer from '@/sections/footer'
 import { LangContext } from "@/context/lang"
 import { useContext } from "react"
+import { useEffect } from "react"
+import Header from '@/sections/header'
+import Footer from '@/sections/footer'
+import AOS from 'aos'
+import 'aos/dist/aos.css';
 
 export default function RootLayout({ children }) {
   
+  // Page data
   const socialIcon = [
     {
       icon: (<path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />),
@@ -56,8 +60,14 @@ export default function RootLayout({ children }) {
     }
   }
 
+  // Get language from context
   const { lang } = useContext(LangContext)
   const dataLang = data[lang]
+
+  // Load AOS
+  useEffect(() => {
+    AOS.init();
+  }, [])
   
   return (
     <div className="mx-auto">
