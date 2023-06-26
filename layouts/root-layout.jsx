@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
     "es": {
       "Header": {
         "menuItems": [
-          { name: 'Ordernar Ahora', path: '/order' },
+          { name: 'Ordernar', path: '/order' },
           { name: 'Inicio', path: '/' },
           { name: 'Acerca de', path: '/#about' },
           { name: 'Galería', path: '/#gallery' },
