@@ -5,8 +5,6 @@ import Card from "@/components/card"
 
 export default function WhyUs({title, cardsData}) {
 
-  console.log (cardsData)
-
   return (
     <div
       className={`

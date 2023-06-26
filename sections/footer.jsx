@@ -1,15 +1,8 @@
-import { useEffect, useState } from "react"
+import PropTypes from "prop-types"
 import { titleFont, alternativeFont } from "@/lib/fonts"
 import ContactIcon from "@/components/contact-icon"
-import { getContactsData } from "@/database/footer"
 
-export default function Footer() {
-
-  const [contactsData, setContactsData] = useState([])
-
-  useEffect(() => {
-    setContactsData(getContactsData())
-  }, [])
+export default function Footer({title, subtitle, phone, copyright, socialIcons}) {
 
   return (
     <footer
@@ -35,13 +28,13 @@ export default function Footer() {
                 text-2xl uppercase
               `}
             >
-              Contact us
+              {title}
             </h2>
             <address>
               <a
                 href="tel:+1-551-250-1566"
                 className="opacity-60"
-              >551-250-1566</a>
+              >{phone}</a>
             </address>
           </div>
           <div className="follow-us">
@@ -50,13 +43,13 @@ export default function Footer() {
               text-4xl
               my-6
               md:text-2xl md:my-0 md:uppercase
-            `}>Follow Us</p>
+            `}>{subtitle}</p>
 
             <div className={`
               socials
               flex items-center justify-center gap-5
             `}>
-              {contactsData.map((contact, index) => (
+              {socialIcons.map((contact, index) => (
                 <ContactIcon
                   key={index}
                   link={contact.link}
@@ -73,7 +66,7 @@ export default function Footer() {
             mt-10 inline-block
             uppercase text-xs
           `}>
-          THE CAKE STORE MOMMY, INC. © 2023 ALL RIGHTS RESERVED
+          {copyright}
           <br />
           Powered by <a href="https://www.darideveloper.com/">Dari Developer</a>
         </small>
@@ -82,4 +75,12 @@ export default function Footer() {
 
     </footer>
   )
+}
+
+Footer.PropTypes = {
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  phone: PropTypes.string,
+  copyright: PropTypes.string,
+  socialIcons: PropTypes.array,
 }
