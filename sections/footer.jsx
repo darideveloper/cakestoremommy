@@ -3,6 +3,7 @@ import { titleFont, alternativeFont } from "@/lib/fonts"
 import ContactIcon from "@/components/contact-icon"
 import Image from "next/image"
 import Wave from "@/components/wave"
+import Link from "next/link"
 
 export default function Footer({ title, subtitle, phone, copyright, socialIcons }) {
 
@@ -55,10 +56,10 @@ export default function Footer({ title, subtitle, phone, copyright, socialIcons 
                 {title}
               </h2>
               <address>
-                <a
+                <Link
                   href="tel:+1-551-250-1566"
                   className="opacity-60"
-                >{phone}</a>
+                >{phone}</Link>
               </address>
             </div>
             <div className="follow-us">

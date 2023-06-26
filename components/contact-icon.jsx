@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types'
+import Link from 'next/link'
 
 export default function ContactIcon ({link, icon}) {
 
   return (
     <>
-      <a 
+      <Link
         href={link} 
         target='_blank'
         className={`
@@ -16,12 +17,12 @@ export default function ContactIcon ({link, icon}) {
         <svg viewBox='0 0 24 24' className='fill-white w-full'>
           {icon}
         </svg>
-      </a>
+      </Link>
     </>
   )
 }
 
-// ContactIcon.PropTypes = {
-//   link: PropTypes.string.isRequired,
-//   icon: PropTypes.element.isRequired
-// }
+ContactIcon.PropTypes = {
+  link: PropTypes.string.isRequired,
+  icon: PropTypes.element.isRequired
+}
