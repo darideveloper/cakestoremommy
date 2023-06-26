@@ -11,7 +11,7 @@ export default function WhyUs({title, cardsData}) {
         wrapper-section
         bg-pink
         w-full
-        mt-36
+        mt-24
       `}>
       <Wave
         extraClasses="fill-white md:hidden"

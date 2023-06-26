@@ -8,7 +8,7 @@ export default function CustomizeCake ({title, description}) {
       title="Customize Cake"
       titleVisible={false}
       id="customize-cake"
-      extraClasses="w-full overflow-hidden"
+      extraClasses="w-full overflow-x-hidden pb-16 pt-5"
     >
       <Cta 
         title={title}

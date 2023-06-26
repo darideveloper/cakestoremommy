@@ -19,7 +19,7 @@ export default function Cta ({title, description, image, link}) {
         hover:shadow-2xl hover:-translate-y-2 duration-300
         xs:flex-row
       `}>
-      <div className="text text-center xs:text-left">  
+      <div className="text text-center xs:text-left mt-3 xs:mt-0">  
         <h3 
           className={`text-xl text-brown font-bold uppercase ${titleFont.className}`}
           data-aos="fade-right"
