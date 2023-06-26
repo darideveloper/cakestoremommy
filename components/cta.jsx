@@ -3,10 +3,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { titleFont } from '@/lib/fonts'
 
-export default function Cta ({title, description, image}) {
+export default function Cta ({title, description, image, link}) {
   return (
     <Link
-      href={`/comming-soon`} 
+      href={link} 
       className={`
         cta
         flex items-center justify-between flex-col-reverse

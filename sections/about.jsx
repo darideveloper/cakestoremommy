@@ -7,6 +7,7 @@ export default function About({title, textDecoration, textA, textB}) {
     <Section
       title={title}
       extraClasses="pt-14"
+      id='about'
     >
       <div className="text w-10/12 max-w-4xl mx-auto text-sm text-brown">
         <p 

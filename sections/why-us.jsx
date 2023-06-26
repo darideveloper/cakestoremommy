@@ -29,6 +29,7 @@ export default function WhyUs({title, cardsData}) {
           lg:my-5
         `} 
         container={false}
+        id="why-us"
       >
 
         <div 

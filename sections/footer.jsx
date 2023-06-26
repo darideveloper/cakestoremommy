@@ -9,6 +9,7 @@ export default function Footer({ title, subtitle, phone, copyright, socialIcons 
   return (
     <footer
       className={`bg-transparent md:bg-pink`}
+      id="contact"
     >
 
       {/* Footer separators */}

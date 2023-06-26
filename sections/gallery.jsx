@@ -38,6 +38,7 @@ export default function Gallery({ title, alt, images, viewAll }) {
       title={title}
       container={false}
       extraClasses="pt-28"
+      id="gallery"
     >
 
       {images.length > 0

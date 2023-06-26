@@ -7,11 +7,13 @@ export default function CustomizeCake ({title, description}) {
     <Section
       title="Customize Cake"
       titleVisible={false}
+      id="customize-cake"
     >
       <Cta 
         title={title}
         description={description}
         image="cta-cake.png"
+        link={'/order'}
       />
     </Section>
   )

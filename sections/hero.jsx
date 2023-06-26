@@ -20,6 +20,7 @@ export default function Hero({ btnPrimaryText, btnSecondaryText }) {
         relative
         w-full
       `}
+      id="hero"
     >
 
       <img
@@ -62,14 +63,14 @@ export default function Hero({ btnPrimaryText, btnSecondaryText }) {
         />
 
         <ButtonLink
-          href="/comming-soon"
+          href="/order"
           text={btnPrimaryText}
           type="primary"
           iconPath={arrowIcon}
         />
 
         <ButtonLink
-          href="/comming-soon"
+          href="/order"
           text={btnSecondaryText}
           type="secondary"
           iconPath={arrowIcon}
