@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import Link from 'next/link'
+import { titleFont } from '@/lib/fonts'
 
 export default function ButtonLink({ text, href, type, iconPath, extraClasses = "", small = false }) {
 
@@ -30,7 +31,12 @@ export default function ButtonLink({ text, href, type, iconPath, extraClasses = 
         <div className={`
             text-wrapper w-full
           `}>
-          <span className='text-center w-full inline-block'>{text}</span>
+          <span 
+            className={`
+              text-center w-full inline-block
+              ${titleFont.className}
+            `}
+            >{text}</span>
         </div>
 
         {

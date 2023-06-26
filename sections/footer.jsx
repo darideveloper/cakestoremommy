@@ -40,9 +40,9 @@ export default function Footer({title, subtitle, phone, copyright, socialIcons})
           <div className="follow-us">
             <p className={`
               ${alternativeFont.className}
-              text-4xl
+              text-5xl
               my-6
-              md:text-2xl md:my-0 md:uppercase
+              md:text-3xl md:my-0 md:uppercase md:mb-2
             `}>{subtitle}</p>
 
             <div className={`
@@ -77,7 +77,7 @@ export default function Footer({title, subtitle, phone, copyright, socialIcons})
   )
 }
 
-Footer.PropTypes = {
+Footer.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
   phone: PropTypes.string,

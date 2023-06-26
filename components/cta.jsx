@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import Image from 'next/image'
 import Link from 'next/link'
+import { titleFont } from '@/lib/fonts'
 
 export default function Cta ({title, description, image}) {
   return (
@@ -19,7 +20,7 @@ export default function Cta ({title, description, image}) {
         xs:flex-row
       `}>
       <div className="text">  
-        <h3 className='text-xl text-brown font-bold uppercase'>{title}</h3>
+        <h3 className={`text-xl text-brown font-bold uppercase ${titleFont.className}`}>{title}</h3>
         <p className='text-sm text-brown opacity-40'>{description}</p>
       </div>
       <Image 

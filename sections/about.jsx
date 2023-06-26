@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types'
 import Section from "@/sections/section"
 import { alternativeFont } from "@/lib/fonts"
-import PropTypes from 'prop-types'
 
 export default function About({title, textDecoration, textA, textB}) { 
   return (
@@ -12,7 +12,7 @@ export default function About({title, textDecoration, textA, textB}) {
         <p 
           className={`
             ${alternativeFont.className}
-            text-xl text-right my-6 text-brown
+            text-3xl text-right my-6 text-brown
           `}>{textDecoration}</p>
         <div 
           className={`

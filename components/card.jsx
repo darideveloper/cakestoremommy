@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import Image from "next/image"
+import { titleFont } from '@/lib/fonts'
 
 export default function Card ({title, body, image}) {
   return (
@@ -23,13 +24,14 @@ export default function Card ({title, body, image}) {
         `}
       />
       <div className={`
-          text 
+          text
+          text-center 
           mt-5
-          xs:w-5/6 xs:pl-5
+          xs:w-5/6 xs:pl-5 xs:text-left
           md:w-11/12 md:pl-0 md:text-center
         `}>
         <h3
-          className="text-md lg:text-lg font-bold text-brown my-2"
+          className={`text-lg lg:text-xl font-bold text-brown my-2 ${titleFont.className}`}
         >
           {title}
         </h3>
