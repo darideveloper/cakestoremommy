@@ -38,7 +38,7 @@ export default function Card({ title, body, image, index }) {
         >
           {title}
         </h3>
-        <p className='text-xs lg:text-md'>{body}</p>
+        <p className='text-xs lg:text-md text-brown'>{body}</p>
       </div>
     </article>
   )

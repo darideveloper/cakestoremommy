@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import Section from "@/sections/section"
-import { alternativeFont } from "@/lib/fonts"
+import { alternateFont } from '@/lib/fonts'
 
 export default function About({title, textDecoration, textA, textB}) { 
   return (
@@ -12,7 +12,7 @@ export default function About({title, textDecoration, textA, textB}) {
       <div className="text w-10/12 max-w-4xl mx-auto text-sm text-brown">
         <p 
           className={`
-            ${alternativeFont.className}
+            ${alternateFont.className}
             text-3xl text-right my-6 text-brown
           `}
           data-aos="fade-left"

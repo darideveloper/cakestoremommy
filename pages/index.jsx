@@ -56,8 +56,8 @@ export async function getStaticProps() {
   const data = {
     "en": {
       "Hero": {
-        btnPrimaryText: "Order Now",
-        btnSecondaryText: "Cakes for $100",
+        btnSecondaryText: "Order Now",
+        btnSecondaryTexts: ["Cakes for",  "$100"],
       },
       "Gallery": {
         title: "Gallery",
@@ -101,8 +101,8 @@ export async function getStaticProps() {
     },
     "es": {
       "Hero": {
-        btnPrimaryText: "Ordena Ahora",
-        btnSecondaryText: "Pasteles por $100",
+        btnSecondaryText: "Ordena Ahora",
+        btnSecondaryTexts: ["Pasteles por",  "$100"],
       },
       "Gallery": {
         title: "Galería",

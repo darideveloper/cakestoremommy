@@ -21,7 +21,10 @@ export default function Cta ({title, description, image, link}) {
       `}>
       <div className="text text-center xs:text-left mt-3 xs:mt-0">  
         <h3 
-          className={`text-xl text-brown font-bold uppercase ${titleFont.className}`}
+          className={`
+            text-xl text-brown font-bold uppercase 
+            ${titleFont.className}
+          `}
           data-aos="fade-right"
           data-aos-delay="100"
         >

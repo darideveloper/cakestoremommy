@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import { titleFont, alternativeFont } from "@/lib/fonts"
+import { titleFont } from "@/lib/fonts"
 import ContactIcon from "@/components/contact-icon"
 import Image from "next/image"
 import Wave from "@/components/wave"
@@ -48,7 +48,7 @@ export default function Footer({ title, subtitle, phone, copyright, socialIcons 
 
             <div 
               className="contact-us"
-              data-aos="fade-up"
+              data-aos="fade-down"
             >
               <h2
                 className={`
@@ -68,14 +68,13 @@ export default function Footer({ title, subtitle, phone, copyright, socialIcons 
 
             <div 
               className="follow-us"
-              data-aos="fade-up"
-              data-aos-delay="200"
+              data-aos="fade-down"
             >
               <p className={`
-              ${alternativeFont.className}
+              ${titleFont.className}
               text-5xl
               my-6
-              md:text-3xl md:my-0 md:uppercase md:mb-2
+              md:text-2xl md:my-0 md:uppercase md:mb-2
             `}>{subtitle}</p>
 
               <div className={`
@@ -95,6 +94,7 @@ export default function Footer({ title, subtitle, phone, copyright, socialIcons 
 
           <small
             className={`
+            ${titleFont.className}
             center
             mt-10 inline-block
             uppercase text-xs

@@ -4,7 +4,7 @@ import ButtonLink from "@/components/button-link"
 import Image from "next/image"
 import Wave from "@/components/wave"
 
-export default function Hero({ btnPrimaryText, btnSecondaryText }) {
+export default function Hero({ btnSecondaryText, btnSecondaryTexts }) {
 
   const arrowIcon = (
     <path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z" />
@@ -64,14 +64,27 @@ export default function Hero({ btnPrimaryText, btnSecondaryText }) {
 
         <ButtonLink
           href="/order"
-          text={btnPrimaryText}
+          content={btnSecondaryText}
           type="primary"
           iconPath={arrowIcon}
         />
 
         <ButtonLink
           href="/order"
-          text={btnSecondaryText}
+          content={
+            <>
+              <span>
+                {btnSecondaryTexts[0]}
+              </span>
+              <span
+                className={`
+                  p-2 text-2xl
+                `}
+              >
+                {btnSecondaryTexts[1]}
+              </span>
+            </>
+          }
           type="secondary"
           iconPath={arrowIcon}
         />
@@ -97,6 +110,6 @@ export default function Hero({ btnPrimaryText, btnSecondaryText }) {
 }
 
 Hero.propTypes = {
-  btnPrimaryText: PropTypes.string.isRequired,
-  btnSecondaryText: PropTypes.string.isRequired,
+  btnSecondaryText: PropTypes.node.isRequired,
+  btnSecondaryTexts: PropTypes.arrayOf(PropTypes.string).isRequired,
 }

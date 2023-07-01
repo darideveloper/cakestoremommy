@@ -1,5 +1,13 @@
-import { Montserrat, Josefin_Sans, Dancing_Script} from 'next/font/google'
+import { Roboto, Dancing_Script, Italiana } from 'next/font/google'
 
-export const regularFont = Montserrat({ subsets: ['latin'] })
-export const titleFont = Josefin_Sans({ subsets: ['latin'] })
-export const alternativeFont = Dancing_Script({ subsets: ['latin'] })
+export const regularFont = Roboto({ 
+  subsets: ['latin'],
+  weight: "300"
+})
+export const titleFont = Italiana({
+  subsets: ['latin'],
+  weight: "400"
+}) 
+export const alternateFont = Dancing_Script({
+  subsets: ['latin']
+})

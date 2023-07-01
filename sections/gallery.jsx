@@ -78,7 +78,7 @@ export default function Gallery({ title, alt, images, viewAll }) {
 
           <div className="button-wrapper flex items-center justify-center mt-4">
             <ButtonLink
-              text={viewAll}
+              content={viewAll}
               href="/gallery"
               type="primary"
               extraClasses="border-4 border-pink"

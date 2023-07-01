@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import Link from 'next/link'
 import { titleFont } from '@/lib/fonts'
 
-export default function ButtonLink({ text, href, type, iconPath, extraClasses = "", small = false }) {
+export default function ButtonLink({ content, href, type, iconPath, extraClasses = "", small = false }) {
 
   const textColor = type === 'primary' ? 'text-brown' : ' text-white'
   const textSize = small ? 'text-sm md:text-lg' : 'text-md md:text-lg'
@@ -12,16 +12,18 @@ export default function ButtonLink({ text, href, type, iconPath, extraClasses = 
   const paddingY = small ? 'py-3 md:py-4' : 'py-4 md:py-6'
 
   return (
-    <div 
+    <div
       className={`
         button-wrapper inline-block
         ${sizeWrapper}
       `}
       data-aos="fade-up"
-      >
+    >
       <Link
         href={href}
         className={`
+          relative
+          ${titleFont.className}
           group
           flex items-center justify-between 
           ${textSize} font-bold uppercase
@@ -34,24 +36,28 @@ export default function ButtonLink({ text, href, type, iconPath, extraClasses = 
         <div className={`
             text-wrapper w-full
           `}>
-          <span 
+          <span
             className={`
               text-center w-full inline-block
               ${titleFont.className}
             `}
-            >{text}</span>
+          >{content}</span>
         </div>
 
         {
           iconPath
           &&
-          <div className="icon w-12 ml-5">
-            <svg viewBox="0 0 24 24" className={`
+          <div className={`
+              icon w-12 ml-5
+              absolute right-0 top-1/2 transform -translate-y-1/2
+            `}>
+            <svg viewBox="0 0 24 24"
+              className={`
               w-8 px-2 
               ${fillColor}
               group-hover:-translate-x-3
               duration-200
-              `}>
+            `}>
               {iconPath}
             </svg>
           </div>
@@ -62,7 +68,7 @@ export default function ButtonLink({ text, href, type, iconPath, extraClasses = 
 }
 
 ButtonLink.propTypes = {
-  text: PropTypes.string.isRequired,
+  content: PropTypes.node.isRequired,
   href: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   iconPath: PropTypes.element,
