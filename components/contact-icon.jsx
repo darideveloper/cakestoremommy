@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 
-export default function ContactIcon({ link, icon, isLink }) {
+export default function ContactIcon({ link, icon, isLink, hideDesktop }) {
 
   const svg = (
     <svg viewBox='0 0 24 24' className='fill-white w-full'>
@@ -13,6 +13,7 @@ export default function ContactIcon({ link, icon, isLink }) {
     hover:-translate-y-1 duration-200
     w-10 
     md:w-5
+    ${hideDesktop ? 'md:hidden' : ''}
   `
 
   return (
@@ -44,4 +45,5 @@ ContactIcon.propTypes = {
   link: PropTypes.string.isRequired,
   icon: PropTypes.element.isRequired,
   isLink: PropTypes.bool.isRequired,
+  hideDesktop: PropTypes.bool.isRequired,
 }

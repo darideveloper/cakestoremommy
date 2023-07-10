@@ -87,6 +87,7 @@ export default function Footer({ title, subtitle, phone, copyright, socialIcons 
                     link={contact.link}
                     icon={contact.icon}
                     isLink={contact.isLink}
+                    hideDesktop={contact.hideDesktop}
                   />
                 ))}
               </div>
