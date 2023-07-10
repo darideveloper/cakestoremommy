@@ -1,28 +1,47 @@
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 
-export default function ContactIcon ({link, icon}) {
+export default function ContactIcon({ link, icon, isLink }) {
+
+  const svg = (
+    <svg viewBox='0 0 24 24' className='fill-white w-full'>
+      {icon}
+    </svg>
+  )
+
+  const className = `
+    hover:-translate-y-1 duration-200
+    w-10 
+    md:w-5
+  `
 
   return (
     <>
-      <Link
-        href={link} 
-        target='_blank'
-        className={`
-          hover:-translate-y-1 duration-200
-          w-10 
-          md:w-5
-        `}
-      >
-        <svg viewBox='0 0 24 24' className='fill-white w-full'>
-          {icon}
-        </svg>
-      </Link>
+      {
+        isLink
+          ?
+          <Link
+            href={link}
+            target='_blank'
+            className={className}
+          >
+            {svg}
+          </Link>
+          :
+          <a
+            href={link}
+            target='_blank'
+            className={className}
+          >
+            {svg}
+          </a>
+      }
     </>
   )
 }
 
 ContactIcon.propTypes = {
   link: PropTypes.string.isRequired,
-  icon: PropTypes.element.isRequired
+  icon: PropTypes.element.isRequired,
+  isLink: PropTypes.bool.isRequired,
 }

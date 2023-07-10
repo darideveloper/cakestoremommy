@@ -86,6 +86,7 @@ export default function Footer({ title, subtitle, phone, copyright, socialIcons 
                     key={index}
                     link={contact.link}
                     icon={contact.icon}
+                    isLink={contact.isLink}
                   />
                 ))}
               </div>
