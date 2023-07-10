@@ -48,7 +48,6 @@ export default function Footer({ title, subtitle, phone, copyright, socialIcons 
 
             <div 
               className="contact-us"
-              data-aos="fade-down"
             >
               <h2
                 className={`
@@ -68,7 +67,6 @@ export default function Footer({ title, subtitle, phone, copyright, socialIcons 
 
             <div 
               className="follow-us"
-              data-aos="fade-down"
             >
               <p className={`
               ${titleFont.className}
