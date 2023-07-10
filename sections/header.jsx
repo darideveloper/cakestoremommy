@@ -39,8 +39,8 @@ export default function Header({ menuItems }) {
           <h1
             className={`
             ${titleFont.className}
-            font-bold text-sm text-brown text-center line-clamp-3
-            xs:text-lg
+            font-bold text-lg text-brown text-center line-clamp-3
+            xs:text-2xl
             flex justify-center items-center
             md:flex-col 
           `}
