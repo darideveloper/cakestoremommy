@@ -22,12 +22,12 @@ export default function Hero({ btnSecondaryText, btnSecondaryTexts }) {
       `}
       id="hero"
     >
-
       <img
         src="/images/hero.gif"
         className={`
-          w-full mx-auto mb-32 max-w-4xl
+          w-full mx-auto mb-32 max-w-xl
           -z-20
+          md:mb-20
         `}
       />
 
