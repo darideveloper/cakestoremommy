@@ -5,6 +5,7 @@ import { useEffect } from "react"
 import Header from '@/sections/header'
 import Footer from '@/sections/footer'
 import AOS from 'aos'
+import Head from 'next/head'
 import 'aos/dist/aos.css';
 
 export default function RootLayout({ children }) {
@@ -60,9 +61,28 @@ export default function RootLayout({ children }) {
     }
   }
 
+  const meta = {
+    "es": {
+      "title": "Cake Store Mommy",
+      "description": "Cake Store Mommy es una pastelería que se especializa en pasteles personalizados para cualquier ocasión. ¡Ordene su pastel hoy!",
+      "author": "Cake Store Mommy Inc.",
+      "keywords": "pastelería, pasteles, pastel, cumpleaños, boda, bautizo, baby shower, fiesta, celebración, cake, cakes, birthday, wedding, baptism, party, celebration",
+    },
+    "en": {
+      "title": "Cake Store Mommy",
+      "description": "Cake Store Mommy is a bakery that specializes in custom cakes for any occasion. Order your cake today!",
+      "author": "Cake Store Mommy Inc.",
+      "keywords": "bakery, cakes, cake, birthday, wedding, baptism, baby shower, party, celebration",
+    }
+  }
+
   // Get language from context
   const { lang } = useContext(LangContext)
+  
+  // Get currenbt languaje data
   const dataLang = data[lang]
+  const metaLang = meta[lang]
+
 
   // Load AOS
   useEffect(() => {
@@ -70,16 +90,24 @@ export default function RootLayout({ children }) {
   }, [])
   
   return (
-    <div className="mx-auto">
-      <Header 
-        {...dataLang.Header}
-      />
-      <main className={regularFont.className}>
-        {children}
-      </main>
-      <Footer 
-        {...dataLang.Footer}
-      />
-    </div>
+    <>
+      <Head>
+        <title>{metaLang.title}</title>
+        <meta name="description" content={metaLang.description} />
+        <meta name="author" content={metaLang.author} />
+        <meta name="keywords" content={metaLang.keywords} />
+      </Head>
+      <div className="mx-auto">
+        <Header 
+          {...dataLang.Header}
+        />
+        <main className={regularFont.className}>
+          {children}
+        </main>
+        <Footer 
+          {...dataLang.Footer}
+        />
+      </div>
+    </>
   )
 }
