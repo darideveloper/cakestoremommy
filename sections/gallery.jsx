@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide'
 import Image from 'next/image'
 import Section from "@/sections/section"
-import ButtonLink from "../components/button-link"
+import ButtonLink from "@/components/button-link"
 
 // Default theme
 import '@splidejs/react-splide/css'

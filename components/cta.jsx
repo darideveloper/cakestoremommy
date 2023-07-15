@@ -47,8 +47,7 @@ export default function Cta ({title, description, image, link}) {
         data-aos-delay="700"
       />
     </Link>
-        
-    
+
   )
 }
 
