@@ -1,7 +1,11 @@
 import PropTypes from 'prop-types'
 import Image from 'next/image'
+import Loading from './loading'
+import { useState } from 'react'	
 
 export default function GalleryImage({ src, category, onClick, extraClasses }) {
+
+  const [isLoading, setIsLoading] = useState(true)
 
   let imagePath = `/images/gallery/${category}/${src}`
   if (category == "all") {
@@ -16,18 +20,28 @@ export default function GalleryImage({ src, category, onClick, extraClasses }) {
         rounded-xl
         p-2
         shadow-md
+        relative
         ${extraClasses}
       `}
       onClick={() => onClick(imagePath)}
     >
+      <Loading 
+        isVisible={isLoading}
+        bgColor="bg-pink-light"
+        extraClasses="z-10 items-center rounded-xl"
+        alternative={true}
+      />
       <Image
         className={`
           gallery-image
+          duration-300
+          ${isLoading ? "opacity-0" : "opacity-100"}	
         `}
         src={imagePath}
         width={500}
         height={500}
         alt={`imagen de pastel de ${category}`}
+        onLoad={() => {setIsLoading(false)}}
       />
     </button>
   )

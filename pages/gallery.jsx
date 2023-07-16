@@ -21,7 +21,7 @@ export default function Gallery({ imagesData }) {
 
   useEffect(() => {
     // Hide grid loading
-    setTimeout(() => {setIsGridLoading(false)}, 2000)
+    setTimeout(() => {setIsGridLoading(false)}, 1000)
   }, [])
 
   function handleModalImage(image) {
@@ -57,14 +57,18 @@ export default function Gallery({ imagesData }) {
               onClick={() => {
                 if (!isGridLoading) {
 
-                  // Shoa and hide loading
+                  // Show loading
                   setIsGridLoading(true)
-                  setTimeout(() => {setIsGridLoading(false)}, 2000)
+                  setTimeout(() => {
+                    // Update images
+                    setCurrentCategory(category)
+                    const categoryData = imagesData.find(categoryData => categoryData.name == category)
+                    setCurrentImages(categoryData.images)
+                  }, 100)
 
-                  // Update images
-                  setCurrentCategory(category)
-                  const categoryData = imagesData.find(categoryData => categoryData.name == category)
-                  setCurrentImages(categoryData.images)
+                  // Hide loading
+                  setTimeout(() => {setIsGridLoading(false)}, 1000)
+
                 }
               }}
             />
