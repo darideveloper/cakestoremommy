@@ -52,7 +52,21 @@ export default function Gallery({ imagesData }) {
           ))}
         </div>
 
-        
+        <div className={`
+            gallery-grid
+            w-10/12 max-w-6xl
+            mx-auto
+            grid grid-cols-1 gap-4 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+              
+          `}>
+          {currentImages.map((image, index) => (
+            <GalleryImage
+              key={index}
+              src={image}
+              category={currentCategory}
+            />
+          ))}
+        </div>
       </div>
     </RootLayout>
   )
