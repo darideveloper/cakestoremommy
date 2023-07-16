@@ -8,7 +8,7 @@ import ButtonLink from "@/components/button-link"
 // Default theme
 import '@splidejs/react-splide/css'
 
-export default function Gallery({ title, alt, images, viewAll }) {
+export default function GallerySlider({ title, alt, images, viewAll }) {
 
   const [perPage, setPerPage] = useState(2)
 
@@ -91,7 +91,7 @@ export default function Gallery({ title, alt, images, viewAll }) {
   )
 }
 
-Gallery.propTypes = {
+GallerySlider.propTypes = {
   title: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   images: PropTypes.array.isRequired,
