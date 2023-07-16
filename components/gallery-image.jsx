@@ -1,38 +1,42 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
+import Image from 'next/image'
 
-import Image from 'next/image';
+export default function GalleryImage({ src, category, onClick, extraClasses }) {
 
-export default function GalleryImage({ src, category }) {
-
-  let galleryPath = `/images/gallery/${category}/${src}`
+  let imagePath = `/images/gallery/${category}/${src}`
   if (category == "all") {
-    galleryPath = `/images/gallery/${src}`
+    imagePath = `/images/gallery/${src}`
   }
 
   return (
-    <div className={`
+    <button className={`
         img-wrapper
         flex items-center justify-center
         bg-pink-light
         rounded-xl
         p-2
         shadow-md
-      `}>
+        ${extraClasses}
+      `}
+      onClick={() => onClick(imagePath)}
+    >
       <Image
         className={`
           gallery-image
         `}
-        src={galleryPath}
+        src={imagePath}
         width={500}
         height={500}
         alt={`imagen de pastel de ${category}`}
       />
-    </div>
+    </button>
   )
-  
+
 }
 
 GalleryImage.propTypes = {
   src: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  extraClasses: PropTypes.string,
 }

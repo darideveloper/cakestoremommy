@@ -23,9 +23,9 @@ export default function CategoryBtn ({text, onClick, isActive}) {
         shadow-md
         duration-300 hover:shadow-xl hover:-translate-y-1
       `}>
-      <p>
+      <h3>
         {text}
-      </p>
+      </h3>
     </button>
   )
 }
