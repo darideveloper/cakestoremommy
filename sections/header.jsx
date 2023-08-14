@@ -9,39 +9,8 @@ export default function Header({ menuItems }) {
 
   const [menuOpen, setMenuOpen] = useState(false)
 
-  useEffect(() => {
-
-    // Reize header-gradiant based in header wnd hero heigh
-    function resizeHeaderGradiant () {
-      const headerGradiant = document.querySelector('.header-gradiant')
-      const header = document.querySelector('header')
-      const hero = document.querySelector('.hero')
-      const headerHeight = header.offsetHeight
-      const heroHeight = hero.offsetHeight
-      headerGradiant.style.height = `${headerHeight + heroHeight}px`
-    }
-
-    // Add event listener when resize
-    window.addEventListener('resize', () => {
-      resizeHeaderGradiant ()
-    })
-
-    // Resize header-gradiant when page is loaded
-    resizeHeaderGradiant ()
-  }, [])
-
   return (
     <header className='mt-1'>
-
-      <div 
-        className={`
-          header-gradiant
-          w-full
-          h-screen
-          absolute top-0 left-0 -z-10
-        `}>
-
-      </div>
 
       <div
         className={`
