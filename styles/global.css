@@ -18,3 +18,8 @@ body {
 .debug {
     border: 1px solid red;
 }
+
+.hero-gif {
+    width: 130%;
+    margin-left: -15%;
+}

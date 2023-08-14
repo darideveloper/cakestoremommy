@@ -19,15 +19,18 @@ export default function Hero({ btnSecondaryText, btnSecondaryTexts }) {
         flex flex-col justify-center
         relative
         w-full
+        overflow-hidden
       `}
       id="hero"
     >
       <img
         src="/images/hero.gif"
         className={`
-          w-full mx-auto mb-32 max-w-xl
+          hero-gif
+          xs:w-full mx-auto mb-32 max-w-2xl
           -z-20
           md:mb-20
+          xs:ml-auto
         `}
       />
 
