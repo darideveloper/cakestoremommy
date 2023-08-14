@@ -25,6 +25,7 @@ module.exports = {
       "green": "#b8cec5",
       "brown": "#8b5c4d",
       "black": "#aba8a2",
+      "transparent": "transparent",
     },
     screens: {
       'xs': '425px',
