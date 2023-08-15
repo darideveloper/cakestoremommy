@@ -84,7 +84,7 @@ export default function Gallery({ imagesData }) {
               modal-image
               fixed top-0 left-0 right-0 bottom-0
               width-full height-full
-              bg-pink-light
+              bg-yellow
               p-5
               z-30
             `}

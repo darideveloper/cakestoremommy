@@ -16,10 +16,10 @@ export default function GalleryImage({ src, category, onClick, extraClasses }) {
     <button className={`
         img-wrapper
         flex items-center justify-center
-        bg-pink-light
+        bg-yellow
         rounded-xl
         p-2
-        shadow-md
+        shadow-xl
         relative
         ${extraClasses}
       `}
