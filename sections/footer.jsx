@@ -60,7 +60,7 @@ export default function Footer({ title, subtitle, phone, copyright, socialIcons 
               <address>
                 <Link
                   href="tel:+1-551-250-1566"
-                  className="opacity-60"
+                  className="opacity-100 text-white font-bold"
                 >{phone}</Link>
               </address>
             </div>
