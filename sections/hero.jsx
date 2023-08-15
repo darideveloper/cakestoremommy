@@ -5,7 +5,7 @@ import Image from "next/image"
 import Wave from "@/components/wave"
 import { useEffect } from "react"
 
-export default function Hero({ btnSecondaryText, btnSecondaryTexts }) {
+export default function Hero({ btnPrimaryText, btnSecondaryTexts }) {
 
   // Reize header-gradiant based in header wnd hero heigh
   function resizeHeaderGradiant() {
@@ -69,16 +69,38 @@ export default function Hero({ btnSecondaryText, btnSecondaryTexts }) {
             alt="Hero gif"
             className={`
               hero-gif
-              xs:w-full mx-auto mb-32 max-w-2xl
+              xs:w-full mx-auto mb-52 max-w-2xl
               -z-20
-              md:mb-20
               xs:ml-auto
+              ${btnSecondaryTexts && "mb-72"}
             `}
             onLoad={e => {
-              resizeHeaderGradiant();
+              resizeHeaderGradiant()
             }}
           />
         </div>
+
+        {/* Render single button */}
+        {
+          !btnSecondaryTexts
+          &&
+          <div className={`
+            button-wrapper
+            w-full
+            flex items-center justify-center
+            -mt-60
+            mb-60 xs:mb-0
+          `}>
+            <ButtonLink
+              href="/order"
+              content={btnPrimaryText}
+              type="primary"
+              iconPath={arrowIcon}
+              extraClasses={`
+              `}
+            />
+          </div>
+        }
 
         {/* Background image */}
         <Image
@@ -86,61 +108,100 @@ export default function Hero({ btnSecondaryText, btnSecondaryTexts }) {
           alt="Hero background image"
           width={640}
           height={640}
-          className={`w-full xs:hidden absolute -bottom-28 left-0 -z-10`}
+          className={`
+            w-full 
+            xs:hidden 
+            absolute 
+            -bottom-28 left-0 -z-10
+          `}
+          
         />
+
 
         {/* Separators */}
         <Wave
-          extraClasses="fill-pink h-10 w-full hidden sm:block"
+          extraClasses={`
+            fill-pink 
+            h-10 
+            w-full 
+            hidden 
+            sm:block
+            ${!btnSecondaryTexts && 'xs:block mt-5'}
+          `}
           type="opacity"
           flip={true}
         />
 
+
         <div className={`
-        buttons 
-        bg-pink
-        flex flex-col items-center justify-between gap-4
-        sm:flex-row sm:justify-center sm:gap-5
-        sm:py-16
-      `}>
+          buttons 
+          bg-pink
+          flex flex-col items-center justify-between gap-4
+          sm:flex-row sm:justify-center sm:gap-5
+          sm:py-16
+          ${!btnSecondaryTexts && 'xs:h-10 sm:py-10'}
+        `}>
+
 
           {/* Sepàrator */}
           <Wave
-            extraClasses="fill-white w-full hidden xs:block sm:hidden"
+            extraClasses={`
+              fill-white 
+              w-full 
+              hidden 
+              xs:block 
+              sm:hidden
+              ${!btnSecondaryTexts && 'xs:hidden'}
+            `}
             type="circle"
             flip={true}
           />
 
-          <ButtonLink
-            href="/order"
-            content={btnSecondaryText}
-            type="primary"
-            iconPath={arrowIcon}
-          />
+          {/* Render double butttons */}
+          {
+            btnSecondaryTexts
+            &&
+            <>
+              <ButtonLink
+                href="/order"
+                content={btnPrimaryText}
+                type="primary"
+                iconPath={arrowIcon}
+              />
 
-          <ButtonLink
-            href="/order"
-            content={
-              <>
-                <span>
-                  {btnSecondaryTexts[0]}
-                </span>
-                <span
-                  className={`
-                  p-2 text-2xl
-                `}
-                >
-                  {btnSecondaryTexts[1]}
-                </span>
-              </>
-            }
-            type="secondary"
-            iconPath={arrowIcon}
-          />
+              <ButtonLink
+                href="/order"
+                content={
+                  <>
+                    <span>
+                      {btnSecondaryTexts[0]}
+                    </span>
+                    <span
+                      className={`
+                      p-2 text-2xl
+                    `}
+                    >
+                      {btnSecondaryTexts[1]}
+                    </span>
+                  </>
+                }
+                type="secondary"
+                iconPath={arrowIcon}
+              />
+            </>
+          }
+
 
           {/* Sepàrator */}
           <Wave
-            extraClasses="fill-white w-full hidden xs:block sm:hidden"
+            extraClasses={`
+              fill-white
+              w-full
+              hidden
+              xs:block
+              sm:hidden
+              ${!btnSecondaryTexts && 'xs:hidden'}
+            `}
             type="circle"
             flip={false}
           />
@@ -148,7 +209,14 @@ export default function Hero({ btnSecondaryText, btnSecondaryTexts }) {
 
         {/* Separators */}
         <Wave
-          extraClasses="fill-pink h-10 w-full hidden sm:block"
+          extraClasses={`
+            fill-pink 
+            h-10 
+            w-full 
+            hidden 
+            sm:block
+            ${!btnSecondaryTexts && 'xs:block -mb-32'}
+          `}
           type="opacity"
           flip={false}
         />
