@@ -48,6 +48,7 @@ export default function Gallery({ imagesData }) {
           flex items-center justify-center flex-wrap
           py-5
           w-10/12 mx-auto
+          hidden
         `}>
           {categories.map((category, index) => (
             <CategoryBtn
