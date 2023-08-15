@@ -45,7 +45,7 @@ export default function Gallery({ imagesData }) {
 
         <section className={`
           category-buttons
-          flex items-center justify-center flex-wrap
+          items-center justify-center flex-wrap
           py-5
           w-10/12 mx-auto
           hidden
