@@ -19,7 +19,8 @@ export default function GalleryImage({ src, category, onClick, extraClasses }) {
         bg-yellow
         rounded-xl
         p-2
-        shadow-xl
+        shadow-xl hover:shadow-2xl
+        duration-300
         relative
         ${extraClasses}
       `}
