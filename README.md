@@ -47,18 +47,18 @@ Project type: **client**
 
 # Details
 
-## Sitemap
-### Home
-* Hero
-* Gallery
-* Custom cake
-* Why us
+## Sitemap
+### Home
+* Hero
+* Gallery
+* Custom cake
+* Why us
 * About us
 
 # Roadmap
 
-* [X] Landing page
-* [X] Multi-language
-* [ ] Contact form
+* [X] Landing page
+* [X] Multi-language
+* [ ] Contact form
 * [ ] Online quoter
 
