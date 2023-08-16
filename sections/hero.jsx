@@ -14,7 +14,7 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts }) {
     const hero = document.querySelector('.hero')
     const headerHeight = header.offsetHeight
     const heroHeight = hero.offsetHeight
-    headerGradiant.style.height = `${headerHeight + heroHeight}px`
+    headerGradiant.style.height = `${headerHeight + heroHeight + 30}px`
   }
 
   useEffect(() => {
@@ -69,10 +69,12 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts }) {
             alt="Hero gif"
             className={`
               hero-gif
-              xs:w-full mx-auto mb-52 max-w-2xl
-              -z-20
+              xs:w-full 
+              mx-auto 
               xs:ml-auto
-              ${btnSecondaryTexts && "mb-72"}
+              max-w-2xl
+              -z-20
+              ${btnSecondaryTexts ? "mb-32" : "mb-72"}
             `}
             onLoad={e => {
               resizeHeaderGradiant()
@@ -89,7 +91,7 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts }) {
             w-full
             flex items-center justify-center
             -mt-60
-            mb-60 xs:mb-0
+            mb-28 xs:mb-0
           `}>
             <ButtonLink
               href="/order"
@@ -104,7 +106,7 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts }) {
 
         {/* Background image */}
         <Image
-          src="/images/hero-bg.svg"
+          src={btnSecondaryTexts ? `/images/hero-bg-large.svg` : `/images/hero-bg-small.svg`}
           alt="Hero background image"
           width={640}
           height={640}
@@ -113,6 +115,7 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts }) {
             xs:hidden 
             absolute 
             -bottom-28 left-0 -z-10
+            inline-block
           `}
           
         />
