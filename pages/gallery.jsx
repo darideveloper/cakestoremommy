@@ -45,10 +45,9 @@ export default function Gallery({ imagesData }) {
 
         <section className={`
           category-buttons
-          items-center justify-center flex-wrap
+          flex items-center justify-center flex-wrap
           py-5
           w-10/12 mx-auto
-          hidden
         `}>
           {categories.map((category, index) => (
             <CategoryBtn
@@ -68,7 +67,7 @@ export default function Gallery({ imagesData }) {
                   }, 100)
 
                   // Hide loading
-                  setTimeout(() => {setIsGridLoading(false)}, 1000)
+                  setTimeout(() => {setIsGridLoading(false)}, 2000)
 
                 }
               }}
