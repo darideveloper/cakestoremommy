@@ -7,6 +7,8 @@ import { useEffect } from "react"
 
 export default function Hero({ btnPrimaryText, btnSecondaryTexts }) {
 
+  const isBtnSecondaryTexts = btnSecondaryTexts.length != 0
+
   // Reize header-gradiant based in header wnd hero heigh
   function resizeHeaderGradiant() {
     const headerGradiant = document.querySelector('.header-gradiant')
@@ -74,7 +76,7 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts }) {
               xs:ml-auto
               max-w-2xl
               -z-20
-              ${btnSecondaryTexts ? "mb-32" : "mb-72"}
+              ${isBtnSecondaryTexts ? "mb-32" : "mb-72"}
             `}
             onLoad={e => {
               resizeHeaderGradiant()
@@ -84,7 +86,7 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts }) {
 
         {/* Render single button */}
         {
-          !btnSecondaryTexts
+          !isBtnSecondaryTexts
           &&
           <div className={`
             button-wrapper
@@ -106,7 +108,7 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts }) {
 
         {/* Background image */}
         <Image
-          src={btnSecondaryTexts ? `/images/hero-bg-large.svg` : `/images/hero-bg-small.svg`}
+          src={isBtnSecondaryTexts ? `/images/hero-bg-large.svg` : `/images/hero-bg-small.svg`}
           alt="Hero background image"
           width={640}
           height={640}
@@ -129,7 +131,7 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts }) {
             w-full 
             hidden 
             sm:block
-            ${!btnSecondaryTexts && 'xs:block mt-5'}
+            ${!isBtnSecondaryTexts && 'xs:block mt-5'}
           `}
           type="opacity"
           flip={true}
@@ -142,7 +144,7 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts }) {
           flex flex-col items-center justify-between gap-4
           sm:flex-row sm:justify-center sm:gap-5
           sm:py-16
-          ${!btnSecondaryTexts && 'xs:h-10 sm:py-10'}
+          ${!isBtnSecondaryTexts && 'xs:h-10 sm:py-10'}
         `}>
 
 
@@ -154,7 +156,7 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts }) {
               hidden 
               xs:block 
               sm:hidden
-              ${!btnSecondaryTexts && 'xs:hidden'}
+              ${!isBtnSecondaryTexts && 'xs:hidden'}
             `}
             type="circle"
             flip={true}
@@ -162,7 +164,7 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts }) {
 
           {/* Render double butttons */}
           {
-            btnSecondaryTexts
+            isBtnSecondaryTexts
             &&
             <>
               <ButtonLink
@@ -177,14 +179,14 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts }) {
                 content={
                   <>
                     <span>
-                      {btnSecondaryTexts[0]}
+                      {isBtnSecondaryTexts[0]}
                     </span>
                     <span
                       className={`
                       p-2 text-2xl
                     `}
                     >
-                      {btnSecondaryTexts[1]}
+                      {isBtnSecondaryTexts[1]}
                     </span>
                   </>
                 }
@@ -203,7 +205,7 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts }) {
               hidden
               xs:block
               sm:hidden
-              ${!btnSecondaryTexts && 'xs:hidden'}
+              ${!isBtnSecondaryTexts && 'xs:hidden'}
             `}
             type="circle"
             flip={false}
@@ -218,7 +220,7 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts }) {
             w-full 
             hidden 
             sm:block
-            ${!btnSecondaryTexts && 'xs:block -mb-32'}
+            ${!isBtnSecondaryTexts && 'xs:block -mb-32'}
           `}
           type="opacity"
           flip={false}
