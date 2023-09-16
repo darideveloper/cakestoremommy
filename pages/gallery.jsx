@@ -139,15 +139,14 @@ export default function Gallery({ imagesData }) {
 
         <section className={`
             gallery-grid
-            w-10/12 max-w-6xl
+            w-fill lg:w-10/12 max-w-6xl
             mx-auto
             mb-10
-            grid grid-cols-1 gap-4 
+            grid 
+            grid-cols-3 lg:grid-cols-4
+            gap-4 
             relative
             p-5
-            xs:grid-cols-2 
-            md:grid-cols-3 
-            lg:grid-cols-4
           `}>
           <Loading
             isVisible={isGridLoading}

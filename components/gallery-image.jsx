@@ -18,7 +18,6 @@ export default function GalleryImage({ src, category, onClick, extraClasses }) {
         flex items-center justify-center
         bg-yellow
         rounded-xl
-        p-2
         shadow-xl hover:shadow-2xl
         duration-300
         relative
