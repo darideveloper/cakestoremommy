@@ -13,8 +13,8 @@ import Loading from "@/components/loading"
 export default function Gallery({ imagesData }) {
 
   const categories = imagesData.map(category => category.name)
-  const [currentCategory, setCurrentCategory] = useState(imagesData[0].name)
-  const [currentImages, setCurrentImages] = useState(imagesData[0].images)
+  const [currentCategory, setCurrentCategory] = useState(imagesData[3].name)
+  const [currentImages, setCurrentImages] = useState(imagesData[3].images)
   const [modalImage, setModalImage] = useState("")
   const [isGridLoading,  setIsGridLoading] = useState(true)
   const [isModalLoading, setIsModalLoading] = useState(false)
