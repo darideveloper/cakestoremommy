@@ -104,7 +104,7 @@ export async function getStaticProps() {
       "Hero": {
         btnPrimaryText: "Ordena Ahora",
         // btnSecondaryTexts: ["Pasteles por",  "$100"],
-        btnSecondaryTexts: "",
+        btnSecondaryTexts: [],
       },
       "Gallery": {
         title: "Galería",

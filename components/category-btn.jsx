@@ -20,6 +20,7 @@ export default function CategoryBtn ({text, onClick, isActive}) {
         duration-300 hover:shadow-md hover:-translate-y-1
         ${titleFont.className}
         ${btnColor}
+        ${text == 'all' && 'hidden'}
       `}>
       <h3>
         {text}

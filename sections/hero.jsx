@@ -5,7 +5,7 @@ import Image from "next/image"
 import Wave from "@/components/wave"
 import { useEffect } from "react"
 
-export default function Hero({ btnPrimaryText, btnSecondaryTexts }) {
+export default function Hero({ btnPrimaryText, btnSecondaryTexts=[] }) {
 
   const isBtnSecondaryTexts = btnSecondaryTexts.length != 0
 
@@ -233,6 +233,6 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts }) {
 }
 
 Hero.propTypes = {
-  btnSecondaryText: PropTypes.node.isRequired,
-  btnSecondaryTexts: PropTypes.arrayOf(PropTypes.string).isRequired,
+  btnPrimaryText: PropTypes.node.isRequired,
+  btnSecondaryTexts: PropTypes.arrayOf(PropTypes.string),
 }
