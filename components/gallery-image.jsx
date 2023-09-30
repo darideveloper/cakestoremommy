@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import Image from 'next/image'
-import Loading from './loading'
+import Loading from '@/components/loading'
 import { useState } from 'react'	
 
 export default function GalleryImage({ src, category, onClick, extraClasses }) {

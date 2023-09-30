@@ -1,4 +1,4 @@
-import Layout from '@/layouts/root-layout'
+import RootLayout from '@/layouts/root-layout'
 import About from '@/sections/about'
 import CustomizeCake from '@/sections/customize-cake'
 import GallerySlider from '@/sections/gallery-slider'
@@ -14,7 +14,7 @@ export default function Index({ data }) {
   const dataLang = data[lang]
 
   return (
-    <Layout>
+    <RootLayout>
       <Hero
         {...dataLang.Hero}
       />
@@ -30,7 +30,7 @@ export default function Index({ data }) {
       <About
         {...dataLang.About}
       />
-    </Layout>
+    </RootLayout>
   )
 }
 
