@@ -80,6 +80,7 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
           height={500}
           alt={`cake image of ${layers} layers`}
           onLoad={() => { setIsLoading(false) }}
+          priority={true}
         />
 
         <DropDown 
