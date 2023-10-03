@@ -8,6 +8,7 @@ export default function Faqs({ title }) {
       extraClasses="pt-28"
       id="faqs"
     >
+      <p>Comming soon...</p>
     </Section>
   )
 }

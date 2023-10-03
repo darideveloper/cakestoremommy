@@ -3,6 +3,8 @@ import Image from 'next/image'
 
 export default function OrderStatus({ currentStatus, allStatus, onChangeStatus, langId, isLoading, setIsLoading }) {
 
+  console.log ({currentStatus, allStatus})
+
   return (
     <div className={`
       status
@@ -53,6 +55,7 @@ export default function OrderStatus({ currentStatus, allStatus, onChangeStatus, 
                   bg-pink
                   relative
                   my-0 md:my-10
+                  ${currentStatus == statusName ? 'opacity-100' : 'opacity-70'}
                 `}
               >
                 <Image
