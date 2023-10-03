@@ -41,38 +41,47 @@ export default function Order({ data }) {
 
   return (
     <RootLayout>
-      <OrderStatus 
-        currentStatus={statusName}
-        allStatus={data.status}
-        onChangeStatus={setStatusName}
-        langId={langId}
-        isLoading={isLoading}
-        setIsLoading={setIsLoading}
-      />
 
       <div className={`
-        container 
-        mx-auto 
-        relative
+        content
+        flex md:flex-row
+        flex-col items-center justify-center
+        w-full
       `}>
-        
-        <Loading 
-          isVisible={isLoading}
-          bgColor="bg-white"
-          extraClasses="z-20 items-start pt-10"
+        <OrderStatus 
+          currentStatus={statusName}
+          allStatus={data.status}
+          onChangeStatus={setStatusName}
+          langId={langId}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
         />
 
-        <OrderSize 
-          layers={layersId}
-          setLayers={setLayersId}
-          diameter={diameterId}
-          setDiameter={setDiameterId}
-          langId={langId}
-          title={data.size.title[langId]}
-          subtitle={data.size.subtitle[langId]}
-          sizesData={data.size.options}
-        />
+        <div className={`
+          container 
+          mx-auto 
+          relative
+        `}>
+          
+          <Loading 
+            isVisible={isLoading}
+            bgColor="bg-white"
+            extraClasses="z-20 items-start pt-10"
+          />
+
+          <OrderSize 
+            layers={layersId}
+            setLayers={setLayersId}
+            diameter={diameterId}
+            setDiameter={setDiameterId}
+            langId={langId}
+            title={data.size.title[langId]}
+            subtitle={data.size.subtitle[langId]}
+            sizesData={data.size.options}
+          />
+        </div>
       </div>
+
 
     </RootLayout>
   )

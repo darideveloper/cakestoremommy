@@ -6,8 +6,13 @@ export default function OrderStatus({ currentStatus, allStatus, onChangeStatus, 
   return (
     <div className={`
       status
-      py-2
-      bg-pink
+      py-2 md:py-0
+      px-0 md:px-2
+      bg-pink md:bg-transparent
+      w-full md:w-36
+      md:h-screen
+      md:absolute
+      md:top-48 md:left-0
     `}>
       <div className={`
         wrapper
@@ -17,7 +22,8 @@ export default function OrderStatus({ currentStatus, allStatus, onChangeStatus, 
 
         <div className={`
           buttons
-          flex items-center justify-around
+          flex md:flex-col
+          items-center justify-around
           py-7
           pt-4
           container mx-auto
@@ -31,8 +37,9 @@ export default function OrderStatus({ currentStatus, allStatus, onChangeStatus, 
               className={`
                 button-wrapper 
                 relative
-                w-1/3
-                flex items-center justify-center
+                w-1/3 md:w-2/3
+                flex
+                items-center justify-center
               `}
               key={`${index}-wrapper`}
             >
@@ -45,6 +52,7 @@ export default function OrderStatus({ currentStatus, allStatus, onChangeStatus, 
                   rounded-full
                   bg-pink
                   relative
+                  my-0 md:my-10
                 `}
               >
                 <Image
@@ -77,9 +85,11 @@ export default function OrderStatus({ currentStatus, allStatus, onChangeStatus, 
                   fill-brown
                   opacity-50
                   absolute
-                  right-0 top-1/2
-                  -mt-1
+                  right-0 md:right-1/2 
+                  top-1/2 md:top-36
+                  -mt-1 md:mt-0
                   -mr-2
+                  md:rotate-90
                   ${index == Object.keys(allStatus).length - 1 && 'hidden'}
                 `}
               >

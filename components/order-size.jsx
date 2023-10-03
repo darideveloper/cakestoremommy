@@ -61,10 +61,11 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
         drop-shadow-2xl
         duration-300
         relative
-        w-10/12 mx-auto
+        w-10/12 
+        mx-auto
         p-5
         mt-10
-        max-w-md
+        max-w-sm
       `}
       >
         <Image
