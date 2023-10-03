@@ -4,6 +4,7 @@ import CustomizeCake from '@/sections/customize-cake'
 import GallerySlider from '@/sections/gallery-slider'
 import Hero from '@/sections/hero'
 import WhyUs from '@/sections/why-us'
+import Faqs from '@/sections/faqs'
 
 import { LangContext } from "@/context/lang"
 import { useContext } from "react"
@@ -29,6 +30,9 @@ export default function Index({ data }) {
       />
       <About
         {...dataLang.About}
+      />
+      <Faqs 
+        {...dataLang.Faqs}
       />
     </RootLayout>
   )
@@ -99,6 +103,9 @@ export async function getStaticProps() {
         textA: "Welcome to Cake Store Mommy, where we specialize in making your sweet dreams a reality! We understand the power of a beautifully crafted cake to make your celebrations truly special. Whether its a birthday, anniversary, wedding, or any other milestone we are dedicated to delivering stunning creations that not only taste incredible but also leave a lasting impression.",
         textB: "We believe that a cake is more than just a dessert; it is a centerpiece that marks moments of togetherness and creates lasting memories. Thats's why we pour our heart soul into every cake we create, infusing it with our passion for baking and our commitment to excellence.",
       },
+      "Faqs": {
+        title: "FAQS",
+      }
     },
     "es": {
       "Hero": {
@@ -145,6 +152,9 @@ export async function getStaticProps() {
         textA: "Bienvenido a Cake Store Mommy, donde nos especializamos en hacer realidad tus dulces sueños. Entendemos el poder de un pastel bellamente elaborado para hacer que tus celebraciones sean realmente especiales. Ya sea un cumpleaños, aniversario, boda o cualquier otro hito, estamos dedicados a entregar creaciones impresionantes que no solo tienen un sabor increíble, sino que también dejan una impresión duradera.",
         textB: "Creemos que un pastel es más que un postre; es una pieza central que marca momentos de unión y crea recuerdos duraderos. Es por eso que vertimos nuestro corazón y alma en cada pastel que creamos, infundiéndolo con nuestra pasión por la repostería y nuestro compromiso con la excelencia.",
       },
+      "Faqs": {
+        title: "FAQS",
+      }
     }
   }
 

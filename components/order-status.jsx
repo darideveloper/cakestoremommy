@@ -53,7 +53,7 @@ export default function OrderStatus({ currentStatus, allStatus, onChangeStatus, 
                   width={60}
                   height={60}
                   className={`
-                    w-2/3
+                    w-9/10
                   `}
                 />
                 <p

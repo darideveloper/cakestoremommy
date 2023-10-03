@@ -6,6 +6,7 @@ import { useState, useEffect } from "react"
 import RootLayout from "@/layouts/root-layout"
 
 import OrderStatus from "@/components/order-status"
+import OrderSize from "@/components/order-size"
 
 import { LangContext } from "@/context/lang"
 import { useContext } from "react"
@@ -20,6 +21,8 @@ export default function Order({ data }) {
 
   const [statusName, setStatusName] = useState("size")
   const [isLoading, setIsLoading] = useState(false)
+  const [layersId, setLayersId] = useState(1)
+  const [diameterId, setDiameterId] = useState(1)
 
   // Detect when statusName changes
   useEffect(() => {
@@ -30,6 +33,11 @@ export default function Order({ data }) {
       }
     }, 1000)
   }, [statusName])
+
+  // DEBUG
+  useEffect(() => {
+    console.log({layersId, diameterId})
+  }, [layersId, diameterId])
 
   return (
     <RootLayout>
@@ -46,7 +54,6 @@ export default function Order({ data }) {
         container 
         mx-auto 
         relative
-        h-screen
       `}>
         
         <Loading 
@@ -55,7 +62,16 @@ export default function Order({ data }) {
           extraClasses="z-20 items-start pt-10"
         />
 
-        <p>{statusName}</p>
+        <OrderSize 
+          layers={layersId}
+          setLayers={setLayersId}
+          diameter={diameterId}
+          setDiameter={setDiameterId}
+          langId={langId}
+          title={data.size.title[langId]}
+          subtitle={data.size.subtitle[langId]}
+          sizesData={data.size.options}
+        />
       </div>
 
     </RootLayout>
@@ -79,35 +95,37 @@ export async function getStaticProps() {
       "options": [
         {
           "layers": ["one layer", "un piso"],
-          "sizes": [
-            ['4" 2-4 servings', '4" 2-4 porciones'],
-            ['6" 10-12 servings', '6" 10-12 porciones'],
-            ['8" 15-22 servings', '8" 15-22 porciones'],
-            ['10" 30-35 servings', '10" 30-35 porciones'],
-            ['12" 40-50 servings', '12" 40-50 porciones'],
-            ['14" 60-70 servings', '14" 60-70 porciones'],
+          "diameters": [
+            ['4"  2-4 servings', '4"  2-4 porciones'],
+            ['6"  10-12 servings', '6"  10-12 porciones'],
+            ['8"  15-22 servings', '8"  15-22 porciones'],
+            ['10"  30-35 servings', '10"  30-35 porciones'],
+            ['12"  40-50 servings', '12"  40-50 porciones'],
+            ['14"  60-70 servings', '14"  60-70 porciones'],
           ]
         },
         {
           "layers": ["two layers", "dos pisos"],
-          "sizes": [
-            ['4" & 6" 15 servings', '4" & 6" 15 porciones'],
-            ['6" & 8" 40 servings', '6" & 8" 40 porciones'],
-            ['8" & 10" 60 servings', '8" & 10" 60 porciones'],
-            ['10" & 12" 80 servings', '10" & 12" 80 porciones'],
+          "diameters": [
+            ['4" & 6"  15 servings', '4" & 6"  15 porciones'],
+            ['6" & 8"  40 servings', '6" & 8"  40 porciones'],
+            ['8" & 10"  60 servings', '8" & 10"  60 porciones'],
+            ['10" & 12"  80 servings', '10" & 12"  80 porciones'],
           ]
         },
         {
           "layers": ["three layers", "tres pisos"],
-          "sizes": [
-            ['4", 6" & 8" 45 servings', '4", 6" & 8" 45 porciones'],
-            ['6", 8" & 10" 75 servings', '6", 8" & 10" 75 porciones'],
-            ['8", 10" & 12" 95 servings', '8", 10" & 12" 95 porciones'],
+          "diameters": [
+            ['4", 6" & 8"  45 servings', '4", 6" & 8"  45 porciones'],
+            ['6", 8" & 10"  75 servings', '6", 8" & 10"  75 porciones'],
+            ['8", 10" & 12"  95 servings', '8", 10" & 12"  95 porciones'],
           ]
         },
         {
           "layers": ["four layers", "cuatro pisos"],
-          "sizes": []
+          "diameters": [
+            ["Custom", "Personalizado"],
+          ]
         }
       ]
     },

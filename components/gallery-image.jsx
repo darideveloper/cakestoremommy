@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
+
 import Image from 'next/image'
 import Loading from '@/components/loading'
+
 import { useState } from 'react'	
 
 export default function GalleryImage({ src, category, onClick, extraClasses }) {
@@ -31,6 +33,7 @@ export default function GalleryImage({ src, category, onClick, extraClasses }) {
         extraClasses="z-10 items-center rounded-xl"
         alternative={true}
       />
+
       <Image
         className={`
           gallery-image
