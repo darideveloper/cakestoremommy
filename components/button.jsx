@@ -15,6 +15,8 @@ export default function Button ({text, onClick, extraClasses}) {
         inline-block
         text-xl
         uppercase
+        hover:shadow-xl
+        duration-300
         ${titleFont.className}
         ${extraClasses}
       `}

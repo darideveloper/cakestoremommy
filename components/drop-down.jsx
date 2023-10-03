@@ -20,6 +20,8 @@ export default function DropDown({ name, value, onChange, options, disabled }) {
         shadow-lg
         outline-none
         mt-4
+        hover:shadow-xl
+        duration-300
       `}
       onChange={e => {
         onChange(parseInt(e.target.value))
