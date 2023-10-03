@@ -9,7 +9,7 @@ import Button from '@/components/button'
 
 export default function OrderSize({ layers, setLayers, diameter, setDiameter, langId, title, subtitle, sizesData}) {
 
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   // Formmat dropdown options
   const layersOptions = sizesData.map((layer, index) => ({
@@ -92,7 +92,6 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
             setTimeout(() => {
               setLayers(value)
               setDiameter(0)
-              setIsLoading(false)
             }, 200)
           }}
           disabled={isLoading}
