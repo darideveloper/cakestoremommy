@@ -34,11 +34,6 @@ export default function Order({ data }) {
     }, 1000)
   }, [statusName])
 
-  // DEBUG
-  useEffect(() => {
-    console.log({layersId, diameterId})
-  }, [layersId, diameterId])
-
   return (
     <RootLayout>
 

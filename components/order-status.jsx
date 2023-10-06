@@ -3,8 +3,6 @@ import Image from 'next/image'
 
 export default function OrderStatus({ currentStatus, allStatus, onChangeStatus, langId, isLoading, setIsLoading }) {
 
-  console.log ({currentStatus, allStatus})
-
   return (
     <div className={`
       status
@@ -52,19 +50,31 @@ export default function OrderStatus({ currentStatus, allStatus, onChangeStatus, 
                   flex items-center justify-center
                   w-16 h-16
                   rounded-full
-                  bg-pink
                   relative
                   my-0 md:my-10
-                  ${currentStatus == statusName ? 'opacity-100' : 'opacity-70'}
+                  bg-transparent
+
+                  before:content-[' ']
+                  before:absolute 
+                  before:z-0
+                  ${currentStatus == statusName ? `before:bg-brown opacity-80` : `before:bg-pink`}
+                  before:w-16
+                  before:h-16
+                  before:rounded-full
                 `}
               >
                 <Image
-                  src={`/images/order/status/${statusName}.png`}
+                  src={currentStatus == statusName ? `/images/order/status/${statusName}-white.svg` : `/images/order/status/${statusName}-brown.svg`}
                   alt={statusName}
                   width={60}
                   height={60}
                   className={`
                     w-9/10
+                    absolute
+                    z-10
+                    top-1/2
+                    left-1/2
+                    transform -translate-x-1/2 -translate-y-1/2
                   `}
                 />
                 <p
@@ -73,6 +83,9 @@ export default function OrderStatus({ currentStatus, allStatus, onChangeStatus, 
                     -bottom-6
                     text-center
                     z-10
+                    text-brown
+                    uppercase
+                    text-sm
                   `}
                 >
                   {allStatus[statusName][langId]}
