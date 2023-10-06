@@ -77,6 +77,8 @@ export default function OrderFlavors({ title, langId, options }) {
           relative
           pb-5
           mb-10
+          max-w-6xl
+          mx-auto
         `}
       >
 
@@ -108,7 +110,7 @@ export default function OrderFlavors({ title, langId, options }) {
               className={`
                 flavors-cards-wrapper
                 grid 
-                grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6
+                grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5
                 gap-2
                 w-11/12
                 mx-auto
