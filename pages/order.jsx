@@ -7,6 +7,7 @@ import RootLayout from "@/layouts/root-layout"
 
 import OrderStatus from "@/components/order-status"
 import OrderSize from "@/components/order-size"
+import OrderExit from "@/components/order-exit"
 
 import { LangContext } from "@/context/lang"
 import { useContext } from "react"
@@ -43,7 +44,7 @@ export default function Order({ data }) {
         flex-col items-center justify-center
         w-full
       `}>
-        <OrderStatus 
+        <OrderStatus
           currentStatus={statusName}
           allStatus={data.status}
           onChangeStatus={setStatusName}
@@ -57,14 +58,16 @@ export default function Order({ data }) {
           mx-auto 
           relative
         `}>
-          
-          <Loading 
+
+          <Loading
             isVisible={isLoading}
             bgColor="bg-white"
             extraClasses="z-20 items-start pt-10"
           />
 
-          <OrderSize 
+          <OrderExit />
+
+          <OrderSize
             layers={layersId}
             setLayers={setLayersId}
             diameter={diameterId}

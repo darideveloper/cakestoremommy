@@ -42,7 +42,6 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
         <h2
           className={`
             text-3xl
-            mt-8
           `}
         >
           {title}
