@@ -1,6 +1,5 @@
 import PropTypes from "prop-types"
 
-import { titleFont } from "@/lib/fonts"
 import { useState, useEffect } from "react"
 
 import RootLayout from "@/layouts/root-layout"
@@ -21,21 +20,22 @@ export default function Order({ data }) {
   const { lang } = useContext(LangContext)
   const langId = langs.indexOf(lang)
 
-  const [statusName, setStatusName] = useState("size")
+  const [statusName, setStatusName] = useState("flavors")
   const [isLoading, setIsLoading] = useState(false)
   const [layersId, setLayersId] = useState(1)
   const [diameterId, setDiameterId] = useState(1)
 
   // Detect when statusName changes
   useEffect(() => {
-    // Hide loading
+    // Hide loading after 1 second
     setTimeout(() => {
       if (isLoading) {
         setIsLoading(false)
       }
     }, 1000)
-  }, [statusName])
+  }, [statusName, isLoading])
 
+  // Render current order screen
   let currentScreen = null
   if (statusName === "size") {
     currentScreen = (
@@ -56,7 +56,11 @@ export default function Order({ data }) {
     )
   } else if (statusName === "flavors") {
     currentScreen = (
-      <OrderFlavors />
+      <OrderFlavors 
+        title={data.flavors.title[langId]}
+        langId={langId}
+        options={data.flavors.options}
+      />
     )
 
   }
@@ -70,6 +74,8 @@ export default function Order({ data }) {
         flex-col items-center justify-center
         w-full
       `}>
+
+        {/* Status bar in top */}
         <OrderStatus
           currentStatus={statusName}
           allStatus={data.status}
@@ -85,12 +91,14 @@ export default function Order({ data }) {
           relative
         `}>
 
+          {/* Loading modal */}
           <Loading
             isVisible={isLoading}
             bgColor="bg-white"
             extraClasses="z-20 items-start pt-10"
           />
 
+          {/* Exit button in top right corner */}
           <OrderExit />
 
           {currentScreen}
@@ -154,6 +162,23 @@ export async function getStaticProps() {
         }
       ]
     },
+    "flavors": {
+      "title": ["PICK A CATEGORY", "ESCOGE UNA CATEGORÍA"],
+      "options": {
+        "CakeFlavor": {
+          "names": ["Cake Flavor", "Sabor del pastel"],
+          "options": {},
+        },
+        "Filling": {
+          "names": ["Filling", "Relleno"],
+          "options": {},
+        },
+        "Frosting": {
+          "names": ["Frosting", "Cobertura"],
+          "options": {},
+        }
+      }
+    }
   }
 
   return {

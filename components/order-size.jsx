@@ -2,7 +2,6 @@ import propTypes from 'prop-types'
 import { titleFont } from '@/lib/fonts'
 import { useState } from 'react'
 
-import Loading from '@/components/loading'
 import Image from 'next/image'
 import DropDown from '@/components/drop-down'
 import Button from '@/components/button'
@@ -27,7 +26,7 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
   return (
     <section
       className={`
-        order
+        size
         text-brown
         container
         `}
