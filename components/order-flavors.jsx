@@ -110,7 +110,7 @@ export default function OrderFlavors({ title, langId, options }) {
               className={`
                 flavors-cards-wrapper
                 grid 
-                grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5
+                grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6
                 gap-2
                 w-11/12
                 mx-auto
