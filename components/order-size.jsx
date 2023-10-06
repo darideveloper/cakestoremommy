@@ -7,7 +7,7 @@ import Image from 'next/image'
 import DropDown from '@/components/drop-down'
 import Button from '@/components/button'
 
-export default function OrderSize({ layers, setLayers, diameter, setDiameter, langId, title, subtitle, sizesData}) {
+export default function OrderSize({ layers, setLayers, diameter, setDiameter, langId, title, subtitle, sizesData, goNext}) {
 
   const [isLoading, setIsLoading] = useState(true)
 
@@ -133,7 +133,7 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
         `}>
           <Button
             text="Next"
-            onClick={() => {console.log('next')}}
+            onClick={() => {goNext()}}
             extraClasses='mt-8'
           />
           <Button
@@ -153,5 +153,10 @@ OrderSize.propTypes = {
   layers: propTypes.number,
   setLayers: propTypes.func,
   diameter: propTypes.number,
-  setDiameter: propTypes.func
+  setDiameter: propTypes.func,
+  langId: propTypes.number,
+  title: propTypes.string,
+  subtitle: propTypes.string,
+  sizesData: propTypes.array,
+  goNext: propTypes.func
 }

@@ -6,8 +6,9 @@ import { useState, useEffect } from "react"
 import RootLayout from "@/layouts/root-layout"
 
 import OrderStatus from "@/components/order-status"
-import OrderSize from "@/components/order-size"
 import OrderExit from "@/components/order-exit"
+import OrderSize from "@/components/order-size"
+import OrderFlavors from "@/components/order-flavors"
 
 import { LangContext } from "@/context/lang"
 import { useContext } from "react"
@@ -34,6 +35,31 @@ export default function Order({ data }) {
       }
     }, 1000)
   }, [statusName])
+
+  let currentScreen = null
+  if (statusName === "size") {
+    currentScreen = (
+      <OrderSize
+        layers={layersId}
+        setLayers={setLayersId}
+        diameter={diameterId}
+        setDiameter={setDiameterId}
+        langId={langId}
+        title={data.size.title[langId]}
+        subtitle={data.size.subtitle[langId]}
+        sizesData={data.size.options}
+        goNext = {() => {
+          setIsLoading(true)
+          setStatusName("flavors")
+        }}
+      />
+    )
+  } else if (statusName === "flavors") {
+    currentScreen = (
+      <OrderFlavors />
+    )
+
+  }
 
   return (
     <RootLayout>
@@ -67,16 +93,8 @@ export default function Order({ data }) {
 
           <OrderExit />
 
-          <OrderSize
-            layers={layersId}
-            setLayers={setLayersId}
-            diameter={diameterId}
-            setDiameter={setDiameterId}
-            langId={langId}
-            title={data.size.title[langId]}
-            subtitle={data.size.subtitle[langId]}
-            sizesData={data.size.options}
-          />
+          {currentScreen}
+          
         </div>
       </div>
 
