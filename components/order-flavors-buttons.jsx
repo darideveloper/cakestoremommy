@@ -1,7 +1,7 @@
 import propTypes from 'prop-types'
 import Image from 'next/image'
 
-export default function OrderFlavorButtons ({langId, options, status, setStatus, flavorsAllStatus}) {
+export default function OrderFlavorButtons ({langId, options, status, onClick, flavorsAllStatus, isLoading}) {
     
   return (
     <div className={`
@@ -29,8 +29,8 @@ export default function OrderFlavorButtons ({langId, options, status, setStatus,
             inline
             border-2 border-pink
           `}
-          onClick={() => setStatus(option)}
-          disabled={status === option}
+          onClick={() => {onClick(option)}}
+          disabled={status === option || isLoading}
         >
           {options[option].names[langId]}
 
@@ -60,6 +60,6 @@ OrderFlavorButtons.propTypes = {
   langId: propTypes.number.isRequired,
   options: propTypes.object.isRequired,
   status: propTypes.string.isRequired,
-  setStatus: propTypes.func.isRequired,
+  onClick: propTypes.func.isRequired,
   flavorsAllStatus: propTypes.array.isRequired,
- }
+}
