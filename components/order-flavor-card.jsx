@@ -17,13 +17,14 @@ export default function OrderFlavorCard({ flavor, onClick, text, category, flavo
         w-full
         shadow-md
         flex flex-col items-center justify-center
+        hover:shadow-xl
       `}
       onClick={onClick}
     >
       <Image
         src={imagePath}
-        width={150}
-        height={150}
+        width={200}
+        height={200}
         className={`
           w-10/12
           h-10/12
