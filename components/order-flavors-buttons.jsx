@@ -14,14 +14,14 @@ export default function OrderFlavorButtons ({langId, options, status, setStatus,
       gap-4
       mt-4
       mb-10
-      w-36 xs:w-full
+      w-40 xs:w-full
     `}>
       {flavorsAllStatus.map(( option, index) => (
         <button
           key={index}
           className={`
             button
-            ${status === option ? 'bg-pink text-brown mb-5' : 'bg-transparent text-brown hover:bg-pink-light2'}
+            ${status === option ? 'bg-pink text-brown mb-5 xs:mb-0' : 'bg-transparent text-brown hover:bg-pink-light2'}
             rounded-full
             px-5 py-2
             duration-200
@@ -61,5 +61,5 @@ OrderFlavorButtons.propTypes = {
   options: propTypes.object.isRequired,
   status: propTypes.string.isRequired,
   setStatus: propTypes.func.isRequired,
-  flavorsAllStatus: propTypes.array.isRequired
-}
+  flavorsAllStatus: propTypes.array.isRequired,
+ }

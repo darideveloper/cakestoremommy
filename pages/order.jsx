@@ -167,15 +167,88 @@ export async function getStaticProps() {
       "options": {
         "CakeFlavor": {
           "names": ["Cake Flavor", "Sabor del pastel"],
-          "options": {},
+          "options": {
+            "basic": {
+              "name": ["Basic", "Básico"],
+              "options": [
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+              ],
+            },
+            "premium": {
+              "name": ["Premium", "Premium"],
+              "options": [
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+              ],
+            }
+          },
         },
         "Filling": {
           "names": ["Filling", "Relleno"],
-          "options": {},
+          "options": {
+            "basic": {
+              "name": ["Basic", "Básico"],
+              "options": [
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+              ],
+            },
+            "premium": {
+              "name": ["Premium", "Premium"],
+              "options": [
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+              ],
+            }
+          },
         },
         "Frosting": {
           "names": ["Frosting", "Cobertura"],
-          "options": {},
+          "options": {
+            "basic": {
+              "name": ["Basic", "Básico"],
+              "options": [
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+                ["vanilla", "vainilla"],
+              ],
+            },
+          },
         }
       }
     }

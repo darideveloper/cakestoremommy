@@ -4,15 +4,15 @@ import { titleFont } from '@/lib/fonts'
 import { useState } from 'react'
 
 import OrderFlavorButtons from '@/components/order-flavors-buttons'
+import OrderFlavorCard from '@/components/order-flavor-card'
 
-export default function OrderFlavors({title, langId, options}) {
+export default function OrderFlavors({ title, langId, options }) {
 
   const flavorsAllStatus = Object.keys(options)
   const [flavorStatus, setFlavorStatus] = useState(flavorsAllStatus[0])
   const [isLoading, setIsLoading] = useState(true)
-  const [flavorOptions, setFlavorOptions] = useState(options[flavorStatus]["options"])
 
-  console.log ({options})
+  const flavorOptions = options[flavorStatus]["options"]
 
   return (
     <div className={`
@@ -44,13 +44,57 @@ export default function OrderFlavors({title, langId, options}) {
         {title}
       </h2>
 
-      <OrderFlavorButtons 
+      {/* Flavor category selector */}
+      <OrderFlavorButtons
         langId={langId}
         options={options}
         status={flavorStatus}
         setStatus={setFlavorStatus}
         flavorsAllStatus={flavorsAllStatus}
       />
+
+      {/* Flavor cards */}
+      {Object.keys(flavorOptions).map((category, categoryIndex) => (
+        <div 
+          key={categoryIndex}  
+          className={`flavors-category mt-10`}
+        >
+
+          <h3
+            className={`
+              text-2xl
+              text-center
+              ${titleFont.className}
+              my-6
+              uppercase
+            `}
+          >
+            {flavorOptions[category].name[langId]}
+          </h3>
+
+          <div 
+            className={`
+              flavors-cards-wrapper
+              grid 
+              grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6
+              gap-2
+              w-11/12
+              mx-auto
+            `}>
+
+            {flavorOptions[category].options.map((flavor, flavorIndex) => (
+              <OrderFlavorCard
+                key={`${categoryIndex}-${flavorIndex}`}
+                flavor={flavor[0]}
+                onClick={() => console.log(`Clicked ${flavor[0]}`)}
+                text={flavor[langId]}
+                category={category}
+                flavorStatus={flavorStatus}
+              />
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   )
 }
@@ -58,5 +102,5 @@ export default function OrderFlavors({title, langId, options}) {
 OrderFlavors.propTypes = {
   title: propTypes.string.isRequired,
   langId: propTypes.number.isRequired,
-  options: propTypes.object.isRequired
+  options: propTypes.object.isRequired,
 }
