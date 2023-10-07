@@ -22,7 +22,7 @@ export default function OrderFlavorCard({ flavor, onClick, text, category, flavo
         shadow-md
         flex flex-col items-center justify-center
         overflow-hidden
-        ${activeFlavor === flavor ? 'bg-pink text-brown' : 'bg-white text-brown hover:bg-pink-light2 hover:shadow-xl'}
+        ${activeFlavor === flavor ? 'bg-pink text-brown' : 'bg-white text-brown hover:shadow-xl'}
       `}
       onClick={onClick}
     >
