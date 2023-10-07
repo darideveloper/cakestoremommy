@@ -7,7 +7,7 @@ import Loading from '@/components/loading'
 import OrderFlavorButtons from '@/components/order-flavors-buttons'
 import OrderFlavorCard from '@/components/order-flavor-card'
 
-export default function OrderFlavors({ title, langId, options, cakeFlavor, setCakeFlavor, filling, setFilling, frosting, setFrosting }) {
+export default function OrderFlavors({ title, langId, options, cakeFlavor, setCakeFlavor, filling, setFilling, frosting, setFrosting, goNext }) {
 
   const flavorsAllStatus = Object.keys(options)
   const [flavorStatus, setFlavorStatus] = useState(flavorsAllStatus[0])
@@ -147,7 +147,10 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
 
                       // Detect if it's the last flavor
                       if (nextFlavorStatusIndex >= flavorsAllStatus.length) {
-                        console.log ("Last flavor")
+                        
+                        // Go to next section
+                        goNext()
+
                       } else {
                         const nextFlavorStatus = flavorsAllStatus[nextFlavorStatusIndex]
                         setFlavorStatus(nextFlavorStatus)
@@ -172,4 +175,11 @@ OrderFlavors.propTypes = {
   title: propTypes.string.isRequired,
   langId: propTypes.number.isRequired,
   options: propTypes.object.isRequired,
+  cakeFlavor: propTypes.string.isRequired,
+  setCakeFlavor: propTypes.func.isRequired,
+  filling: propTypes.string.isRequired,
+  setFilling: propTypes.func.isRequired,
+  frosting: propTypes.string.isRequired,
+  setFrosting: propTypes.func.isRequired,
+  goNext: propTypes.func.isRequired,
 }

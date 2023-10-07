@@ -69,9 +69,18 @@ export default function Order({ data }) {
         setFilling={setFilling}
         frosting={frosting}
         setFrosting={setFrosting}
+        goNext = {() => {
+          setIsLoading(true)
+          setStatusName("finalize")
+        }}
       />
     )
-
+  } else if (statusName === "finalize") {
+    currentScreen = (
+      <div className="finalize">
+        <h2>Finalize</h2>
+      </div>
+    )
   }
 
   return (
