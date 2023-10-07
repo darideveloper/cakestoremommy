@@ -20,7 +20,7 @@ export default function Order({ data }) {
   const { lang } = useContext(LangContext)
   const langId = langs.indexOf(lang)
 
-  const [statusName, setStatusName] = useState("flavors")
+  const [statusName, setStatusName] = useState("size")
   const [isLoading, setIsLoading] = useState(false)
   const [layersId, setLayersId] = useState(1)
   const [diameterId, setDiameterId] = useState(1)
