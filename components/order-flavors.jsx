@@ -161,6 +161,7 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
                   text={flavor[langId]}
                   category={category}
                   flavorStatus={flavorStatus}
+                  activeFlavor={flavorStatus === "CakeFlavor" ? cakeFlavor : flavorStatus === "Filling" ? filling : frosting}
                 />
               ))}
             </div>
