@@ -1,7 +1,7 @@
 import propTypes from 'prop-types'
 import { titleFont } from '@/lib/fonts'
 
-export default function Button ({text, onClick, extraClasses}) {
+export default function Button ({text, onClick, extraClasses, disabled}) {
   return (
     <button
       className={`
@@ -21,6 +21,7 @@ export default function Button ({text, onClick, extraClasses}) {
         ${extraClasses}
       `}
       onClick={onClick}
+      disabled={disabled}
     >
       {text}
     </button>
@@ -30,5 +31,6 @@ export default function Button ({text, onClick, extraClasses}) {
 Button.propTypes = {
   text: propTypes.string.isRequired,
   onClick: propTypes.func.isRequired,
-  extraClasses: propTypes.string
+  extraClasses: propTypes.string,
+  disabled: propTypes.bool
 }

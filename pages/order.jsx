@@ -24,9 +24,9 @@ export default function Order({ data }) {
   const [isLoading, setIsLoading] = useState(false)
   const [layersId, setLayersId] = useState(1)
   const [diameterId, setDiameterId] = useState(1)
-  const [cakeFlavor, setCakeFlavor] = useState(null)
-  const [filling, setFilling] = useState(null)
-  const [frosting, setFrosting] = useState(null)
+  const [cakeFlavor, setCakeFlavor] = useState("")
+  const [filling, setFilling] = useState("")
+  const [frosting, setFrosting] = useState("")
 
   // Detect when statusName changes
   useEffect(() => {

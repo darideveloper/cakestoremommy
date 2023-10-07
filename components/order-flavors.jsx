@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import Loading from '@/components/loading'
 import OrderFlavorButtons from '@/components/order-flavors-buttons'
 import OrderFlavorCard from '@/components/order-flavor-card'
+import Button from './button'
 
 export default function OrderFlavors({ title, langId, options, cakeFlavor, setCakeFlavor, filling, setFilling, frosting, setFrosting, goNext }) {
 
@@ -13,7 +14,12 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
   const [flavorStatus, setFlavorStatus] = useState(flavorsAllStatus[0])
   const [isLoading, setIsLoading] = useState(true)
 
+  // Get flavor options
   const flavorOptions = options[flavorStatus]["options"]
+
+  // Detect is a flavor is not selected
+  const areFlavorsMissing = cakeFlavor === "" || filling === "" || frosting === ""
+
 
   // Detect when flavorStatus changes
   useEffect(() => {
@@ -126,11 +132,13 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
                     // Save cake flavor
                     if (flavorStatus === "CakeFlavor") {
                       setCakeFlavor(flavor[0])
+                      setIsLoading(true)
                     }
 
                     // Save filling
                     if (flavorStatus === "Filling") {
                       setFilling(flavor[0])
+                      setIsLoading(true)
                     }
 
                     // Save frosting
@@ -139,22 +147,17 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
                     }
 
                     // Go to next step
-                    setIsLoading(true)
                     setTimeout(() => {
                       
                       // Get next id
                       const nextFlavorStatusIndex = flavorsAllStatus.indexOf(flavorStatus) + 1
-
-                      // Detect if it's the last flavor
-                      if (nextFlavorStatusIndex >= flavorsAllStatus.length) {
-                        
-                        // Go to next section
-                        goNext()
-
-                      } else {
+                      
+                      // Move to next step
+                      if (nextFlavorStatusIndex < flavorsAllStatus.length) {
                         const nextFlavorStatus = flavorsAllStatus[nextFlavorStatusIndex]
                         setFlavorStatus(nextFlavorStatus)
-                      }
+                      } 
+
                     }, 100)
 
                   }}
@@ -168,6 +171,25 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
           </div>
         ))}
       </div>
+
+      {/* Next sextion button */}
+      <div 
+        className={`
+          button-wrapper
+          w-full
+          flex justify-center items-center
+          mb-10
+        `}>
+        <Button 
+          text={langId === 0 ? "FINALIZE" : "FINALIZAR"}
+          onClick={goNext}
+          extraClasses={`
+            ${isLoading | areFlavorsMissing ? 'opacity-0' : ''}
+          `}
+          disabled={isLoading | areFlavorsMissing}
+        />
+      </div>
+
     </div>
   )
 }
