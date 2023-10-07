@@ -184,9 +184,9 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
           text={langId === 0 ? "FINALIZE" : "FINALIZAR"}
           onClick={goNext}
           extraClasses={`
-            ${isLoading | areFlavorsMissing ? 'opacity-0' : ''}
+            ${isLoading || areFlavorsMissing ? 'opacity-0' : ''}
           `}
-          disabled={isLoading | areFlavorsMissing}
+          disabled={isLoading || areFlavorsMissing}
         />
       </div>
 

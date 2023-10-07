@@ -1,7 +1,8 @@
 import propTypes from 'prop-types'
 import { titleFont } from '@/lib/fonts'
 
-export default function Button ({text, onClick, extraClasses, disabled}) {
+export default function Button ({text, onClick, extraClasses, disabled=false}) {
+
   return (
     <button
       className={`
