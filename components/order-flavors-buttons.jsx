@@ -36,6 +36,7 @@ export default function OrderFlavorButtons ({langId, options, status, onClick, f
 
           <Image 
             src="/images/order/flavors/button-decorator.svg"
+            alt="Button decorator"
             width={20}
             height={20}
             className={`

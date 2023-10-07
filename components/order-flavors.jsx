@@ -7,7 +7,7 @@ import Loading from '@/components/loading'
 import OrderFlavorButtons from '@/components/order-flavors-buttons'
 import OrderFlavorCard from '@/components/order-flavor-card'
 
-export default function OrderFlavors({ title, langId, options }) {
+export default function OrderFlavors({ title, langId, options, cakeFlavor, setCakeFlavor, filling, setFilling, frosting, setFrosting }) {
 
   const flavorsAllStatus = Object.keys(options)
   const [flavorStatus, setFlavorStatus] = useState(flavorsAllStatus[0])
@@ -33,6 +33,7 @@ export default function OrderFlavors({ title, langId, options }) {
     }>
       <Image
         src="/images/order/flavors/hero.webp"
+        alt="Flavors hero"
         width={200}
         height={200}
         className={`
@@ -76,7 +77,7 @@ export default function OrderFlavors({ title, langId, options }) {
           flavors-category-wrapper
           relative
           pb-5
-          mb-10
+          mb-14
           max-w-6xl
           mx-auto
         `}
@@ -121,7 +122,38 @@ export default function OrderFlavors({ title, langId, options }) {
                   key={`${categoryIndex}-${flavorIndex}`}
                   flavor={flavor[0]}
                   onClick={() => {
-                    console.log(`Clicked ${flavor[0]}`)
+
+                    // Save cake flavor
+                    if (flavorStatus === "CakeFlavor") {
+                      setCakeFlavor(flavor[0])
+                    }
+
+                    // Save filling
+                    if (flavorStatus === "Filling") {
+                      setFilling(flavor[0])
+                    }
+
+                    // Save frosting
+                    if (flavorStatus === "Frosting") {
+                      setFrosting(flavor[0])
+                    }
+
+                    // Go to next step
+                    setIsLoading(true)
+                    setTimeout(() => {
+                      
+                      // Get next id
+                      const nextFlavorStatusIndex = flavorsAllStatus.indexOf(flavorStatus) + 1
+
+                      // Detect if it's the last flavor
+                      if (nextFlavorStatusIndex >= flavorsAllStatus.length) {
+                        console.log ("Last flavor")
+                      } else {
+                        const nextFlavorStatus = flavorsAllStatus[nextFlavorStatusIndex]
+                        setFlavorStatus(nextFlavorStatus)
+                      }
+                    }, 100)
+
                   }}
                   text={flavor[langId]}
                   category={category}

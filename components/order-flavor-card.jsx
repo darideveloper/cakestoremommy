@@ -23,6 +23,7 @@ export default function OrderFlavorCard({ flavor, onClick, text, category, flavo
     >
       <Image
         src={imagePath}
+        alt={`${category} ${text}`}
         width={200}
         height={200}
         className={`
