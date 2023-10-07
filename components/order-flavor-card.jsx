@@ -1,10 +1,14 @@
 import propTypes from 'prop-types'
 import Image from 'next/image'
 
+import { useState } from 'react'
+import Loading from './loading'
+
 export default function OrderFlavorCard({ flavor, onClick, text, category, flavorStatus }) {
 
-  const imageName = flavor.replaceAll (" ", "-")
+  const imageName = flavor.replaceAll(" ", "-")
   const imagePath = `/images/order/flavors/${flavorStatus}/${category}/${imageName}.png`
+  const [isLoading, setIsLoading] = useState(true)
 
   return (
     <button
@@ -18,14 +22,23 @@ export default function OrderFlavorCard({ flavor, onClick, text, category, flavo
         shadow-md
         flex flex-col items-center justify-center
         hover:shadow-xl
+        overflow-hidden
       `}
       onClick={onClick}
     >
+
+      <Loading
+        isVisible={isLoading}
+        bgColor="bg-white"
+        extraClasses="z-10 items-center pt-10"
+      />
+
       <Image
         src={imagePath}
         alt={`${category} ${text}`}
-        width={200}
-        height={200}
+        width={160}
+        height={160}
+        onLoad={() => setIsLoading(false)}
         className={`
           w-10/12
           h-10/12
