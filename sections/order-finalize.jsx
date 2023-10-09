@@ -6,15 +6,13 @@ import OrderSummaryCard from '@/components/order-summary-card'
 
 export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorCategory, fillingId, fillingCategory, frostingId, frostingCategory, layers, diameter, layersId, options }) {
 
-  const cakeFlavor = options.CakeFlavor.options[cakeFlavorCategory][cakeFlavorId]
-  const filling = options.Filling.options[fillingCategory][fillingId]
-  const frosting = options.Frosting.options[frostingCategory][frostingId]
+  const cakeFlavor = options.CakeFlavor.options[cakeFlavorCategory].options[cakeFlavorId]
+  const filling = options.Filling.options[fillingCategory].options[fillingId]
+  const frosting = options.Frosting.options[frostingCategory].options[frostingId]
 
-  const cakeFlavorImage = cakeFlavor[0].replaceAll("-").toLowerCase()
-  const fillingImage = filling[0].replaceAll("-").toLowerCase()
-  const frostingImage = frosting[0].replaceAll("-").toLowerCase()
-
-  console.log({cakeFlavorImage, fillingImage, frostingImage})
+  const cakeFlavorImage = cakeFlavor[0].replaceAll(" ", "-").toLowerCase()
+  const fillingImage = filling[0].replaceAll(" ", "-").toLowerCase()
+  const frostingImage = frosting[0].replaceAll(" ", "-").toLowerCase()
 
   return (
     <section className={`
@@ -124,8 +122,8 @@ OrderFinalize.propTypes = {
   fillingCategory: propTypes.string.isRequired,
   frostingId: propTypes.number.isRequired,
   frostingCategory: propTypes.string.isRequired,
-  layers: propTypes.number.isRequired,
+  layers: propTypes.string.isRequired,
   diameter: propTypes.string.isRequired,
-  layersId: propTypes.string.isRequired,
+  layersId: propTypes.number.isRequired,
   options: propTypes.object.isRequired,  
 }
