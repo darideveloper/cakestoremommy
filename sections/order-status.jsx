@@ -13,6 +13,7 @@ export default function OrderStatus({ currentStatus, allStatus, onChangeStatus, 
       md:h-screen
       md:absolute
       md:top-48 md:left-0
+      md:z-30
     `}>
       <div className={`
         wrapper
