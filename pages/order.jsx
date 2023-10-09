@@ -21,7 +21,7 @@ export default function Order({ data }) {
   const { lang } = useContext(LangContext)
   const langId = langs.indexOf(lang)
 
-  const [statusName, setStatusName] = useState("size")
+  const [statusName, setStatusName] = useState("finalize")
   const [isLoading, setIsLoading] = useState(false)
   const [layersId, setLayersId] = useState(1)
   const [diameterId, setDiameterId] = useState(1)
@@ -160,7 +160,7 @@ export default function Order({ data }) {
           {/* Loading modal */}
           <Loading
             isVisible={isLoading}
-            bgColor="bg-white"
+            bgColor="bg-yellow"
             extraClasses="z-20 items-start pt-10"
           />
 
