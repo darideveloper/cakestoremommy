@@ -1,14 +1,18 @@
 import { titleFont, regularFont } from '@/lib/fonts'
 
-import propTypes, { array } from 'prop-types'
+import propTypes from 'prop-types'
 
 import OrderSummaryCard from '@/components/order-summary-card'
 
-export default function OrderFinalize({ title, langId, cakeFlavor, filling, frosting, layers, diameter, layersId }) {
+export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorCategory, fillingId, fillingCategory, frostingId, frostingCategory, layers, diameter, layersId, options }) {
 
-  const cakeFlavorImage = cakeFlavor.replaceAll(" ", "-").toLowerCase()
-  const fillingImage = filling.replaceAll(" ", "-").toLowerCase()
-  const frostingImage = frosting.replaceAll(" ", "-").toLowerCase()
+  const cakeFlavor = options.CakeFlavor.options[cakeFlavorCategory][cakeFlavorId]
+  const filling = options.Filling.options[fillingCategory][fillingId]
+  const frosting = options.Frosting.options[frostingCategory][frostingId]
+
+  const cakeFlavorImage = cakeFlavor[0].replaceAll("-").toLowerCase()
+  const fillingImage = filling[0].replaceAll("-").toLowerCase()
+  const frostingImage = frosting[0].replaceAll("-").toLowerCase()
 
   console.log({cakeFlavorImage, fillingImage, frostingImage})
 
@@ -86,37 +90,42 @@ export default function OrderFinalize({ title, langId, cakeFlavor, filling, fros
 
       <OrderSummaryCard
         title="Cake Flavor"
-        image={`/images/order/flavors/CakeFlavor/${cakeFlavorImage}.png`}
+        image={`/images/order/flavors/CakeFlavor/${cakeFlavorCategory}/${cakeFlavorImage}.png`}
         onClick={() => { console.log('clicked') }}
       >
-        <p>{cakeFlavor}</p>
+        <p>{cakeFlavor[langId]}</p>
       </OrderSummaryCard>
 
       <OrderSummaryCard
         title="Filling"
-        image={`/images/order/flavors/Filling/${fillingImage}.png`}
+        image={`/images/order/flavors/Filling/${fillingCategory}/${fillingImage}.png`}
         onClick={() => { console.log('clicked') }}
       >
-        <p>{filling}</p>
+        <p>{filling[langId]}</p>
       </OrderSummaryCard>
 
       <OrderSummaryCard
         title="Frosting"
-        image={`/images/order/flavors/Frosting/${frostingImage}.png`}
+        image={`/images/order/flavors/Frosting/${frostingCategory}/${frostingImage}.png`}
         onClick={() => { console.log('clicked') }}
       >
-        <p>{frosting}</p>
+        <p>{frosting[langId]}</p>
       </OrderSummaryCard>
     </section>
   )
 }
 
 OrderFinalize.propTypes = {
-  title: propTypes.string,
-  langId: propTypes.number,
-  cakeFlavor: propTypes.string,
-  filling: propTypes.string,
-  frosting: propTypes.string,
-  layers: propTypes.string,
-  diameter: propTypes.string,
+  title: propTypes.string.isRequired,
+  langId: propTypes.number.isRequired,
+  cakeFlavorId: propTypes.number.isRequired,
+  cakeFlavorCategory: propTypes.string.isRequired,
+  fillingId: propTypes.number.isRequired,
+  fillingCategory: propTypes.string.isRequired,
+  frostingId: propTypes.number.isRequired,
+  frostingCategory: propTypes.string.isRequired,
+  layers: propTypes.number.isRequired,
+  diameter: propTypes.string.isRequired,
+  layersId: propTypes.string.isRequired,
+  options: propTypes.object.isRequired,  
 }

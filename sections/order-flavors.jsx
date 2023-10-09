@@ -8,7 +8,7 @@ import OrderFlavorButtons from '@/components/order-flavors-buttons'
 import OrderFlavorCard from '@/components/order-flavor-card'
 import Button from '../components/button'
 
-export default function OrderFlavors({ title, langId, options, cakeFlavor, setCakeFlavor, filling, setFilling, frosting, setFrosting, goNext }) {
+export default function OrderFlavors({ title, langId, options, cakeFlavor, setCakeFlavor, cakeFlavorCategory, setCakeFlavorCategory, filling, setFilling, fillingCategory, setFillingCategory, frosting, frostingCategory, setFrosting, setFrostingCategory, goNext }) {
 
   const flavorsAllStatus = Object.keys(options)
   const [flavorStatus, setFlavorStatus] = useState(flavorsAllStatus[0])
@@ -16,13 +16,13 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
 
   // Get flavor options
   const flavorOptions = options[flavorStatus]["options"]
-
+  
   // Detect is a flavor is not selected
   const areFlavorsMissing = cakeFlavor === "" || filling === "" || frosting === ""
-
+  
   // Get and clean active flavor
-  let activeFlavor = flavorStatus === "CakeFlavor" ? cakeFlavor : flavorStatus === "Filling" ? filling : frosting
-  activeFlavor = activeFlavor.split ("/")[1]
+  const activeFlavorId = flavorStatus === "CakeFlavor" ? cakeFlavor : flavorStatus === "Filling" ? filling : frosting
+  const activeFlavorCategory = flavorStatus === "CakeFlavor" ? cakeFlavorCategory : flavorStatus === "Filling" ? fillingCategory : frostingCategory
 
   // Detect when flavorStatus changes
   useEffect(() => {
@@ -134,22 +134,23 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
 
                     // Save cake flavor
                     if (flavorStatus === "CakeFlavor") {
-                      setCakeFlavor(`${category}/${flavor[0]}`)
+                      setCakeFlavor(flavorIndex)
+                      setCakeFlavorCategory(category)
                       setIsLoading(true)
                     }
 
                     // Save filling
                     if (flavorStatus === "Filling") {
-                      setFilling(`${category}/${flavor[0]}`)
+                      setFilling(flavorIndex)
+                      setFillingCategory(category)
                       setIsLoading(true)
                     }
 
                     // Save frosting
                     if (flavorStatus === "Frosting") {
-                      setFrosting(`${category}/${flavor[0]}`)
+                      setFrosting(flavorIndex)
+                      setFrostingCategory(category)
                     }
-
-                    console.log ({cakeFlavor, filling, frosting})
 
                     // Go to next step
                     setTimeout(() => {
@@ -169,7 +170,7 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
                   text={flavor[langId]}
                   category={category}
                   flavorStatus={flavorStatus}
-                  activeFlavor={activeFlavor}
+                  isActive={flavorIndex === activeFlavorId && category === activeFlavorCategory}
                 />
               ))}
             </div>
@@ -203,11 +204,17 @@ OrderFlavors.propTypes = {
   title: propTypes.string.isRequired,
   langId: propTypes.number.isRequired,
   options: propTypes.object.isRequired,
-  cakeFlavor: propTypes.string.isRequired,
+  cakeFlavor: propTypes.number.isRequired,
   setCakeFlavor: propTypes.func.isRequired,
-  filling: propTypes.string.isRequired,
+  cakeFlavorCategory: propTypes.string.isRequired,
+  setCakeFlavorCategory: propTypes.func.isRequired,
+  filling: propTypes.number.isRequired,
   setFilling: propTypes.func.isRequired,
-  frosting: propTypes.string.isRequired,
+  fillingCategory: propTypes.string.isRequired,
+  setFillingCategory: propTypes.func.isRequired,
+  frosting: propTypes.number.isRequired,
   setFrosting: propTypes.func.isRequired,
+  frostingCategory: propTypes.string.isRequired,
+  setFrostingCategory: propTypes.func.isRequired,
   goNext: propTypes.func.isRequired,
 }

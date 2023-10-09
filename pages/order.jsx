@@ -25,9 +25,12 @@ export default function Order({ data }) {
   const [isLoading, setIsLoading] = useState(false)
   const [layersId, setLayersId] = useState(1)
   const [diameterId, setDiameterId] = useState(1)
-  const [cakeFlavor, setCakeFlavor] = useState("")
-  const [filling, setFilling] = useState("")
-  const [frosting, setFrosting] = useState("")
+  const [cakeFlavorId, setCakeFlavorId] = useState(0)
+  const [cakeFlavorCategory, setCakeFlavorCategory] = useState("")
+  const [fillingId, setFillingId] = useState(0)
+  const [fillingCategory, setFillingCategory] = useState("")
+  const [frostingId, setFrostingId] = useState(0)
+  const [frostingCategory, setFrostingCategory] = useState("")
 
   // Detect when statusName changes
   useEffect(() => {
@@ -68,12 +71,18 @@ export default function Order({ data }) {
         title={data.flavors.title[langId]}
         langId={langId}
         options={data.flavors.options}
-        cakeFlavor={cakeFlavor}
-        setCakeFlavor={setCakeFlavor}
-        filling={filling}
-        setFilling={setFilling}
-        frosting={frosting}
-        setFrosting={setFrosting}
+        cakeFlavor={cakeFlavorId}
+        setCakeFlavor={setCakeFlavorId}
+        cakeFlavorCategory={cakeFlavorCategory}
+        setCakeFlavorCategory={setCakeFlavorCategory}
+        filling={fillingId}
+        setFilling={setFillingId}
+        fillingCategory={fillingCategory}
+        setFillingCategory={setFillingCategory}
+        frosting={frostingId}
+        setFrosting={setFrostingId}
+        frostingCategory={frostingCategory}
+        setFrostingCategory={setFrostingCategory}
         goNext = {() => changeStatus("finalize")}
       />
     )
@@ -82,12 +91,16 @@ export default function Order({ data }) {
       <OrderFinalize 
         title={data.finalize.title[langId]}
         langId={langId}
-        cakeFlavor={cakeFlavor}
-        filling={filling}
-        frosting={frosting}
+        cakeFlavorId={cakeFlavorId}
+        cakeFlavorCategory={cakeFlavorCategory}
+        fillingId={fillingId}
+        fillingCategory={fillingCategory}
+        frostingId={frostingId}
+        frostingCategory={frostingCategory}
         layers={data.size.options[layersId].layers[langId]}
         diameter={data.size.options[layersId].diameters[diameterId][langId]}
         layersId={layersId}
+        options={data.flavors.options}
       />
     )
   }
