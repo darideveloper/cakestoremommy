@@ -6,7 +6,7 @@ import Image from 'next/image'
 import DropDown from '@/components/drop-down'
 import Button from '@/components/button'
 
-export default function OrderSize({ layers, setLayers, diameter, setDiameter, langId, title, subtitle, sizesData, goNext}) {
+export default function OrderSize({ layers, setLayers, diameter, setDiameter, langId, title, subtitle, sizesData, goNext, faqText, faqLink}) {
 
   const [isLoading, setIsLoading] = useState(true)
 
@@ -120,9 +120,8 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
             mx-auto
           `}
         >
-          The suggested serving quantity is based on a standard 5” 
-          tall cake and may vary depending on the cutting style. 
-          For more information, please <a href="/#faqs" className='font-bold'>Click here</a>
+          
+          {faqText} <a href="/#faqs" className='font-bold'>{faqLink}</a>           
         </p>
 
         <div className={`
@@ -131,12 +130,12 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
           mb-20
         `}>
           <Button
-            text="Next"
+            text={langId === 0 ? 'Next' : 'Siguiente'}
             onClick={() => {goNext()}}
             extraClasses='mt-8'
           />
           <Button
-            text="Back"
+            text={langId === 0 ? 'Back' : 'Regresar'}
             onClick={() => {window.history.back()}}
             extraClasses='mt-8'
           />
@@ -149,13 +148,15 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
 }
 
 OrderSize.propTypes = {
-  layers: propTypes.number,
-  setLayers: propTypes.func,
-  diameter: propTypes.number,
-  setDiameter: propTypes.func,
-  langId: propTypes.number,
-  title: propTypes.string,
-  subtitle: propTypes.string,
-  sizesData: propTypes.array,
-  goNext: propTypes.func
+  layers: propTypes.number.isRequired,
+  setLayers: propTypes.func.isRequired,
+  diameter: propTypes.number.isRequired,
+  setDiameter: propTypes.func.isRequired,
+  langId: propTypes.number.isRequired,
+  title: propTypes.string.isRequired,
+  subtitle: propTypes.string.isRequired,
+  sizesData: propTypes.array.isRequired,
+  goNext: propTypes.func.isRequired,
+  faqText: propTypes.string.isRequired,
+  faqLink: propTypes.string.isRequired,
 }
