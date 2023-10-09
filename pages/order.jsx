@@ -32,6 +32,7 @@ export default function Order({ data }) {
   const [frostingId, setFrostingId] = useState(0)
   const [frostingCategory, setFrostingCategory] = useState("")
   const [initialFlavorStatus, setInitialFlavorStatus] = useState("")
+  const [isEditing, setIsEditing] = useState(false)
 
   // Detect when statusName changes
   useEffect(() => {
@@ -63,9 +64,10 @@ export default function Order({ data }) {
         title={data.size.title[langId]}
         subtitle={data.size.subtitle[langId]}
         sizesData={data.size.options}
-        goNext = {() => changeStatus("flavors")}
+        changeStatus={changeStatus}
         faqText={data.flavors.faqText[langId]}
         faqLink={data.flavors.faqLink[langId]}
+        isEditing={isEditing}
       />
     )
   } else if (statusName === "flavors") {
@@ -86,8 +88,9 @@ export default function Order({ data }) {
         setFrosting={setFrostingId}
         frostingCategory={frostingCategory}
         setFrostingCategory={setFrostingCategory}
-        goNext = {() => changeStatus("finalize")}
+        changeStatus={changeStatus}
         initialFlavorStatus={initialFlavorStatus}
+        isEditing={isEditing}
       />
     )
   } else if (statusName === "finalize") {
@@ -123,6 +126,7 @@ export default function Order({ data }) {
 
         changeStatus={changeStatus}
         setInitialFlavorStatus={setInitialFlavorStatus}
+        setIsEditing={setIsEditing}
       />
     )
   }

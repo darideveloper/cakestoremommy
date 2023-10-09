@@ -8,7 +8,7 @@ import OrderFlavorButtons from '@/components/order-flavors-buttons'
 import OrderFlavorCard from '@/components/order-flavor-card'
 import Button from '../components/button'
 
-export default function OrderFlavors({ title, langId, options, cakeFlavor, setCakeFlavor, cakeFlavorCategory, setCakeFlavorCategory, filling, setFilling, fillingCategory, setFillingCategory, frosting, frostingCategory, setFrosting, setFrostingCategory, goNext, initialFlavorStatus=null }) {
+export default function OrderFlavors({ title, langId, options, cakeFlavor, setCakeFlavor, cakeFlavorCategory, setCakeFlavorCategory, filling, setFilling, fillingCategory, setFillingCategory, frosting, frostingCategory, setFrosting, setFrostingCategory, changeStatus, initialFlavorStatus = null, isEditing }) {
 
   const flavorsAllStatus = Object.keys(options)
   const [flavorStatus, setFlavorStatus] = useState(initialFlavorStatus ? initialFlavorStatus : flavorsAllStatus[0])
@@ -16,10 +16,10 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
 
   // Get flavor options
   const flavorOptions = options[flavorStatus]["options"]
-  
+
   // Detect is a flavor is not selected
   const areFlavorsMissing = cakeFlavor === "" || filling === "" || frosting === ""
-  
+
   // Get and clean active flavor
   const activeFlavorId = flavorStatus === "CakeFlavor" ? cakeFlavor : flavorStatus === "Filling" ? filling : frosting
   const activeFlavorCategory = flavorStatus === "CakeFlavor" ? cakeFlavorCategory : flavorStatus === "Filling" ? fillingCategory : frostingCategory
@@ -73,7 +73,7 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
         onClick={(flavor) => {
           setIsLoading(true)
           setTimeout(() => {
-            setFlavorStatus (flavor)
+            setFlavorStatus(flavor)
           }, 100)
         }}
         flavorsAllStatus={flavorsAllStatus}
@@ -150,19 +150,24 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
                     if (flavorStatus === "Frosting") {
                       setFrosting(flavorIndex)
                       setFrostingCategory(category)
+
+                    }
+
+                    if (isEditing) {
+                      changeStatus("finalize")
                     }
 
                     // Go to next step
                     setTimeout(() => {
-                      
+
                       // Get next id
                       const nextFlavorStatusIndex = flavorsAllStatus.indexOf(flavorStatus) + 1
-                      
+
                       // Move to next step
                       if (nextFlavorStatusIndex < flavorsAllStatus.length) {
                         const nextFlavorStatus = flavorsAllStatus[nextFlavorStatusIndex]
                         setFlavorStatus(nextFlavorStatus)
-                      } 
+                      }
 
                     }, 100)
 
@@ -179,22 +184,24 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
       </div>
 
       {/* Next sextion button */}
-      <div 
-        className={`
+      {!isEditing && (
+        <div
+          className={`
           button-wrapper
           w-full
           flex justify-center items-center
           mb-10
         `}>
-        <Button 
-          text={langId === 0 ? "FINALIZE" : "FINALIZAR"}
-          onClick={goNext}
-          extraClasses={`
+          <Button
+            text={langId === 0 ? "FINALIZE" : "FINALIZAR"}
+            onClick={() => { changeStatus("finalize") }}
+            extraClasses={`
             ${isLoading || areFlavorsMissing ? 'opacity-0' : ''}
           `}
-          disabled={isLoading || areFlavorsMissing}
-        />
-      </div>
+            disabled={isLoading || areFlavorsMissing}
+          />
+        </div>
+      )}
 
     </section>
   )
@@ -216,5 +223,7 @@ OrderFlavors.propTypes = {
   setFrosting: propTypes.func.isRequired,
   frostingCategory: propTypes.string.isRequired,
   setFrostingCategory: propTypes.func.isRequired,
-  goNext: propTypes.func.isRequired,
+  changeStatus: propTypes.func.isRequired,
+  initialFlavorStatus: propTypes.string,
+  isEditing: propTypes.bool.isRequired,
 }

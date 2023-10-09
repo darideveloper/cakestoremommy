@@ -6,7 +6,7 @@ import Image from 'next/image'
 import DropDown from '@/components/drop-down'
 import Button from '@/components/button'
 
-export default function OrderSize({ layers, setLayers, diameter, setDiameter, langId, title, subtitle, sizesData, goNext, faqText, faqLink}) {
+export default function OrderSize({ layers, setLayers, diameter, setDiameter, langId, title, subtitle, sizesData, changeStatus, faqText, faqLink, isEditing }) {
 
   const [isLoading, setIsLoading] = useState(true)
 
@@ -30,8 +30,8 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
         text-brown
         container
         `}
-        >
-      <div 
+    >
+      <div
         className={`
           text
           text-center
@@ -81,7 +81,7 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
           priority={true}
         />
 
-        <DropDown 
+        <DropDown
           name="Layers"
           options={layersOptions}
           value={layers}
@@ -95,7 +95,7 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
           disabled={isLoading}
         />
 
-        <DropDown 
+        <DropDown
           name="diameters"
           options={diametersOptions}
           value={diameter}
@@ -120,8 +120,8 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
             mx-auto
           `}
         >
-          
-          {faqText} <a href="/#faqs" className='font-bold'>{faqLink}</a>           
+
+          {faqText} <a href="/#faqs" className='font-bold'>{faqLink}</a>
         </p>
 
         <div className={`
@@ -129,16 +129,38 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
           flex flex-col items-center justify-between 
           mb-20
         `}>
-          <Button
-            text={langId === 0 ? 'Next' : 'Siguiente'}
-            onClick={() => {goNext()}}
-            extraClasses='mt-8'
-          />
-          <Button
-            text={langId === 0 ? 'Back' : 'Regresar'}
-            onClick={() => {window.history.back()}}
-            extraClasses='mt-8'
-          />
+
+          {
+            isEditing
+              ?
+              (
+                <Button
+                  text={langId === 0 ? 'Finalize' : 'Finalizar'}
+                  onClick={() => {
+                    changeStatus("finalize")
+                  }}
+                  extraClasses='mt-8'
+                />
+              )
+              :
+              (
+                <>
+                  <Button
+                    text={langId === 0 ? 'Next' : 'Siguiente'}
+                    onClick={() => {
+                      changeStatus("flavors")
+                    }}
+                    extraClasses='mt-8'
+                  />
+                  <Button
+                    text={langId === 0 ? 'Back' : 'Regresar'}
+                    onClick={() => { window.history.back() }}
+                    extraClasses='mt-8'
+                  />
+                </>
+              )
+          }
+
         </div>
       </div>
 
@@ -156,7 +178,8 @@ OrderSize.propTypes = {
   title: propTypes.string.isRequired,
   subtitle: propTypes.string.isRequired,
   sizesData: propTypes.array.isRequired,
-  goNext: propTypes.func.isRequired,
+  changeStatus: propTypes.func.isRequired,
   faqText: propTypes.string.isRequired,
   faqLink: propTypes.string.isRequired,
+  isEditing: propTypes.bool.isRequired,
 }

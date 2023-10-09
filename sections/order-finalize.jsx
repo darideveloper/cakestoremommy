@@ -4,7 +4,7 @@ import propTypes from 'prop-types'
 
 import OrderSummaryCard from '@/components/order-summary-card'
 
-export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorCategory, fillingId, fillingCategory, frostingId, frostingCategory, diameter, layersId, flavorOptions, sizeOptions, subtitles, changeStatus, setInitialFlavorStatus }) {
+export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorCategory, fillingId, fillingCategory, frostingId, frostingCategory, diameter, layersId, flavorOptions, sizeOptions, subtitles, changeStatus, setInitialFlavorStatus, setIsEditing }) {
 
   const cakeFlavor = flavorOptions.CakeFlavor.options[cakeFlavorCategory].options[cakeFlavorId]
   const filling = flavorOptions.Filling.options[fillingCategory].options[fillingId]
@@ -50,6 +50,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
           image={`/images/order/sizes/${layersId}.webp`}
           onClick={() => {
             changeStatus("size")
+            setIsEditing(true)
           }}
           langId={langId}
         >
@@ -108,6 +109,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
           onClick={() => {
             changeStatus("flavors")
             setInitialFlavorStatus("CakeFlavor")
+            setIsEditing(true)
           }}
           langId={langId}
         >
@@ -120,6 +122,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
           onClick={() => {
             changeStatus("flavors")
             setInitialFlavorStatus("Filling")
+            setIsEditing(true)
           }}
           langId={langId}
         >
@@ -132,6 +135,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
           onClick={() => { 
             changeStatus("flavors")
             setInitialFlavorStatus("Frosting")
+            setIsEditing(true)
           }}
           langId={langId}
         >
