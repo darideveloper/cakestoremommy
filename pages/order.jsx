@@ -4,10 +4,11 @@ import { useState, useEffect } from "react"
 
 import RootLayout from "@/layouts/root-layout"
 
-import OrderStatus from "@/components/order-status"
+import OrderStatus from "@/sections/order-status"
 import OrderExit from "@/components/order-exit"
-import OrderSize from "@/components/order-size"
-import OrderFlavors from "@/components/order-flavors"
+import OrderSize from "@/sections/order-size"
+import OrderFlavors from "@/sections/order-flavors"
+import OrderFinalize from "@/sections/order-finalize"
 
 import { LangContext } from "@/context/lang"
 import { useContext } from "react"
@@ -77,9 +78,16 @@ export default function Order({ data }) {
     )
   } else if (statusName === "finalize") {
     currentScreen = (
-      <div className="finalize">
-        <h2>Finalize</h2>
-      </div>
+      <OrderFinalize 
+        title={data.finalize.title[langId]}
+        langId={langId}
+        cakeFlavor={cakeFlavor}
+        filling={filling}
+        frosting={frosting}
+        layers={data.size.options[layersId].layers[langId]}
+        diameter={data.size.options[layersId].diameters[diameterId][langId]}
+        layersId={layersId}
+      />
     )
   }
 
@@ -123,7 +131,6 @@ export default function Order({ data }) {
           
         </div>
       </div>
-
 
     </RootLayout>
   )
@@ -292,6 +299,9 @@ export async function getStaticProps() {
           },
         }
       }
+    },
+    "finalize": {
+      "title": ["Order Details", "Detalles del pedido"],
     }
   }
 

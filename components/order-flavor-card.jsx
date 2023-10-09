@@ -64,5 +64,5 @@ OrderFlavorCard.propTypes = {
   text: propTypes.string.isRequired,
   category: propTypes.string.isRequired,
   flavorStatus: propTypes.string.isRequired,
-  activeFlavor: propTypes.string.isRequired,
+  activeFlavor: propTypes.string,
 }

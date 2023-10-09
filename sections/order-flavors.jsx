@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import Loading from '@/components/loading'
 import OrderFlavorButtons from '@/components/order-flavors-buttons'
 import OrderFlavorCard from '@/components/order-flavor-card'
-import Button from './button'
+import Button from '../components/button'
 
 export default function OrderFlavors({ title, langId, options, cakeFlavor, setCakeFlavor, filling, setFilling, frosting, setFrosting, goNext }) {
 
@@ -20,6 +20,9 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
   // Detect is a flavor is not selected
   const areFlavorsMissing = cakeFlavor === "" || filling === "" || frosting === ""
 
+  // Get and clean active flavor
+  let activeFlavor = flavorStatus === "CakeFlavor" ? cakeFlavor : flavorStatus === "Filling" ? filling : frosting
+  activeFlavor = activeFlavor.split ("/")[1]
 
   // Detect when flavorStatus changes
   useEffect(() => {
@@ -32,7 +35,7 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
   }, [flavorStatus, isLoading])
 
   return (
-    <div className={`
+    <section className={`
       flavors 
       container 
       text-brown`
@@ -131,20 +134,22 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
 
                     // Save cake flavor
                     if (flavorStatus === "CakeFlavor") {
-                      setCakeFlavor(flavor[0])
+                      setCakeFlavor(`${category}/${flavor[0]}`)
                       setIsLoading(true)
                     }
 
                     // Save filling
                     if (flavorStatus === "Filling") {
-                      setFilling(flavor[0])
+                      setFilling(`${category}/${flavor[0]}`)
                       setIsLoading(true)
                     }
 
                     // Save frosting
                     if (flavorStatus === "Frosting") {
-                      setFrosting(flavor[0])
+                      setFrosting(`${category}/${flavor[0]}`)
                     }
+
+                    console.log ({cakeFlavor, filling, frosting})
 
                     // Go to next step
                     setTimeout(() => {
@@ -164,7 +169,7 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
                   text={flavor[langId]}
                   category={category}
                   flavorStatus={flavorStatus}
-                  activeFlavor={flavorStatus === "CakeFlavor" ? cakeFlavor : flavorStatus === "Filling" ? filling : frosting}
+                  activeFlavor={activeFlavor}
                 />
               ))}
             </div>
@@ -190,7 +195,7 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
         />
       </div>
 
-    </div>
+    </section>
   )
 }
 
