@@ -99,7 +99,7 @@ export default function Order({ data }) {
         fillingCategory={fillingCategory}
         frostingId={frostingId}
         frostingCategory={frostingCategory}
-        diameter={data.size.options[layersId].diameters[diameterId][langId]}
+        diameter={data.size.options[layersId-1].diameters[diameterId-1][langId]}
         layersId={layersId}
         flavorOptions={data.flavors.options}
         sizeOptions={data.size.options}

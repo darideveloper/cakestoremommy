@@ -14,7 +14,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
   const fillingImage = filling[0].replaceAll(" ", "-").toLowerCase()
   const frostingImage = frosting[0].replaceAll(" ", "-").toLowerCase()
 
-  const layersBaseText = sizeOptions[layersId].layers[langId]
+  const layersBaseText = sizeOptions[layersId-1].layers[langId]
   const layersText = langId === 0 ? `${layersBaseText} Cake` : `Pastel de ${layersBaseText}`
 
   return (
