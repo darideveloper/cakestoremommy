@@ -8,10 +8,10 @@ import OrderFlavorButtons from '@/components/order-flavors-buttons'
 import OrderFlavorCard from '@/components/order-flavor-card'
 import Button from '../components/button'
 
-export default function OrderFlavors({ title, langId, options, cakeFlavor, setCakeFlavor, cakeFlavorCategory, setCakeFlavorCategory, filling, setFilling, fillingCategory, setFillingCategory, frosting, frostingCategory, setFrosting, setFrostingCategory, goNext }) {
+export default function OrderFlavors({ title, langId, options, cakeFlavor, setCakeFlavor, cakeFlavorCategory, setCakeFlavorCategory, filling, setFilling, fillingCategory, setFillingCategory, frosting, frostingCategory, setFrosting, setFrostingCategory, goNext, initialFlavorStatus=null }) {
 
   const flavorsAllStatus = Object.keys(options)
-  const [flavorStatus, setFlavorStatus] = useState(flavorsAllStatus[0])
+  const [flavorStatus, setFlavorStatus] = useState(initialFlavorStatus ? initialFlavorStatus : flavorsAllStatus[0])
   const [isLoading, setIsLoading] = useState(true)
 
   // Get flavor options

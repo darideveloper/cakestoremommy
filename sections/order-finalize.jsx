@@ -4,7 +4,7 @@ import propTypes from 'prop-types'
 
 import OrderSummaryCard from '@/components/order-summary-card'
 
-export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorCategory, fillingId, fillingCategory, frostingId, frostingCategory, diameter, layersId, flavorOptions, sizeOptions, subtitles }) {
+export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorCategory, fillingId, fillingCategory, frostingId, frostingCategory, diameter, layersId, flavorOptions, sizeOptions, subtitles, changeStatus, setInitialFlavorStatus }) {
 
   const cakeFlavor = flavorOptions.CakeFlavor.options[cakeFlavorCategory].options[cakeFlavorId]
   const filling = flavorOptions.Filling.options[fillingCategory].options[fillingId]
@@ -48,7 +48,9 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
         <OrderSummaryCard
           title={subtitles.size[langId]}
           image={`/images/order/sizes/${layersId}.webp`}
-          onClick={() => { console.log('clicked') }}
+          onClick={() => {
+            changeStatus("size")
+          }}
           langId={langId}
         >
           <div
@@ -103,7 +105,10 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
         <OrderSummaryCard
           title={subtitles.cakeFlavor[langId]}
           image={`/images/order/flavors/CakeFlavor/${cakeFlavorCategory}/${cakeFlavorImage}.png`}
-          onClick={() => { console.log('clicked') }}
+          onClick={() => {
+            changeStatus("flavors")
+            setInitialFlavorStatus("CakeFlavor")
+          }}
           langId={langId}
         >
           <p>{cakeFlavor[langId]}</p>
@@ -112,7 +117,10 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
         <OrderSummaryCard
           title={subtitles.filling[langId]}
           image={`/images/order/flavors/Filling/${fillingCategory}/${fillingImage}.png`}
-          onClick={() => { console.log('clicked') }}
+          onClick={() => {
+            changeStatus("flavors")
+            setInitialFlavorStatus("Filling")
+          }}
           langId={langId}
         >
           <p>{filling[langId]}</p>
@@ -121,7 +129,10 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
         <OrderSummaryCard
           title={subtitles.frosting[langId]}
           image={`/images/order/flavors/Frosting/${frostingCategory}/${frostingImage}.png`}
-          onClick={() => { console.log('clicked') }}
+          onClick={() => { 
+            changeStatus("flavors")
+            setInitialFlavorStatus("Frosting")
+          }}
           langId={langId}
         >
           <p>{frosting[langId]}</p>
@@ -147,4 +158,6 @@ OrderFinalize.propTypes = {
   flavorOptions: propTypes.object.isRequired,
   sizeOptions: propTypes.array.isRequired, 
   subtitles: propTypes.object.isRequired,
+  changeStatus: propTypes.func.isRequired,
+  setInitialFlavorStatus: propTypes.func.isRequired,
 }

@@ -21,7 +21,7 @@ export default function Order({ data }) {
   const { lang } = useContext(LangContext)
   const langId = langs.indexOf(lang)
 
-  const [statusName, setStatusName] = useState("finalize")
+  const [statusName, setStatusName] = useState("size")
   const [isLoading, setIsLoading] = useState(false)
   const [layersId, setLayersId] = useState(1)
   const [diameterId, setDiameterId] = useState(1)
@@ -31,6 +31,7 @@ export default function Order({ data }) {
   const [fillingCategory, setFillingCategory] = useState("")
   const [frostingId, setFrostingId] = useState(0)
   const [frostingCategory, setFrostingCategory] = useState("")
+  const [initialFlavorStatus, setInitialFlavorStatus] = useState("")
 
   // Detect when statusName changes
   useEffect(() => {
@@ -86,6 +87,7 @@ export default function Order({ data }) {
         frostingCategory={frostingCategory}
         setFrostingCategory={setFrostingCategory}
         goNext = {() => changeStatus("finalize")}
+        initialFlavorStatus={initialFlavorStatus}
       />
     )
   } else if (statusName === "finalize") {
@@ -118,6 +120,9 @@ export default function Order({ data }) {
         flavorOptions={data.flavors.options}
         sizeOptions={data.size.options}
         subtitles={data.finalize.subtitles}
+
+        changeStatus={changeStatus}
+        setInitialFlavorStatus={setInitialFlavorStatus}
       />
     )
   }
