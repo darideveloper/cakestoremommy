@@ -14,6 +14,9 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts=[] }) {
     const headerGradiant = document.querySelector('.header-gradiant')
     const header = document.querySelector('header')
     const hero = document.querySelector('.hero')
+
+    if (!header || !hero || !headerGradiant) return
+
     const headerHeight = header.offsetHeight
     const heroHeight = hero.offsetHeight
     headerGradiant.style.height = `${headerHeight + heroHeight + 30}px`
