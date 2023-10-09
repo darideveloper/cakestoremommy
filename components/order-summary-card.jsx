@@ -10,6 +10,8 @@ export default function OrderSummaryCard({ title, image, children, onClick, lang
       className={`
         summary-card
         w-full
+        max-w-md
+        mx-auto
       `}
     >
       <h3
@@ -20,6 +22,7 @@ export default function OrderSummaryCard({ title, image, children, onClick, lang
           ${titleFont.className}
           mb-5
           mt-8
+          md:mt-5
         `}
       >
         {title}

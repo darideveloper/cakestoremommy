@@ -47,6 +47,7 @@ export default function Loading({ isVisible = true, bgColor, alternative = false
           w-32 h-32
           animate-spin
         `}
+        priority={true}
       />
     </div>
   )
