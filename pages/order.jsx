@@ -39,6 +39,13 @@ export default function Order({ data }) {
     }, 1000)
   }, [statusName, isLoading])
 
+  function changeStatus (status) {
+    setIsLoading(true)
+    setTimeout(() => {
+      setStatusName(status)
+    }, 100)
+  }
+
   // Render current order screen
   let currentScreen = null
   if (statusName === "size") {
@@ -52,10 +59,7 @@ export default function Order({ data }) {
         title={data.size.title[langId]}
         subtitle={data.size.subtitle[langId]}
         sizesData={data.size.options}
-        goNext = {() => {
-          setIsLoading(true)
-          setStatusName("flavors")
-        }}
+        goNext = {() => changeStatus("flavors")}
       />
     )
   } else if (statusName === "flavors") {
@@ -70,10 +74,7 @@ export default function Order({ data }) {
         setFilling={setFilling}
         frosting={frosting}
         setFrosting={setFrosting}
-        goNext = {() => {
-          setIsLoading(true)
-          setStatusName("finalize")
-        }}
+        goNext = {() => changeStatus("finalize")}
       />
     )
   } else if (statusName === "finalize") {
