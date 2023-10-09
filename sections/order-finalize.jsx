@@ -4,15 +4,18 @@ import propTypes from 'prop-types'
 
 import OrderSummaryCard from '@/components/order-summary-card'
 
-export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorCategory, fillingId, fillingCategory, frostingId, frostingCategory, layers, diameter, layersId, options }) {
+export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorCategory, fillingId, fillingCategory, frostingId, frostingCategory, diameter, layersId, flavorOptions, sizeOptions, subtitles }) {
 
-  const cakeFlavor = options.CakeFlavor.options[cakeFlavorCategory].options[cakeFlavorId]
-  const filling = options.Filling.options[fillingCategory].options[fillingId]
-  const frosting = options.Frosting.options[frostingCategory].options[frostingId]
+  const cakeFlavor = flavorOptions.CakeFlavor.options[cakeFlavorCategory].options[cakeFlavorId]
+  const filling = flavorOptions.Filling.options[fillingCategory].options[fillingId]
+  const frosting = flavorOptions.Frosting.options[frostingCategory].options[frostingId]
 
   const cakeFlavorImage = cakeFlavor[0].replaceAll(" ", "-").toLowerCase()
   const fillingImage = filling[0].replaceAll(" ", "-").toLowerCase()
   const frostingImage = frosting[0].replaceAll(" ", "-").toLowerCase()
+
+  const layersBaseText = sizeOptions[layersId].layers[langId]
+  const layersText = langId === 0 ? `${layersBaseText} Cake` : `Pastel de ${layersBaseText}`
 
   return (
     <section className={`
@@ -33,9 +36,10 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
       {/* Summary cards */}
 
       <OrderSummaryCard
-        title="Size"
+        title={subtitles.size[langId]}
         image={`/images/order/sizes/${layersId}.webp`}
         onClick={() => { console.log('clicked') }}
+        langId={langId}
       >
         <div
           className={`
@@ -43,7 +47,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
             flex items-center justify-center flex-col
           `}
         >
-          <p>{layers} Cake</p>
+          <p>{layersText}</p>
 
           {diameter && Array.from(diameter.split('  ')).map((diameterItem, index) => (
             <div
@@ -87,25 +91,28 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
       </OrderSummaryCard>
 
       <OrderSummaryCard
-        title="Cake Flavor"
+        title={subtitles.cakeFlavor[langId]}
         image={`/images/order/flavors/CakeFlavor/${cakeFlavorCategory}/${cakeFlavorImage}.png`}
         onClick={() => { console.log('clicked') }}
+        langId={langId}
       >
         <p>{cakeFlavor[langId]}</p>
       </OrderSummaryCard>
 
       <OrderSummaryCard
-        title="Filling"
+        title={subtitles.filling[langId]}
         image={`/images/order/flavors/Filling/${fillingCategory}/${fillingImage}.png`}
         onClick={() => { console.log('clicked') }}
+        langId={langId}
       >
         <p>{filling[langId]}</p>
       </OrderSummaryCard>
 
       <OrderSummaryCard
-        title="Frosting"
+        title={subtitles.frosting[langId]}
         image={`/images/order/flavors/Frosting/${frostingCategory}/${frostingImage}.png`}
         onClick={() => { console.log('clicked') }}
+        langId={langId}
       >
         <p>{frosting[langId]}</p>
       </OrderSummaryCard>
@@ -122,8 +129,9 @@ OrderFinalize.propTypes = {
   fillingCategory: propTypes.string.isRequired,
   frostingId: propTypes.number.isRequired,
   frostingCategory: propTypes.string.isRequired,
-  layers: propTypes.string.isRequired,
   diameter: propTypes.string.isRequired,
   layersId: propTypes.number.isRequired,
-  options: propTypes.object.isRequired,  
+  flavorOptions: propTypes.object.isRequired,
+  sizeOptions: propTypes.array.isRequired, 
+  subtitles: propTypes.array.isRequired,
 }

@@ -4,7 +4,7 @@ import propTypes from 'prop-types'
 
 import Image from 'next/image'
 
-export default function OrderSummaryCard({ title, image, children, onClick }) {
+export default function OrderSummaryCard({ title, image, children, onClick, langId }) {
   return (
     <div
       className={`
@@ -64,7 +64,7 @@ export default function OrderSummaryCard({ title, image, children, onClick }) {
               text-xl
             `}
         >
-          Edit
+          {langId == 0 ? 'Edit' : 'Editar'}
         </p>
       </button>
     </div>

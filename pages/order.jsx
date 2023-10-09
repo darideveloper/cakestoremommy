@@ -99,10 +99,11 @@ export default function Order({ data }) {
         fillingCategory={fillingCategory}
         frostingId={frostingId}
         frostingCategory={frostingCategory}
-        layers={data.size.options[layersId].layers[langId]}
         diameter={data.size.options[layersId].diameters[diameterId][langId]}
         layersId={layersId}
-        options={data.flavors.options}
+        flavorOptions={data.flavors.options}
+        sizeOptions={data.size.options}
+        subtitles={data.finalize.subtitles}
       />
     )
   }
@@ -320,6 +321,12 @@ export async function getStaticProps() {
     },
     "finalize": {
       "title": ["Order Details", "Detalles del pedido"],
+      "subtitles": {
+        "size": ["Size", "Tamaño"],
+        "cakeFlavor": ["Cake Flavor", "Sabor del pastel"],
+        "filling": ["Filling", "Relleno"],
+        "frosting": ["Frosting", "Cobertura"],
+      }
     }
   }
 
