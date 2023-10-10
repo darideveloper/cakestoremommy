@@ -3,6 +3,7 @@ import { titleFont } from '@/lib/fonts'
 import propTypes from 'prop-types'
 
 import Image from 'next/image'
+import H3 from '@/components/h3'
 
 export default function OrderSummaryCard({ title, image, children, onClick, langId }) {
   return (
@@ -14,19 +15,11 @@ export default function OrderSummaryCard({ title, image, children, onClick, lang
         mx-auto
       `}
     >
-      <h3
-        className={`
-          text-2xl
-          font-bold
-          text-center
-          ${titleFont.className}
-          mb-5
-          mt-8
-          md:mt-5
-        `}
-      >
+
+      <H3>
         {title}
-      </h3>
+      </H3>
+      
       <button
         className={`
           group

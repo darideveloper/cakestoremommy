@@ -3,6 +3,8 @@ import { titleFont, regularFont } from '@/lib/fonts'
 import propTypes from 'prop-types'
 
 import OrderSummaryCard from '@/components/order-summary-card'
+import H3 from '@/components/h3'
+import ImageInput from '@/components/imageInput'
 
 export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorCategory, fillingId, fillingCategory, frostingId, frostingCategory, diameter, layersId, flavorOptions, sizeOptions, subtitles, changeStatus, setInitialFlavorStatus, setIsEditing }) {
 
@@ -21,6 +23,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
     <section className={`
       finalize
       text-brown
+      px-2
     `}>
       <h2
         className={`
@@ -38,7 +41,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
       <div 
         className={`
           summary-cards
-          grid grid-cols-1 xl:grid-cols-2
+          hidden grid-cols-1 xl:grid-cols-2
           max-w-4xl
           mx-auto
           gap-5
@@ -143,6 +146,59 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
         </OrderSummaryCard>
       </div>
 
+      <form 
+        action="" 
+        method='post'
+        className={`
+          form
+          mx-auto
+          w-full sm:w-3/4
+          max-w-4xl
+        `}
+      >
+        <H3>
+          {subtitles.image[langId]}
+        </H3>
+
+        <div 
+          className={`
+            images
+            flex 
+            items-start sm:items-center
+            justify-center 
+            flex-col lg:flex-row
+          `}
+        >
+          {
+            [1,2,3].map((item, index) => (
+              <ImageInput
+                key={index}
+                name={`image-${index}`}
+              />
+            ))
+          }
+        </div>
+
+        <H3>
+          {subtitles.additional[langId]}
+        </H3>
+
+        <H3>
+          {subtitles.contact[langId]}
+        </H3>
+
+        <H3>
+          {subtitles.orderType[langId]}
+        </H3>
+
+        <H3>
+          {subtitles.pickUp[langId]}
+        </H3>
+
+        <H3>
+          {subtitles.delivery[langId]}
+        </H3>
+      </form>
 
     </section>
   )

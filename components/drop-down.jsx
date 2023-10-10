@@ -1,10 +1,6 @@
 import propTypes from 'prop-types'
 
-import { useState } from 'react'
-
 export default function DropDown({ name, value, onChange, options, disabled }) {
-
-
 
   return (
     <select
