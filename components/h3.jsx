@@ -9,9 +9,9 @@ export default function H3({ children, className }) {
         text-center
         ${titleFont.className}
         mb-5
-        mt-8
-        md:mt-5
+        mt-14
         ${className}
+        block
       `}
     >
       {children}

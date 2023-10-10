@@ -127,6 +127,7 @@ export default function Order({ data }) {
         changeStatus={changeStatus}
         setInitialFlavorStatus={setInitialFlavorStatus}
         setIsEditing={setIsEditing}
+        inputs={data.finalize.inputs}
       />
     )
   }
@@ -355,6 +356,12 @@ export async function getStaticProps() {
         "orderType": ["Choose Order Type", "Elige el tipo de pedido"],
         "pickUp": ["Choose Pick Up Date", "Elige la fecha de recogida"],
         "delivery": ["Choose Delivery Date", "Elige la fecha de entrega"],
+      },
+      "inputs": {
+        "name": ["First Name", "Nombre"],
+        "lastName": ["Last Name", "Apellido"],
+        "phone": ["Phone Number", "Número de teléfono"],
+        "email": ["Email Address", "Correo electrónico"],
       }
     }
   }

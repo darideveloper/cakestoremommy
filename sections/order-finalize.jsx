@@ -6,8 +6,9 @@ import OrderSummaryCard from '@/components/order-summary-card'
 import H3 from '@/components/h3'
 import ImageInput from '@/components/imageInput'
 import TextArea from '@/components/textArea'
+import Input from '@/components/input'
 
-export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorCategory, fillingId, fillingCategory, frostingId, frostingCategory, diameter, layersId, flavorOptions, sizeOptions, subtitles, changeStatus, setInitialFlavorStatus, setIsEditing }) {
+export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorCategory, fillingId, fillingCategory, frostingId, frostingCategory, diameter, layersId, flavorOptions, sizeOptions, subtitles, changeStatus, setInitialFlavorStatus, setIsEditing, inputs }) {
 
   const cakeFlavor = flavorOptions.CakeFlavor.options[cakeFlavorCategory].options[cakeFlavorId]
   const filling = flavorOptions.Filling.options[fillingCategory].options[fillingId]
@@ -17,7 +18,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
   const fillingImage = filling[0].replaceAll(" ", "-").toLowerCase()
   const frostingImage = frosting[0].replaceAll(" ", "-").toLowerCase()
 
-  const layersBaseText = sizeOptions[layersId-1].layers[langId]
+  const layersBaseText = sizeOptions[layersId - 1].layers[langId]
   const layersText = langId === 0 ? `${layersBaseText} Cake` : `Pastel de ${layersBaseText}`
 
   return (
@@ -39,13 +40,14 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
 
       {/* Summary cards */}
 
-      <div 
+      <div
         className={`
           summary-cards
-          hidden grid-cols-1 xl:grid-cols-2
+          grid grid-cols-1 xl:grid-cols-2
           max-w-4xl
           mx-auto
           gap-5
+          mb-6
         `}
       >
 
@@ -136,7 +138,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
         <OrderSummaryCard
           title={subtitles.frosting[langId]}
           image={`/images/order/flavors/Frosting/${frostingCategory}/${frostingImage}.png`}
-          onClick={() => { 
+          onClick={() => {
             changeStatus("flavors")
             setInitialFlavorStatus("Frosting")
             setIsEditing(true)
@@ -147,22 +149,21 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
         </OrderSummaryCard>
       </div>
 
-      <form 
-        action="" 
+      <form
+        action=""
         method='post'
         className={`
           form
           mx-auto
           w-full sm:w-3/4
           max-w-4xl
-          debug
         `}
       >
         <H3>
           {subtitles.image[langId]}
         </H3>
 
-        <div 
+        <div
           className={`
             images
             flex 
@@ -172,7 +173,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
           `}
         >
           {
-            [1,2,3].map((item, index) => (
+            [1, 2, 3].map((item, index) => (
               <ImageInput
                 key={index}
                 name={`image ${index}`}
@@ -185,13 +186,46 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
           {subtitles.additional[langId]}
         </H3>
 
-        <TextArea 
+        <TextArea
           name="additional details"
         />
 
         <H3>
           {subtitles.contact[langId]}
         </H3>
+
+        <div 
+          className={`
+            contacts
+            grid grid-cols-1 sm:grid-cols-2
+            gap-5
+          `}
+        >
+          <Input
+            type="text"
+            name="name"
+            placeholder={inputs.name[langId]}
+          />
+
+          <Input
+            type="text"
+            name="last name"
+            placeholder={inputs.lastName[langId]}
+          />
+
+          <Input
+            type="tel"
+            name="phone number"
+            placeholder={inputs.phone[langId]}
+          />
+
+          <Input
+            type="email"
+            name="email"
+            placeholder={inputs.email[langId]}
+          />
+        </div>
+
 
         <H3>
           {subtitles.orderType[langId]}
@@ -222,8 +256,9 @@ OrderFinalize.propTypes = {
   diameter: propTypes.string.isRequired,
   layersId: propTypes.number.isRequired,
   flavorOptions: propTypes.object.isRequired,
-  sizeOptions: propTypes.array.isRequired, 
+  sizeOptions: propTypes.array.isRequired,
   subtitles: propTypes.object.isRequired,
   changeStatus: propTypes.func.isRequired,
   setInitialFlavorStatus: propTypes.func.isRequired,
+  inputs: propTypes.object.isRequired,
 }
