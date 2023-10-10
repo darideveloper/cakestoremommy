@@ -5,6 +5,7 @@ import propTypes from 'prop-types'
 import OrderSummaryCard from '@/components/order-summary-card'
 import H3 from '@/components/h3'
 import ImageInput from '@/components/imageInput'
+import TextArea from '@/components/textArea'
 
 export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorCategory, fillingId, fillingCategory, frostingId, frostingCategory, diameter, layersId, flavorOptions, sizeOptions, subtitles, changeStatus, setInitialFlavorStatus, setIsEditing }) {
 
@@ -154,6 +155,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
           mx-auto
           w-full sm:w-3/4
           max-w-4xl
+          debug
         `}
       >
         <H3>
@@ -173,7 +175,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
             [1,2,3].map((item, index) => (
               <ImageInput
                 key={index}
-                name={`image-${index}`}
+                name={`image ${index}`}
               />
             ))
           }
@@ -182,6 +184,10 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
         <H3>
           {subtitles.additional[langId]}
         </H3>
+
+        <TextArea 
+          name="additional details"
+        />
 
         <H3>
           {subtitles.contact[langId]}

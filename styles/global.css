@@ -28,3 +28,7 @@ body {
     background: rgb(246,215,216);
     background: linear-gradient(135deg, rgba(246, 215, 216, 0.8) 0%, rgba(255,251,243,0) 85%);
 }
+
+*:focus {
+    outline: none;
+}
