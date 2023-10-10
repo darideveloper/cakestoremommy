@@ -1,12 +1,16 @@
-import { titleFont, regularFont } from '@/lib/fonts'
 
 import propTypes from 'prop-types'
+
+import { titleFont, regularFont } from '@/lib/fonts'
 
 import OrderSummaryCard from '@/components/order-summary-card'
 import H3 from '@/components/h3'
 import ImageInput from '@/components/imageInput'
 import TextArea from '@/components/textArea'
 import Input from '@/components/input'
+import RadioButton from '@/components/radioButton'
+
+import { useState } from 'react'
 
 export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorCategory, fillingId, fillingCategory, frostingId, frostingCategory, diameter, layersId, flavorOptions, sizeOptions, subtitles, changeStatus, setInitialFlavorStatus, setIsEditing, inputs }) {
 
@@ -20,6 +24,8 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
 
   const layersBaseText = sizeOptions[layersId - 1].layers[langId]
   const layersText = langId === 0 ? `${layersBaseText} Cake` : `Pastel de ${layersBaseText}`
+
+  const [orderType, setOrderType] = useState("pickUp")
 
   return (
     <section className={`
@@ -194,7 +200,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
           {subtitles.contact[langId]}
         </H3>
 
-        <div 
+        <div
           className={`
             contacts
             grid grid-cols-1 sm:grid-cols-2
@@ -231,13 +237,97 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
           {subtitles.orderType[langId]}
         </H3>
 
-        <H3>
-          {subtitles.pickUp[langId]}
-        </H3>
+        <RadioButton
+          name="order type"
+          value={inputs.pickUp[langId]}
+          onChange={() => setOrderType("pickUp")}
+          checked={orderType === "pickUp"}
+        />
+
+        <RadioButton
+          name="order type"
+          value={inputs.delivery[langId]}
+          onChange={() => setOrderType("delivery")}
+          checked={orderType === "delivery"}
+        />
+
+        {
+          orderType === "delivery"
+          &&
+          <div 
+            className={`
+              delivery-info
+              flex 
+              flex-col md:flex-row
+              items-center 
+              justify-center
+              md:gap-5
+            `}
+          >
+            <Input
+              type="text"
+              name="delivery address"
+              placeholder={inputs.deliveryAddress[langId]}
+              className={`
+                md:w-full
+              `}
+            />
+            <Input
+              type="text"
+              name="delivery city"
+              placeholder={inputs.deliveryCity[langId]}
+              className={`
+                md:w-1/2
+              `}
+            />
+            <Input
+              type="text"
+              name="delivery zip code"
+              placeholder={inputs.deliveryZipCode[langId]}
+              className={`
+                md:w-1/2
+              `}
+            />
+          </div>
+        }
 
         <H3>
-          {subtitles.delivery[langId]}
+          {
+            orderType === "pickUp"
+              ?
+              subtitles.pickUp[langId]
+              :
+              subtitles.delivery[langId]
+          }
         </H3>
+
+        <div 
+          className={`
+            detatime
+            flex
+            flex-col md:flex-row
+            items-center
+            justify-center
+            md:gap-5
+          `}>
+          <Input 
+            type="date"
+            name="date"
+            placeholder={inputs.date[langId]}
+            className={`
+              md:w-1/2
+            `}
+          />
+          <Input 
+            type="time"
+            name="time"
+            placeholder={inputs.time[langId]}
+            className={`
+              md:w-1/2
+            `}
+          />
+        </div>
+
       </form>
 
     </section>

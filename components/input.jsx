@@ -1,4 +1,4 @@
-export default function Input ({name, placeholder, type, required=true}) {
+export default function Input ({name, placeholder, type, required=true, className=""}) {
   return (
     <input
       className={`
@@ -15,6 +15,7 @@ export default function Input ({name, placeholder, type, required=true}) {
         w-full
         hover:shadow-md
         focus:border-4
+        ${className}
       `}
       name={name}
       placeholder={placeholder}

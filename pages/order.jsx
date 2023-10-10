@@ -362,6 +362,13 @@ export async function getStaticProps() {
         "lastName": ["Last Name", "Apellido"],
         "phone": ["Phone Number", "Número de teléfono"],
         "email": ["Email Address", "Correo electrónico"],
+        "pickUp": ["Pick Up", "Recoger"],
+        "delivery": ["Delivery", "Entrega"],
+        "deliveryAddress": ["Address", "Dirección"],
+        "deliveryCity": ["City", "Ciudad"],
+        "deliveryZipCode": ["Zip Code", "Código postal"],
+        "date": ["Select Date", "Elige la fecha"],
+        "time": ["Select Time", "Elige la hora"],
       }
     }
   }
