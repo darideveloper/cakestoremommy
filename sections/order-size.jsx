@@ -10,6 +10,9 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
 
   const [isLoading, setIsLoading] = useState(true)
 
+  const currentLayers = sizesData[layers - 1].layers
+  const currentDiameter = sizesData[layers - 1].diameters[diameter - 1]
+
   // Formmat dropdown options
   const layersOptions = sizesData.map((layer, index) => ({
     name: layer.layers[langId],
@@ -89,10 +92,11 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
             setIsLoading(true)
             setTimeout(() => {
               setLayers(value)
-              setDiameter(0)
+              setDiameter(1)
             }, 200)
           }}
           disabled={isLoading}
+          displayValue={currentLayers && currentLayers[langId]}
         />
 
         <DropDown
@@ -101,6 +105,7 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
           value={diameter}
           onChange={(value) => setDiameter(value)}
           disabled={isLoading}
+          displayValue={currentDiameter && currentDiameter[langId]}
         />
 
       </div>

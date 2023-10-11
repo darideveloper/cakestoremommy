@@ -5,30 +5,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
 
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #fffbf3;
-    scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  background-color: #fffbf3;
+  scroll-behavior: smooth;
 }
 
 .splide__pagination__page.is-active {
-    background-color: #f6d7d8 !important;
+  background-color: #f6d7d8 !important;
 }
 
 .debug {
-    border: 1px solid red;
+  border: 1px solid red;
 }
 
 .hero-gif {
-    width: 130%;
-    margin-left: -15%;
+  width: 130%;
+  margin-left: -15%;
 }
 
 .header-gradiant {
-    background: rgb(246,215,216);
-    background: linear-gradient(135deg, rgba(246, 215, 216, 0.8) 0%, rgba(255,251,243,0) 85%);
+  background: rgb(246, 215, 216);
+  background: linear-gradient(
+    135deg,
+    rgba(246, 215, 216, 0.8) 0%,
+    rgba(255, 251, 243, 0) 85%
+  );
 }
 
 *:focus {
-    outline: none;
+  outline: none;
+}
+
+select::after {
+  content: '\25BC'; /* Unicode for a down arrow */
+  position: absolute;
+  top: 50%;
+  right: 4px; /* Adjust the position as needed */
+  transform: translateY(-50%);
+  font-size: 20px; /* Adjust the size as needed */
+  color: #007bff; /* Arrow color */
 }

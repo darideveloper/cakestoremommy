@@ -21,7 +21,7 @@ export default function Order({ data }) {
   const { lang } = useContext(LangContext)
   const langId = langs.indexOf(lang)
 
-  const [statusName, setStatusName] = useState("finalize")
+  const [statusName, setStatusName] = useState("size")
   const [isLoading, setIsLoading] = useState(false)
   const [layersId, setLayersId] = useState(1)
   const [diameterId, setDiameterId] = useState(1)
@@ -96,33 +96,34 @@ export default function Order({ data }) {
   } else if (statusName === "finalize") {
     currentScreen = (
       <OrderFinalize 
-        // title={data.finalize.title[langId]}
-        // langId={langId}
-        // cakeFlavorId={cakeFlavorId}
-        // cakeFlavorCategory={cakeFlavorCategory}
-        // fillingId={fillingId}
-        // fillingCategory={fillingCategory}
-        // frostingId={frostingId}
-        // frostingCategory={frostingCategory}
-        // diameter={data.size.options[layersId-1].diameters[diameterId-1][langId]}
-        // layersId={layersId}
-        // flavorOptions={data.flavors.options}
-        // sizeOptions={data.size.options}
-        // subtitles={data.finalize.subtitles}
-
         title={data.finalize.title[langId]}
         langId={langId}
-        cakeFlavorId={1}
-        cakeFlavorCategory={"basic"}
-        fillingId={1}
-        fillingCategory={"basic"}
-        frostingId={1}
-        frostingCategory={"basic"}
-        diameter={data.size.options[0].diameters[diameterId-1][langId]}
-        layersId={1}
+        cakeFlavorId={cakeFlavorId}
+        cakeFlavorCategory={cakeFlavorCategory}
+        fillingId={fillingId}
+        fillingCategory={fillingCategory}
+        frostingId={frostingId}
+        frostingCategory={frostingCategory}
+        diameter={data.size.options[layersId-1].diameters[diameterId-1][langId]}
+        layersId={layersId}
         flavorOptions={data.flavors.options}
         sizeOptions={data.size.options}
         subtitles={data.finalize.subtitles}
+
+        // Sample data 
+        // title={data.finalize.title[langId]}
+        // langId={langId}
+        // cakeFlavorId={1}
+        // cakeFlavorCategory={"basic"}
+        // fillingId={1}
+        // fillingCategory={"basic"}
+        // frostingId={1}
+        // frostingCategory={"basic"}
+        // diameter={data.size.options[0].diameters[diameterId-1][langId]}
+        // layersId={1}
+        // flavorOptions={data.flavors.options}
+        // sizeOptions={data.size.options}
+        // subtitles={data.finalize.subtitles}
 
         changeStatus={changeStatus}
         setInitialFlavorStatus={setInitialFlavorStatus}
@@ -343,7 +344,7 @@ export async function getStaticProps() {
         }
       }
     },
-    "finalize": {
+    "finalize": { 
       "title": ["Order Details", "Detalles del pedido"],
       "subtitles": {
         "size": ["Size", "Tamaño"],
