@@ -162,7 +162,7 @@ export default function Order({ data }) {
           {/* Loading modal */}
           <Loading
             isVisible={isLoading}
-            bgColor="bg-yellow"
+            bgColor="bg-white"
             extraClasses="z-20 items-start pt-10"
           />
 
