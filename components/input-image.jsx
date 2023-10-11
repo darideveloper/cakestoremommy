@@ -4,7 +4,7 @@ import Image from "next/image"
 import { useContext } from "react"
 import { LangContext } from "@/context/lang"
 
-export default function ImageInput({ name, onChange }) {
+export default function InputImage({ name, onChange }) {
 
   const [imageSrc, setImageSrc] = useState(null)
 

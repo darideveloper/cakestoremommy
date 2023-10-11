@@ -5,10 +5,10 @@ import { titleFont, regularFont } from '@/lib/fonts'
 
 import OrderSummaryCard from '@/components/order-summary-card'
 import H3 from '@/components/h3'
-import ImageInput from '@/components/imageInput'
+import ImageInput from '@/components/input-image'
 import TextArea from '@/components/textArea'
 import Input from '@/components/input'
-import RadioButton from '@/components/radioButton'
+import RadioButton from '@/components/radio-button'
 
 import { useState } from 'react'
 
