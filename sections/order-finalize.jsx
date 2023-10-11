@@ -3,6 +3,9 @@ import propTypes from 'prop-types'
 
 import { titleFont, regularFont } from '@/lib/fonts'
 
+import Link from 'next/link'
+import Image from 'next/image'
+import Cta from '@/components/cta'
 import OrderSummaryCard from '@/components/order-summary-card'
 import H3 from '@/components/h3'
 import InputImage from '@/components/input-image'
@@ -12,7 +15,7 @@ import InputRadio from '@/components/input-radio'
 
 import { useState } from 'react'
 
-export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorCategory, fillingId, fillingCategory, frostingId, frostingCategory, diameter, layersId, flavorOptions, sizeOptions, subtitles, changeStatus, setInitialFlavorStatus, setIsEditing, inputs }) {
+export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorCategory, fillingId, fillingCategory, frostingId, frostingCategory, diameter, layersId, flavorOptions, sizeOptions, subtitles, changeStatus, setInitialFlavorStatus, setIsEditing, inputs, faqTextBefore, faqLink, faqTextAfter }) {
 
   const cakeFlavor = flavorOptions.CakeFlavor.options[cakeFlavorCategory].options[cakeFlavorId]
   const filling = flavorOptions.Filling.options[fillingCategory].options[fillingId]
@@ -32,6 +35,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
       finalize
       text-brown
       px-2
+      mb-20
     `}>
       <h2
         className={`
@@ -254,7 +258,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
         {
           orderType === "delivery"
           &&
-          <div 
+          <div
             className={`
               delivery-info
               flex 
@@ -301,7 +305,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
           }
         </H3>
 
-        <div 
+        <div
           className={`
             detatime
             flex
@@ -310,7 +314,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
             justify-center
             md:gap-5
           `}>
-          <Input 
+          <Input
             type="date"
             name="date"
             placeholder={inputs.date[langId]}
@@ -318,7 +322,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
               md:w-1/2
             `}
           />
-          <Input 
+          <Input
             type="time"
             name="time"
             placeholder={inputs.time[langId]}
@@ -327,6 +331,51 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
             `}
           />
         </div>
+
+        {/* Bottom text */}
+        <p
+          className={`
+            bg-pink
+            w-11/12
+            p-4
+            rounded-xl
+            mx-auto
+            m-10
+            relative
+          `}
+        >
+          {faqTextBefore} <Link href="/#faqs" className='font-bold'>{faqLink}</Link> {faqTextAfter} 
+
+          <Image 
+            src="/images/order/button-decorator.svg"
+            alt="Button decorator"
+            width={100}
+            height={20}
+            className={`
+              absolute
+              w-11/12
+              max-w-xs
+              -mb-16
+              left-0
+              bottom-0
+              -z-10
+              transform 
+              scale-y-75
+              md:opacity-0
+            `}
+          />
+        </p>
+      
+      <Input 
+        name="submit"
+        type="submit"
+        value={inputs.submit[langId]}
+        className={`
+          mt-20 md:mt-0
+          max-w-sm
+          mx-auto
+        `}
+      />
 
       </form>
 

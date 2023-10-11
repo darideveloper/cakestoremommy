@@ -3,6 +3,7 @@ import { titleFont } from '@/lib/fonts'
 import { useState } from 'react'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import DropDown from '@/components/drop-down'
 import Button from '@/components/button'
 
@@ -126,7 +127,7 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
           `}
         >
 
-          {faqText} <a href="/#faqs" className='font-bold'>{faqLink}</a>
+          {faqText} <Link href="/#faqs" className='font-bold'>{faqLink}</Link>
         </p>
 
         <div className={`

@@ -1,4 +1,4 @@
-export default function Input ({name, placeholder, type, required=true, className=""}) {
+export default function Input({ name, placeholder, type, value, className, required = true}) {
   return (
     <input
       className={`
@@ -9,7 +9,18 @@ export default function Input ({name, placeholder, type, required=true, classNam
         rounded-2xl
         flex items-center justify-center
         gap-2
-        bg-white
+        ${['button', 'submit'].includes(type)
+          ?
+          'bg-pink text-brown font-bold'
+          :
+          'bg-white text-brown'
+        }
+        ${['button', 'submit'].includes(type) 
+          && 
+          `hover:bg-transparent
+          hover:-translate-y-2
+          cursor-pointer`
+        }
         my-4 md:my-0
         text-md
         w-full
@@ -20,8 +31,9 @@ export default function Input ({name, placeholder, type, required=true, classNam
       `}
       name={name}
       placeholder={placeholder}
+      value={value}
       type={type}
       required={required}
     />
-  )  
+  )
 }

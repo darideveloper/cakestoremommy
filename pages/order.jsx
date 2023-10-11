@@ -21,7 +21,7 @@ export default function Order({ data }) {
   const { lang } = useContext(LangContext)
   const langId = langs.indexOf(lang)
 
-  const [statusName, setStatusName] = useState("size")
+  const [statusName, setStatusName] = useState("finalize")
   const [isLoading, setIsLoading] = useState(false)
   const [layersId, setLayersId] = useState(1)
   const [diameterId, setDiameterId] = useState(1)
@@ -44,7 +44,7 @@ export default function Order({ data }) {
     }, 1000)
   }, [statusName, isLoading])
 
-  function changeStatus (status) {
+  function changeStatus(status) {
     setIsLoading(true)
     setTimeout(() => {
       setStatusName(status)
@@ -72,7 +72,7 @@ export default function Order({ data }) {
     )
   } else if (statusName === "flavors") {
     currentScreen = (
-      <OrderFlavors 
+      <OrderFlavors
         title={data.flavors.title[langId]}
         langId={langId}
         options={data.flavors.options}
@@ -95,40 +95,43 @@ export default function Order({ data }) {
     )
   } else if (statusName === "finalize") {
     currentScreen = (
-      <OrderFinalize 
-        title={data.finalize.title[langId]}
-        langId={langId}
-        cakeFlavorId={cakeFlavorId}
-        cakeFlavorCategory={cakeFlavorCategory}
-        fillingId={fillingId}
-        fillingCategory={fillingCategory}
-        frostingId={frostingId}
-        frostingCategory={frostingCategory}
-        diameter={data.size.options[layersId-1].diameters[diameterId-1][langId]}
-        layersId={layersId}
-        flavorOptions={data.flavors.options}
-        sizeOptions={data.size.options}
-        subtitles={data.finalize.subtitles}
-
-        // Sample data 
+      <OrderFinalize
         // title={data.finalize.title[langId]}
         // langId={langId}
-        // cakeFlavorId={1}
-        // cakeFlavorCategory={"basic"}
-        // fillingId={1}
-        // fillingCategory={"basic"}
-        // frostingId={1}
-        // frostingCategory={"basic"}
-        // diameter={data.size.options[0].diameters[diameterId-1][langId]}
-        // layersId={1}
+        // cakeFlavorId={cakeFlavorId}
+        // cakeFlavorCategory={cakeFlavorCategory}
+        // fillingId={fillingId}
+        // fillingCategory={fillingCategory}
+        // frostingId={frostingId}
+        // frostingCategory={frostingCategory}
+        // diameter={data.size.options[layersId - 1].diameters[diameterId - 1][langId]}
+        // layersId={layersId}
         // flavorOptions={data.flavors.options}
         // sizeOptions={data.size.options}
         // subtitles={data.finalize.subtitles}
+
+        // Sample data 
+        title={data.finalize.title[langId]}
+        langId={langId}
+        cakeFlavorId={1}
+        cakeFlavorCategory={"basic"}
+        fillingId={1}
+        fillingCategory={"basic"}
+        frostingId={1}
+        frostingCategory={"basic"}
+        diameter={data.size.options[0].diameters[diameterId-1][langId]}
+        layersId={1}
+        flavorOptions={data.flavors.options}
+        sizeOptions={data.size.options}
+        subtitles={data.finalize.subtitles}
 
         changeStatus={changeStatus}
         setInitialFlavorStatus={setInitialFlavorStatus}
         setIsEditing={setIsEditing}
         inputs={data.finalize.inputs}
+        faqTextBefore={data.finalize.faqTextBefore[langId]}
+        faqLink={data.finalize.faqLink[langId]}
+        faqTextAfter={data.finalize.faqTextAfter[langId]}
       />
     )
   }
@@ -170,7 +173,7 @@ export default function Order({ data }) {
           <OrderExit />
 
           {currentScreen}
-          
+
         </div>
       </div>
 
@@ -344,7 +347,7 @@ export async function getStaticProps() {
         }
       }
     },
-    "finalize": { 
+    "finalize": {
       "title": ["Order Details", "Detalles del pedido"],
       "subtitles": {
         "size": ["Size", "Tamaño"],
@@ -370,7 +373,15 @@ export async function getStaticProps() {
         "deliveryZipCode": ["Zip Code", "Código postal"],
         "date": ["Select Date", "Elige la fecha"],
         "time": ["Select Time", "Elige la hora"],
-      }
+        "submit": ["Place Order", "Realizar pedido"],
+      },
+      "faqTextBefore": [
+        "We will contact you with a price after reviewing the information provided. <br> To begin your order, we kindly request a 50% deposit. The remaining balance is due on the delivery date. If you need tor reschedule your order, please do so at least 72 hours in advance. For more details on our policies, please refer to our FAQ section.", 
+        "Nos pondremos en contacto contigo con un precio después de revisar la información proporcionada. <br> Para comenzar tu pedido, solicitamos un depósito del 50%. El saldo restante se debe en la fecha de entrega. Si necesitas reprogramar tu pedido, hazlo al menos 72 horas antes. Para obtener más detalles sobre nuestras políticas, consulta nuestra sección de preguntas frecuentes."
+      ],
+      "faqLink": ["Click here", "Haz click aquí"],
+      "faqTextAfter": ["to larn more", "para obtener más información"],
+
     }
   }
 
