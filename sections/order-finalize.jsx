@@ -5,7 +5,6 @@ import { titleFont, regularFont } from '@/lib/fonts'
 
 import Link from 'next/link'
 import Image from 'next/image'
-import Cta from '@/components/cta'
 import OrderSummaryCard from '@/components/order-summary-card'
 import H3 from '@/components/h3'
 import InputImage from '@/components/input-image'
