@@ -4,7 +4,7 @@ import Image from "next/image"
 import { useContext } from "react"
 import { LangContext } from "@/context/lang"
 
-export default function InputImage({ name, onChange }) {
+export default function InputImage({ name, onChange, required = false }) {
 
   const [imageSrc, setImageSrc] = useState(null)
 
@@ -26,8 +26,8 @@ export default function InputImage({ name, onChange }) {
           text-md
           hover:shadow-md
           duration-200
+          relative
         `}
-        htmlFor={name}
       >
 
         {/* Content before image */}
@@ -35,7 +35,7 @@ export default function InputImage({ name, onChange }) {
           imageSrc
             ?
             (
-              <Image 
+              <Image
                 src={imageSrc}
                 width={200}
                 height={200}
@@ -63,18 +63,24 @@ export default function InputImage({ name, onChange }) {
             )
 
         }
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => {
+            setImageSrc(URL.createObjectURL(e.target.files[0]))
+            onChange && onChange(e)
+          }}
+          className={`
+            opacity-0
+            absolute
+            top-1/2
+            left-0
+            w-full
+          `}
+          id={name}
+          required={required}
+        />
       </label>
-      <input
-        type="file"
-        accept="image/*"
-        onChange={(e) => {
-          setImageSrc(URL.createObjectURL(e.target.files[0]))
-        }}
-        className={`
-          hidden
-        `}
-        id={name}
-      />
     </>
   )
 }

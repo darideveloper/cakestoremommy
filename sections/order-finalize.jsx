@@ -183,10 +183,11 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
           `}
         >
           {
-            [1, 2, 3].map((item, index) => (
+            [1, 2, 3].map(index => (
               <InputImage
                 key={index}
                 name={`image ${index}`}
+                required={index == 1 ? true : false}
               />
             ))
           }
