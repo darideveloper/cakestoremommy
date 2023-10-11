@@ -1,4 +1,4 @@
-export default function RadioButton ({name, value, onChange, checked}) {
+export default function InputRadio ({name, value, onChange, checked}) {
   return (
     <>
       <label 
@@ -8,6 +8,10 @@ export default function RadioButton ({name, value, onChange, checked}) {
           gap-2
           my-4
           ml-4
+          hover:ml-6
+          cursor-pointer
+          duration-200
+
         `}
       >
         <span

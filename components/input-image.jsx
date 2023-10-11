@@ -25,6 +25,7 @@ export default function InputImage({ name, onChange }) {
           m-4
           text-md
           hover:shadow-md
+          duration-200
         `}
         htmlFor={name}
       >

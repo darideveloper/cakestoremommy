@@ -15,6 +15,7 @@ export default function TextArea ({name}) {
         w-full
         h-32
         hover:shadow-md
+        duration-200
         focus:border-4
       `}
       name={name}

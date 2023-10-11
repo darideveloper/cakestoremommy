@@ -14,6 +14,7 @@ export default function Input ({name, placeholder, type, required=true, classNam
         text-md
         w-full
         hover:shadow-md
+        duration-200
         focus:border-4
         ${className}
       `}

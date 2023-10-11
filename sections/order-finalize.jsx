@@ -5,10 +5,10 @@ import { titleFont, regularFont } from '@/lib/fonts'
 
 import OrderSummaryCard from '@/components/order-summary-card'
 import H3 from '@/components/h3'
-import ImageInput from '@/components/input-image'
+import InputImage from '@/components/input-image'
 import TextArea from '@/components/textArea'
 import Input from '@/components/input'
-import RadioButton from '@/components/radio-button'
+import InputRadio from '@/components/input-radio'
 
 import { useState } from 'react'
 
@@ -180,7 +180,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
         >
           {
             [1, 2, 3].map((item, index) => (
-              <ImageInput
+              <InputImage
                 key={index}
                 name={`image ${index}`}
               />
@@ -237,14 +237,14 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
           {subtitles.orderType[langId]}
         </H3>
 
-        <RadioButton
+        <InputRadio
           name="order type"
           value={inputs.pickUp[langId]}
           onChange={() => setOrderType("pickUp")}
           checked={orderType === "pickUp"}
         />
 
-        <RadioButton
+        <InputRadio
           name="order type"
           value={inputs.delivery[langId]}
           onChange={() => setOrderType("delivery")}
