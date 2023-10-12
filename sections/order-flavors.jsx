@@ -26,6 +26,11 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
 
   // Detect when flavorStatus changes
   useEffect(() => {
+    // Go to top smoothly
+    if (flavorStatus != "CakeFlavor") {
+      window.scrollTo({ top: 100, behavior: "smooth" })
+    }
+
     // Hide loading after 1 second
     setTimeout(() => {
       if (isLoading) {

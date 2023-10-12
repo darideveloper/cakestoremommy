@@ -36,6 +36,9 @@ export default function Order({ data }) {
 
   // Detect when statusName changes
   useEffect(() => {
+    // Go to top smoothly
+    window.scrollTo({ top: 100, behavior: "smooth" })
+
     // Hide loading after 1 second
     setTimeout(() => {
       if (isLoading) {
