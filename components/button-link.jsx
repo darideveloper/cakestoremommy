@@ -17,7 +17,6 @@ export default function ButtonLink({ content, href, type, iconPath, extraClasses
         button-wrapper inline-block
         ${sizeWrapper}
       `}
-      data-aos="fade-up"
     >
       <Link
         href={href}

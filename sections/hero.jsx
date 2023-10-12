@@ -97,6 +97,9 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts=[] }) {
             flex items-center justify-center
             -mt-60
             mb-28 xs:mb-0
+            sticky
+            bottom-10
+            
           `}>
             <ButtonLink
               href="/order"
@@ -104,6 +107,7 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts=[] }) {
               type="primary"
               iconPath={arrowIcon}
               extraClasses={`
+                backdrop-filter backdrop-blur-2xl
               `}
             />
           </div>
