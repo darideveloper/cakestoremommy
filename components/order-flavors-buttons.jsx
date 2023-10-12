@@ -1,7 +1,9 @@
 import propTypes from 'prop-types'
 import Image from 'next/image'
 
-export default function OrderFlavorButtons ({langId, options, status, onClick, flavorsAllStatus, isLoading}) {
+export default function OrderFlavorButtons ({langId, options, status, onClick, flavorsAllStatus, isLoading, cakeFlavor, filling, frosting}) {
+
+  console.log ({cakeFlavor, filling, frosting, options, status})
     
   return (
     <div className={`
@@ -14,7 +16,7 @@ export default function OrderFlavorButtons ({langId, options, status, onClick, f
       gap-4
       mt-4
       mb-10
-      w-40 xs:w-full
+      w-full
     `}>
       {flavorsAllStatus.map(( option, index) => (
         <button
@@ -33,7 +35,32 @@ export default function OrderFlavorButtons ({langId, options, status, onClick, f
           // onClick={() => {onClick(option)}}
           disabled={status === option || isLoading}
         >
+          
           {options[option].names[langId]}
+
+          {/* Show selected value, if exists */}
+          {
+            option === 'CakeFlavor' && cakeFlavor != 0 && (
+              <span className="font-bold">
+                {`: ${cakeFlavor}`}
+              </span>
+            )
+          }
+          {
+            option === 'Filling' && filling != 0 && (
+              <span className="font-bold">
+                {`: ${filling}`}
+              </span>
+            )
+          }
+          {
+            option === 'Frosting' && frosting != 0 && (
+              <span className="font-bold">
+                {`: ${frosting}`}
+              </span>
+            )
+          }
+
 
           <Image 
             src="/images/order/button-decorator.svg"
@@ -45,6 +72,7 @@ export default function OrderFlavorButtons ({langId, options, status, onClick, f
               left-1/2
               transform -translate-x-1/2
               w-11/12
+              max-w-5
               duration-200
               ${status == option ? 'opacity-100' : 'opacity-0'}
               -z-10

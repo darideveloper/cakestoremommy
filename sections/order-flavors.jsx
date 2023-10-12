@@ -83,6 +83,9 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
         }}
         flavorsAllStatus={flavorsAllStatus}
         isLoading={isLoading}
+        cakeFlavor={cakeFlavorCategory && options.CakeFlavor.options[cakeFlavorCategory].options[cakeFlavor][langId]}
+        filling={fillingCategory && options.Filling.options[fillingCategory].options[filling][langId]}
+        frosting={frostingCategory && options.Frosting.options[frostingCategory].options[frosting][langId]}
       />
 
       {/* Flavor cards */}
