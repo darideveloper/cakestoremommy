@@ -10,6 +10,7 @@ export default function OrderFlavorButtons ({langId, options, status, onClick, f
       flavors-buttons
       flex 
       flex-col xs:flex-row
+      flex-wrap
       justify-center 
       items-center 
       mx-auto
@@ -17,6 +18,7 @@ export default function OrderFlavorButtons ({langId, options, status, onClick, f
       mt-4
       mb-10
       w-full
+      md:max-w-md lg:max-w-2xl
     `}>
       {flavorsAllStatus.map(( option, index) => (
         <button
