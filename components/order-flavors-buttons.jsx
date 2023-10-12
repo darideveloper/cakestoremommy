@@ -21,15 +21,16 @@ export default function OrderFlavorButtons ({langId, options, status, onClick, f
           key={index}
           className={`
             button
-            ${status === option ? 'bg-pink text-brown mb-5 xs:mb-0' : 'bg-transparent text-brown hover:bg-pink-light2'}
+            ${status === option ? 'bg-pink text-brown mb-5 xs:mb-0' : 'bg-transparent text-brown'}
             rounded-full
             px-5 py-2
             duration-200
             relative
             inline
             border-2 border-pink
+            cursor-default
           `}
-          onClick={() => {onClick(option)}}
+          // onClick={() => {onClick(option)}}
           disabled={status === option || isLoading}
         >
           {options[option].names[langId]}
