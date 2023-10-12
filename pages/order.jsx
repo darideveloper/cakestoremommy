@@ -236,7 +236,7 @@ export async function getStaticProps() {
       ]
     },
     "flavors": {
-      "title": ["PICK A CATEGORY", "ESCOGE UNA CATEGORÍA"],
+      "title": ["PICK A ", "ESCOGE UN "],
       "faqText": ['The suggested serving quantity is based on a standard 5” tall cake and may vary depending on the cutting style. For more information, please', 'La cantidad sugerida de porciones se basa en un pastel estándar de 5" de alto y puede variar según el estilo de corte. Para más información, por favor'],
       "faqLink": ["click here", "haz click aquí"],
       "options": {

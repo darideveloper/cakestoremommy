@@ -65,9 +65,11 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
           text-center
           ${titleFont.className}
           my-2
+          uppercase
+          font-bold
         `}
       >
-        {title}
+        {title} {options[flavorStatus].names[langId]}
       </h2>
 
       {/* Flavor category selector */}
