@@ -32,6 +32,7 @@ export default function GalleryImage({ src, category, onClick, extraClasses }) {
         bgColor="bg-pink-light"
         extraClasses="z-10 items-center rounded-xl"
         alternative={true}
+        isRelative={true}
       />
 
       <Image

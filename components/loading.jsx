@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 
 
-export default function Loading({ isVisible = true, bgColor, alternative = false, extraClasses = "" }) {
+export default function Loading({ isVisible = true, bgColor, alternative = false, extraClasses = "", isRelative = false }) {
   
   const [display, setDisplay] = useState("flex")
   const [opacity, setOpacity] = useState("opacity-100")
@@ -44,7 +44,7 @@ export default function Loading({ isVisible = true, bgColor, alternative = false
         height={30}
         alt="loading spinner"
         className={`
-          w-32 h-32
+          ${isRelative ? 'w-1/2 h-auto' : 'w-32 h-32'}
           animate-spin
         `}
         priority={true}
