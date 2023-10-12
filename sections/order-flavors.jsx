@@ -6,9 +6,11 @@ import { useState, useEffect } from 'react'
 import Loading from '@/components/loading'
 import OrderFlavorButtons from '@/components/order-flavors-buttons'
 import OrderFlavorCard from '@/components/order-flavor-card'
-import Button from '../components/button'
+import Button from '@/components/button'
 
 export default function OrderFlavors({ title, langId, options, cakeFlavor, setCakeFlavor, cakeFlavorCategory, setCakeFlavorCategory, filling, setFilling, fillingCategory, setFillingCategory, frosting, frostingCategory, setFrosting, setFrostingCategory, changeStatus, initialFlavorStatus = null, isEditing }) {
+
+  console.log ({isEditing})
 
   const flavorsAllStatus = Object.keys(options)
   const [flavorStatus, setFlavorStatus] = useState(initialFlavorStatus ? initialFlavorStatus : flavorsAllStatus[0])
@@ -159,8 +161,7 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
                     // Save frosting
                     if (flavorStatus === "Frosting") {
                       setFrosting(flavorIndex)
-                      setFrostingCategory(category)
-
+                      setFrostingCategory(category) 
                     }
 
                     if (isEditing) {
@@ -173,10 +174,13 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
                       // Get next id
                       const nextFlavorStatusIndex = flavorsAllStatus.indexOf(flavorStatus) + 1
 
-                      // Move to next step
                       if (nextFlavorStatusIndex < flavorsAllStatus.length) {
+                        // Move to next step
                         const nextFlavorStatus = flavorsAllStatus[nextFlavorStatusIndex]
                         setFlavorStatus(nextFlavorStatus)
+                      } else {
+                        // Move to next section
+                        changeStatus("finalize")
                       }
 
                     }, 100)
@@ -192,26 +196,6 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
           </div>
         ))}
       </div>
-
-      {/* Next sextion button */}
-      {!isEditing && (
-        <div
-          className={`
-          button-wrapper
-          w-full
-          flex justify-center items-center
-          mb-10
-        `}>
-          <Button
-            text={langId === 0 ? "FINALIZE" : "FINALIZAR"}
-            onClick={() => { changeStatus("finalize") }}
-            extraClasses={`
-            ${isLoading || areFlavorsMissing ? 'opacity-0' : ''}
-          `}
-            disabled={isLoading || areFlavorsMissing}
-          />
-        </div>
-      )}
 
     </section>
   )
