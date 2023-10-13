@@ -1,4 +1,4 @@
-export default function Input({ name, placeholder, type, value, className, required = true}) {
+export default function Input({ name, placeholder, type, value, className, required = true, onChange}) {
   return (
     <input
       className={`
@@ -34,6 +34,7 @@ export default function Input({ name, placeholder, type, value, className, requi
       value={value}
       type={type}
       required={required}
+      onChange={onChange}
     />
   )
 }

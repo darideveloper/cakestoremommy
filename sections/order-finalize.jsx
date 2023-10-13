@@ -11,6 +11,7 @@ import InputImage from '@/components/input-image'
 import TextArea from '@/components/textArea'
 import Input from '@/components/input'
 import InputRadio from '@/components/input-radio'
+import Loading from '@/components/loading'
 
 import { useState } from 'react'
 
@@ -28,14 +29,53 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
   const layersText = langId === 0 ? `${layersBaseText} Cake` : `Pastel de ${layersBaseText}`
 
   const [orderType, setOrderType] = useState("pickUp")
+  const [clientName, setClientName] = useState("")
+  const [clientLastName, setClientLastName] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  function handleSubmit(e) {
+    e.preventDefault()
+
+    // Show loading 
+    setIsSubmitting(true)
+
+    // Move to top
+    const ViewScroll = document.querySelector(".view-scroll")
+    ViewScroll.scrollTo({ top: 0, behavior: "smooth" })
+
+    // Sinumate submit form and redirect
+    setTimeout(() => {
+
+      // Submit form
+      // e.target.submit()
+
+      // Redirect to tanks page
+      const host = window.location.host
+      const redirect = `http://${host}/thanks`
+
+      // Change currebnt page
+      document.location.href = redirect;
+
+    }, 5000)
+  }
 
   return (
+
+
     <section className={`
-      finalize
-      text-brown
-      px-2
-      mb-20
+    finalize
+    text-brown
+    px-2
+    mb-20
     `}>
+
+      {/* SUbmit loading */}
+      <Loading
+        isVisible={isSubmitting}
+        bgColor="bg-white"
+        extraClasses="z-30 items-start fixed top-0 left-0 right-0 bottom-0"
+      />
+      
       <h2
         className={`
           text-3xl
@@ -167,6 +207,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
           w-full sm:w-3/4
           max-w-4xl
         `}
+        onSubmit={handleSubmit}
       >
         <H3>
           {subtitles.image[langId]}
@@ -215,12 +256,16 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
             type="text"
             name="name"
             placeholder={inputs.name[langId]}
+            value={clientName}
+            onChange={(e) => setClientName(e.target.value)}
           />
 
           <Input
             type="text"
             name="last name"
             placeholder={inputs.lastName[langId]}
+            value={clientLastName}
+            onChange={(e) => setClientLastName(e.target.value)}
           />
 
           <Input
@@ -344,9 +389,9 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
             relative
           `}
         >
-          {faqTextBefore} <Link href="/#faqs" className='font-bold'>{faqLink}</Link> {faqTextAfter} 
+          {faqTextBefore} <Link href="/#faqs" className='font-bold'>{faqLink}</Link> {faqTextAfter}
 
-          <Image 
+          <Image
             src="/images/order/button-decorator.svg"
             alt="Button decorator"
             width={100}
@@ -365,17 +410,23 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
             `}
           />
         </p>
-      
-      <Input 
-        name="submit"
-        type="submit"
-        value={inputs.submit[langId]}
-        className={`
+
+        <Input
+          name="submit"
+          type="submit"
+          value={inputs.submit[langId]}
+          className={`
           mt-20 md:mt-0
           max-w-sm
           mx-auto
         `}
-      />
+        />
+
+        <Input
+          type="hidden"
+          name="subject "
+          value={`New order ${clientName} ${clientLastName}`}
+        />
 
       </form>
 

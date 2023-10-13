@@ -1,6 +1,6 @@
 import PropTypes from "prop-types"
 import { titleFont } from "@/lib/fonts"
-import ContactIcon from "@/components/contact-icon"
+import FollowUs from "@/sections/follow-us"
 import Image from "next/image"
 import Wave from "@/components/wave"
 import Link from "next/link"
@@ -65,31 +65,10 @@ export default function Footer({ title, subtitle, phone, copyright, socialIcons 
               </address>
             </div>
 
-            <div 
-              className="follow-us"
-            >
-              <p className={`
-              ${titleFont.className}
-              text-5xl
-              my-6
-              md:text-2xl md:my-0 md:uppercase md:mb-2
-            `}>{subtitle}</p>
-
-              <div className={`
-              socials
-              flex items-center justify-center gap-5
-            `}>
-                {socialIcons.map((contact, index) => (
-                  <ContactIcon
-                    key={index}
-                    link={contact.link}
-                    icon={contact.icon}
-                    isLink={contact.isLink}
-                    hideDesktop={contact.hideDesktop}
-                  />
-                ))}
-              </div>
-            </div>
+            <FollowUs 
+              subtitle={subtitle}
+              socialIcons={socialIcons}
+            />
           </div>
 
           <small
