@@ -10,7 +10,7 @@ export default function OrderStatus({ currentStatus, allStatus, onChangeStatus, 
       px-0 md:px-2
       bg-pink md:bg-transparent
       w-full md:w-36
-      md:h-screen
+      md:h-full
       md:absolute
       md:top-48 md:left-0
       md:z-30

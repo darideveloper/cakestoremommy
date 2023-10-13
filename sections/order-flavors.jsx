@@ -26,11 +26,14 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
   const activeFlavorId = flavorStatus === "CakeFlavor" ? cakeFlavor : flavorStatus === "Filling" ? filling : frosting
   const activeFlavorCategory = flavorStatus === "CakeFlavor" ? cakeFlavorCategory : flavorStatus === "Filling" ? fillingCategory : frostingCategory
 
+  // Main content wrapoper for custom scroll 
+  
   // Detect when flavorStatus changes
   useEffect(() => {
     // Go to top smoothly
+    const ViewScroll = document.querySelector(".view-scroll")
     if (flavorStatus != "CakeFlavor") {
-      window.scrollTo({ top: 100, behavior: "smooth" })
+      ViewScroll.scrollTo({ top: 100, behavior: "smooth" })
     }
 
     // Hide loading after 1 second

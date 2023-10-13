@@ -34,10 +34,13 @@ export default function Order({ data }) {
   const [initialFlavorStatus, setInitialFlavorStatus] = useState("")
   const [isEditing, setIsEditing] = useState(false)
 
+  // Main content wrapoper for custom scroll 
+  
   // Detect when statusName changes
   useEffect(() => {
     // Go to top smoothly
-    window.scrollTo({ top: 100, behavior: "smooth" })
+    const ViewScroll = document.querySelector(".view-scroll")
+    ViewScroll.scrollTo({ top: 100, behavior: "smooth" })
 
     // Hide loading after 1 second
     setTimeout(() => {
@@ -140,13 +143,14 @@ export default function Order({ data }) {
   }
 
   return (
-    <RootLayout>
+    <RootLayout customScroll={true}>
 
       <div className={`
         content
         flex md:flex-row
         flex-col items-center justify-center
         w-full
+        relative
       `}>
 
         {/* Status bar in top */}

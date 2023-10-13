@@ -46,3 +46,24 @@ select::after {
   font-size: 20px; /* Adjust the size as needed */
   color: #007bff; /* Arrow color */
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fffbf3;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #8b5c4d;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #8b5c4dbd;
+}

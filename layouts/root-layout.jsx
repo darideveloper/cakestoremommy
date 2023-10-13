@@ -8,7 +8,7 @@ import AOS from 'aos'
 import Head from 'next/head'
 import 'aos/dist/aos.css';
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, customScroll = false}) {
   
   // Page data
   const socialIcon = [
@@ -105,6 +105,20 @@ export default function RootLayout({ children }) {
     AOS.init();
   }, [])
   
+  const content = (
+    <>
+      <Header 
+        {...dataLang.Header}
+      />
+      <main className={regularFont.className}>
+        {children}
+      </main>
+      <Footer 
+        {...dataLang.Footer}
+      />
+    </>
+  )
+
   return (
     <>
       <Head>
@@ -113,17 +127,25 @@ export default function RootLayout({ children }) {
         <meta name="author" content={metaLang.author} />
         <meta name="keywords" content={metaLang.keywords} />
       </Head>
-      <div className="mx-auto">
-        <Header 
-          {...dataLang.Header}
-        />
-        <main className={regularFont.className}>
-          {children}
-        </main>
-        <Footer 
-          {...dataLang.Footer}
-        />
-      </div>
+      {
+        customScroll
+        ?
+        <div 
+          className={`
+            view-scroll
+            w-full
+            h-screen
+            overflow-y-scroll
+            mx-auto
+          `}
+        >
+          {content}
+        </div>
+        :
+        <div className="mx-auto">
+          {content}          
+        </div>
+      }
     </>
   )
 }
