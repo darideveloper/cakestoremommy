@@ -17,6 +17,8 @@ import { useState } from 'react'
 
 export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorCategory, fillingId, fillingCategory, frostingId, frostingCategory, diameter, layersId, flavorOptions, sizeOptions, subtitles, changeStatus, setInitialFlavorStatus, setIsEditing, inputs, faqTextBefore, faqLink, faqTextAfter }) {
 
+  console.log (flavorOptions.CakeFlavor.options)
+
   const cakeFlavor = flavorOptions.CakeFlavor.options[cakeFlavorCategory].options[cakeFlavorId]
   const filling = flavorOptions.Filling.options[fillingCategory].options[fillingId]
   const frosting = flavorOptions.Frosting.options[frostingCategory].options[frostingId]

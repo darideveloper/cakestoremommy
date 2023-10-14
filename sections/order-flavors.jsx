@@ -10,8 +10,6 @@ import Button from '@/components/button'
 
 export default function OrderFlavors({ title, langId, options, cakeFlavor, setCakeFlavor, cakeFlavorCategory, setCakeFlavorCategory, filling, setFilling, fillingCategory, setFillingCategory, frosting, frostingCategory, setFrosting, setFrostingCategory, changeStatus, initialFlavorStatus = null, isEditing }) {
 
-  console.log ({isEditing})
-
   const flavorsAllStatus = Object.keys(options)
   const [flavorStatus, setFlavorStatus] = useState(initialFlavorStatus ? initialFlavorStatus : flavorsAllStatus[0])
   const [isLoading, setIsLoading] = useState(true)

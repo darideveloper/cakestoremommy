@@ -2,8 +2,6 @@ import propTypes from 'prop-types'
 import Image from 'next/image'
 
 export default function OrderFlavorButtons ({langId, options, status, onClick, flavorsAllStatus, isLoading, cakeFlavor, filling, frosting}) {
-
-  console.log ({cakeFlavor, filling, frosting, options, status})
     
   return (
     <div className={`
