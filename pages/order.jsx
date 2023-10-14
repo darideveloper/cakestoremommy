@@ -17,9 +17,7 @@ import Loading from "@/components/loading"
 
 export default function Order({ data }) {
 
-  const langs = ["en", "es"]
-  const { lang } = useContext(LangContext)
-  const langId = langs.indexOf(lang)
+  const { langId } = useContext(LangContext)
 
   const [statusName, setStatusName] = useState("finalize")
   const [isLoading, setIsLoading] = useState(false)

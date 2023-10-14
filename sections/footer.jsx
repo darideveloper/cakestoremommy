@@ -67,7 +67,6 @@ export default function Footer({ title, subtitle, phone, copyright, socialIcons 
 
             <FollowUs 
               subtitle={subtitle}
-              socialIcons={socialIcons}
             />
           </div>
 

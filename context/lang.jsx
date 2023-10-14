@@ -1,13 +1,15 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react'
 
-export const LangContext = createContext();
+export const LangContext = createContext()
 
-export function LangContextProvider({children}) {
-  const [lang, setLang] = useState("en");
+export function LangContextProvider({ children }) {
+  const langs = ["en", "es"]
+  const [lang, setLang] = useState("en")
+  const langId = langs.indexOf(lang)
 
   return (
-    <LangContext.Provider value={{ lang, setLang }}>
+    <LangContext.Provider value={{ lang, setLang, langId }}>
       {children}
     </LangContext.Provider>
-  );
+  )
 }
