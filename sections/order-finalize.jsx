@@ -45,16 +45,16 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
 
     // Sinumate submit form and redirect
     setTimeout(() => {
+      
+      // Redirect to tanks page
+      const host = window.location.host
+      const redirect = `http://${host}/thanks?lang=${["en", "es"][langId]}`
+      
+      // Change currebnt page
+      document.location.href = redirect;
 
       // Submit form
       // e.target.submit()
-
-      // Redirect to tanks page
-      const host = window.location.host
-      const redirect = `http://${host}/thanks`
-
-      // Change currebnt page
-      document.location.href = redirect;
 
     }, 5000)
   }

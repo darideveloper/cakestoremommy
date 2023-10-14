@@ -4,15 +4,17 @@ import Link from "next/link"
 import Image from "next/image"
 import FollowUs from "@/sections/follow-us"
 
-import { useContext } from "react"
-import { LangContext } from "@/context/lang"
+import { useSearchParams } from 'next/navigation'
 
 export default function Thanks({back, thanks, orderPlaced, weWillContact}) {
 
-  
-  const { langId } = useContext(LangContext)
-  
-  console.log ({langId, back, thanks, orderPlaced, weWillContact})
+  // Get land param from url (if any)
+  let langId = 0
+  const lang = useSearchParams().get("lang")
+  if (lang) {
+    const langs = ["en", "es"]
+    langId = langs.indexOf(lang)
+  } 
 
   return (
     <>
