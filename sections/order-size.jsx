@@ -90,10 +90,21 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
           options={layersOptions}
           value={layers}
           onChange={(value) => {
+
+            
+            // Update layers
             setIsLoading(true)
             setTimeout(() => {
               setLayers(value)
               setDiameter(1)
+
+              // Move down smooth
+              const ViewScroll = document.querySelector(".view-scroll")
+              ViewScroll.scrollTo({
+                top: 400,
+                behavior: 'smooth'
+              })
+
             }, 200)
           }}
           disabled={isLoading}
