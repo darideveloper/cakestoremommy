@@ -1,8 +1,16 @@
 import propTypes from 'prop-types'
 import Image from 'next/image'
 
-export default function OrderFlavorButtons ({langId, options, status, onClick, flavorsAllStatus, isLoading, cakeFlavor, filling, frosting}) {
-    
+export default function OrderFlavorButtons({ langId, options, status, onClick, flavorsAllStatus, isLoading, cakeFlavor, filling, frosting }) {
+
+  // Format options values
+  const optionsValues = {
+    CakeFlavor: cakeFlavor,
+    Filling: filling,
+    Frosting: frosting
+  }
+
+
   return (
     <div className={`
       flavors-buttons
@@ -18,7 +26,7 @@ export default function OrderFlavorButtons ({langId, options, status, onClick, f
       w-full
       md:max-w-md lg:max-w-2xl
     `}>
-      {flavorsAllStatus.map(( option, index) => (
+      {flavorsAllStatus.map((option, index) => (
         <button
           key={index}
           className={`
@@ -30,12 +38,26 @@ export default function OrderFlavorButtons ({langId, options, status, onClick, f
             relative
             inline
             border-2 border-pink
-            cursor-default
+            ${optionsValues[option] ? 'cursor-pointer hover:-translate-y-1' : 'opacity-50 cursor-default'}
           `}
-          // onClick={() => {onClick(option)}}
-          disabled={status === option || isLoading}
+          onClick={() => {
+            // Go down smooth
+            const ViewScroll = document.querySelector(".view-scroll")
+            ViewScroll.scrollTo({
+              top: 400,
+              behavior: 'smooth'
+            })
+
+            // Detect if option is disabled
+            if (!optionsValues[option]) {
+              return
+            }
+
+            onClick(option)
+          }}
+          disabled={isLoading}
         >
-          
+
           {options[option].names[langId]}
 
           {/* Show selected value, if exists */}

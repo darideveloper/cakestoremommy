@@ -25,7 +25,7 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
   const activeFlavorCategory = flavorStatus === "CakeFlavor" ? cakeFlavorCategory : flavorStatus === "Filling" ? fillingCategory : frostingCategory
 
   // Main content wrapoper for custom scroll 
-  
+
   // Detect when flavorStatus changes
   useEffect(() => {
     // Go to top smoothly
@@ -62,6 +62,31 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
         `}
       />
 
+      {/* Flavor category selector */}
+      <OrderFlavorButtons
+        langId={langId}
+        options={options}
+        status={flavorStatus}
+        onClick={(flavor) => {
+
+          // Detect if flavor is different
+          if (flavorStatus === flavor) {
+            return
+          }
+
+          setIsLoading(true)
+          setTimeout(() => {
+            setFlavorStatus(flavor)
+          }, 100)
+
+        }}
+        flavorsAllStatus={flavorsAllStatus}
+        isLoading={isLoading}
+        cakeFlavor={cakeFlavorCategory && options.CakeFlavor.options[cakeFlavorCategory].options[cakeFlavor][langId]}
+        filling={fillingCategory && options.Filling.options[fillingCategory].options[filling][langId]}
+        frosting={frostingCategory && options.Frosting.options[frostingCategory].options[frosting][langId]}
+      />
+
       <h2
         className={`
           text-3xl
@@ -74,24 +99,6 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
       >
         {title} {options[flavorStatus].names[langId]}
       </h2>
-
-      {/* Flavor category selector */}
-      <OrderFlavorButtons
-        langId={langId}
-        options={options}
-        status={flavorStatus}
-        onClick={(flavor) => {
-          setIsLoading(true)
-          setTimeout(() => {
-            setFlavorStatus(flavor)
-          }, 100)
-        }}
-        flavorsAllStatus={flavorsAllStatus}
-        isLoading={isLoading}
-        cakeFlavor={cakeFlavorCategory && options.CakeFlavor.options[cakeFlavorCategory].options[cakeFlavor][langId]}
-        filling={fillingCategory && options.Filling.options[fillingCategory].options[filling][langId]}
-        frosting={frostingCategory && options.Frosting.options[frostingCategory].options[frosting][langId]}
-      />
 
       {/* Flavor cards */}
       <div
@@ -162,7 +169,7 @@ export default function OrderFlavors({ title, langId, options, cakeFlavor, setCa
                     // Save frosting
                     if (flavorStatus === "Frosting") {
                       setFrosting(flavorIndex)
-                      setFrostingCategory(category) 
+                      setFrostingCategory(category)
                     }
 
                     if (isEditing) {
