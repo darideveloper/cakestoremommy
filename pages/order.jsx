@@ -72,6 +72,7 @@ export default function Order({ data }) {
         faqText={data.flavors.faqText[langId]}
         faqLink={data.flavors.faqLink[langId]}
         isEditing={isEditing}
+        labels={data.size.labels}
       />
     )
   } else if (statusName === "flavors") {
@@ -200,6 +201,10 @@ export async function getStaticProps() {
     "size": {
       "title": ["Size Selection", "Selección de tamaño"],
       "subtitle": ["Pick up a size from below", "Elige un tamaño a contunuación"],
+      "labels": {
+        "layers": ["Select layers", "Elige los pisos"],
+        "diameter": ["Select diameter", "Elige el diámetro"]
+      },
       "options": [
         {
           "layers": ["one layer", "un piso"],

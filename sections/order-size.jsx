@@ -7,7 +7,7 @@ import Link from 'next/link'
 import DropDown from '@/components/drop-down'
 import Button from '@/components/button'
 
-export default function OrderSize({ layers, setLayers, diameter, setDiameter, langId, title, subtitle, sizesData, changeStatus, faqText, faqLink, isEditing }) {
+export default function OrderSize({ layers, setLayers, diameter, setDiameter, langId, title, subtitle, sizesData, changeStatus, faqText, faqLink, isEditing, labels }) {
 
   const [isLoading, setIsLoading] = useState(true)
 
@@ -109,6 +109,7 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
           }}
           disabled={isLoading}
           displayValue={currentLayers && currentLayers[langId]}
+          labelText={labels.layers[langId]}
         />
 
         <DropDown
@@ -118,6 +119,7 @@ export default function OrderSize({ layers, setLayers, diameter, setDiameter, la
           onChange={(value) => setDiameter(value)}
           disabled={isLoading}
           displayValue={currentDiameter && currentDiameter[langId]}
+          labelText={labels.diameter[langId]}
         />
 
       </div>

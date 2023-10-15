@@ -1,6 +1,4 @@
-import propTypes from 'prop-types'
-
-export default function DropDown({ name, value, onChange, options, disabled, displayValue }) {
+export default function DropDown({ name, value, onChange, options, disabled, displayValue, labelText }) {
 
   return (
     <label
@@ -10,7 +8,7 @@ export default function DropDown({ name, value, onChange, options, disabled, dis
           text-center
           capitalize
           py-3
-          mt-4
+          mt-14
           text-lg
           rounded-xl
           shadow-lg
@@ -21,8 +19,26 @@ export default function DropDown({ name, value, onChange, options, disabled, dis
           relative
         `}
     >
+      <p
+        className={`
+          absolute
+          -top-8
+          left-0
+          w-full
+          text-center
+          text-md
+          opacity-60
+        `}
+      >
+        {labelText}
+      </p>
+
       {/* Visble text */}
-      <span>
+      <span
+        className={`
+          lowercase
+        `}
+      >
         {displayValue}
       </span>
 
@@ -71,11 +87,4 @@ export default function DropDown({ name, value, onChange, options, disabled, dis
       </svg>
     </label>
   )
-}
-
-DropDown.propTypes = {
-  name: propTypes.string.isRequired,
-  value: propTypes.number.isRequired,
-  onChange: propTypes.func.isRequired,
-  options: propTypes.array.isRequired,
 }
