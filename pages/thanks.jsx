@@ -6,7 +6,7 @@ import FollowUs from "@/sections/follow-us"
 
 import { useSearchParams } from 'next/navigation'
 
-export default function Thanks({back, thanks, orderPlaced, weWillContact}) {
+export default function Thanks({back, thanks, orderPlaced, weWillContact, follow}) {
 
   // Get land param from url (if any)
   let langId = 0
@@ -150,7 +150,7 @@ export default function Thanks({back, thanks, orderPlaced, weWillContact}) {
           `}
         >
           <FollowUs
-            subtitle={"Follow Us"}
+            subtitle={follow[langId]}
             iconsColor={"brown"}
             iconsSmall={true}
           />
@@ -169,6 +169,7 @@ export async function getStaticProps() {
       thanks: ["Thanks You!", "¡Gracias!"],
       orderPlaced: ["Your order has been placed.", "Tu orden ha sido recibida."],
       weWillContact: ["We will contact you soon as possible!", "Nos pondremos en contacto contigo lo antes posible."],
+      follow: ["Follow Us", "Síguenos"],
     }
   }
 }
