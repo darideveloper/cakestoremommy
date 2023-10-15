@@ -78,6 +78,7 @@ export default function InputImage({ name, onChange, required = false }) {
             w-full
           `}
           id={name}
+          name={imageSrc && name}
           required={required}
         />
       </label>

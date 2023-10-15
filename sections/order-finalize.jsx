@@ -1,6 +1,5 @@
 
 import propTypes from 'prop-types'
-
 import { titleFont, regularFont } from '@/lib/fonts'
 
 import Link from 'next/link'
@@ -13,11 +12,9 @@ import Input from '@/components/input'
 import InputRadio from '@/components/input-radio'
 import Loading from '@/components/loading'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorCategory, fillingId, fillingCategory, frostingId, frostingCategory, diameter, layersId, flavorOptions, sizeOptions, subtitles, changeStatus, setInitialFlavorStatus, setIsEditing, inputs, faqTextBefore, faqLink, faqTextAfter }) {
-
-  console.log (flavorOptions.CakeFlavor.options)
 
   const cakeFlavor = flavorOptions.CakeFlavor.options[cakeFlavorCategory].options[cakeFlavorId]
   const filling = flavorOptions.Filling.options[fillingCategory].options[fillingId]
@@ -34,6 +31,13 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
   const [clientName, setClientName] = useState("")
   const [clientLastName, setClientLastName] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [redirect, setRedirect] = useState(`http://${window.location.host}/thanks?lang=${["en", "es"][langId]}`)
+
+  // Change redirect url if lang change
+  useEffect(() => {
+    setRedirect(`http://${window.location.host}/thanks?lang=${["en", "es"][langId]}`)
+  }, [langId])
+
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -47,18 +51,11 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
 
     // Sinumate submit form and redirect
     setTimeout(() => {
-      
-      // Redirect to tanks page
-      const host = window.location.host
-      const redirect = `http://${host}/thanks?lang=${["en", "es"][langId]}`
-      
-      // Change currebnt page
-      document.location.href = redirect;
 
       // Submit form
-      // e.target.submit()
+      e.target.submit()
 
-    }, 5000)
+    }, 1000)
   }
 
   return (
@@ -77,7 +74,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
         bgColor="bg-white"
         extraClasses="z-30 items-start fixed top-0 left-0 right-0 bottom-0"
       />
-      
+
       <h2
         className={`
           text-3xl
@@ -154,7 +151,10 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
 
                 }
                 <p>{diameterItem}</p>
+
+
               </div>
+
             ))}
 
           </div>
@@ -201,8 +201,9 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
       </div>
 
       <form
-        action=""
+        action={process.env.NEXT_PUBLIC_CONTACT_FORM_URL}
         method='post'
+        enctype="multipart/form-data"
         className={`
           form
           mx-auto
@@ -414,7 +415,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
         </p>
 
         <Input
-          name="submit"
+          name="submit-btn"
           type="submit"
           value={inputs.submit[langId]}
           className={`
@@ -424,10 +425,62 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
         `}
         />
 
+        {/* Diameter and layers hidden input */}
         <Input
           type="hidden"
-          name="subject "
+          name="layers"
+          value={layersText}
+        />
+
+        <Input
+          type="hidden"
+          name="diameter"
+          value={diameter}
+        />
+
+        {/* Flavor hidden inputs */}
+        <Input
+          type="hidden"
+          name="cake flavor"
+          value={cakeFlavor[langId]}
+        />
+
+        <Input
+          type="hidden"
+          name="filling"
+          value={filling[langId]}
+        />
+
+        <Input
+          type="hidden"
+          name="frosting"
+          value={frosting[langId]}
+        />
+
+
+        {/* Api inputs */}
+        <Input
+          type="hidden"
+          name="subject"
           value={`New order ${clientName} ${clientLastName}`}
+        />
+
+        <Input
+          type="hidden"
+          name="user"
+          value={process.env.NEXT_PUBLIC_CONTACT_FORM_USER}
+        />
+
+        <Input
+          type="hidden"
+          name="api_key"
+          value={process.env.NEXT_PUBLIC_CONTACT_FORM_API_KEY}
+        />
+
+        <Input
+          type="hidden"
+          name="redirect"
+          value={redirect}
         />
 
       </form>
