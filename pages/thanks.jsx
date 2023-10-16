@@ -166,7 +166,7 @@ export async function getStaticProps() {
   return {
     props: {
       back: ["Back", "Regresar"],
-      thanks: ["Thanks You!", "¡Gracias!"],
+      thanks: ["Thank You!", "¡Gracias!"],
       orderPlaced: ["Your order has been placed.", "Tu orden ha sido recibida."],
       weWillContact: ["We will contact you soon as possible!", "Nos pondremos en contacto contigo lo antes posible."],
       follow: ["Follow Us", "Síguenos"],
