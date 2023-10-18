@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { titleFont } from '@/lib/fonts'
 import { useState, useEffect } from 'react'
 
+import H2 from '@/components/h2' 
 import Loading from '@/components/loading'
 import OrderFlavorButtons from '@/components/order-flavors-buttons'
 import OrderFlavorCard from '@/components/order-flavor-card'
@@ -52,7 +53,17 @@ export default function Flavors({ title, text = "", langId, options, cakeFlavor 
       text-brown
         mx-auto
       `}
+      id='flavors'
     >
+      {/* Basic title before buttons and image */}
+      {
+        !dynamicTitle
+        &&
+        <H2 
+          title={title}
+        />
+      }
+
       <Image
         src="/images/order/flavors/hero.webp"
         alt="Flavors hero"
@@ -66,24 +77,6 @@ export default function Flavors({ title, text = "", langId, options, cakeFlavor 
         `}
       />
 
-      {/* Basic title before buttons */}
-      {
-        !dynamicTitle
-        &&
-        <h2
-          className={`
-            text-3xl
-            text-center
-            ${titleFont.className}
-            mt-2
-            mb-6
-            uppercase
-            font-bold
-          `}
-        >
-          {title}
-        </h2>
-      }
 
       {
         text

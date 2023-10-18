@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { titleFont } from '@/lib/fonts'
+import H2 from '@/components/h2'
 
 export default function Section ({children, title, titleVisible = true, extraClasses = "", container = true, id}) {
   
@@ -12,14 +12,11 @@ export default function Section ({children, title, titleVisible = true, extraCla
         className={`${titleClass} ${extraClasses} ${containerClass} mb-20`}
         id={id}
       >
-      <h2 className={`
-          ${displayTitle}
-          ${titleFont.className}
-          text-2xl uppercase text-center font-medium text-brown
-          mb-5
-
-        `
-      }>{title}</h2>
+        <H2 
+          title={title}
+          displayTitle={displayTitle}
+        />
+      
       {children}
     </section>
   )
