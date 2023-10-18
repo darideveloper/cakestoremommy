@@ -1,7 +1,7 @@
 import propTypes from 'prop-types'
 import Image from 'next/image'
 
-export default function OrderFlavorButtons({ langId, options, status, onClick, flavorsAllStatus, isLoading, cakeFlavor, filling, frosting }) {
+export default function OrderFlavorButtons({ langId, options, status, onClick, flavorsAllStatus, isLoading, cakeFlavor, filling, frosting, isInteractive, scroll }) {
 
   // Format options values
   const optionsValues = {
@@ -10,12 +10,11 @@ export default function OrderFlavorButtons({ langId, options, status, onClick, f
     Frosting: frosting
   }
 
-
   return (
     <div className={`
       flavors-buttons
       flex 
-      flex-col xs:flex-row
+      ${isInteractive ? 'flex-col xs:flex-row' : 'flex-row'}
       flex-wrap
       justify-center 
       items-center 
@@ -38,24 +37,26 @@ export default function OrderFlavorButtons({ langId, options, status, onClick, f
             relative
             inline
             border-2 border-pink
-            ${optionsValues[option] ? 'cursor-pointer hover:-translate-y-1' : 'opacity-50 cursor-default'}
+            ${optionsValues[option] || !isInteractive ? 'cursor-pointer hover:-translate-y-1' : 'opacity-50 cursor-default'}
           `}
           onClick={() => {
             // Go down smooth
-            const ViewScroll = document.querySelector(".view-scroll")
-            ViewScroll.scrollTo({
-              top: 400,
-              behavior: 'smooth'
-            })
+            if (scroll) {
+              const ViewScroll = document.querySelector(".view-scroll")
+              ViewScroll.scrollTo({
+                top: 400,
+                behavior: 'smooth'
+              })
+            }
 
             // Detect if option is disabled
-            if (!optionsValues[option]) {
+            if (!optionsValues[option] && isInteractive) {
               return
             }
 
             onClick(option)
           }}
-          disabled={isLoading}
+          disabled={isInteractive || isLoading}
         >
 
           {options[option].names[langId]}

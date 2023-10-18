@@ -5,13 +5,16 @@ import GallerySlider from '@/sections/gallery-slider'
 import Hero from '@/sections/hero'
 import WhyUs from '@/sections/why-us'
 import Faqs from '@/sections/faqs'
+import Flavors from '@/components/flavors'
 
 import { LangContext } from "@/context/lang"
 import { useContext } from "react"
 
+import { flavorsData } from "@/api/flavors"
+
 export default function Index({ data }) {
 
-  const { lang } = useContext(LangContext)
+  const { lang, langId } = useContext(LangContext)
   const dataLang = data[lang]
 
   return (
@@ -33,6 +36,16 @@ export default function Index({ data }) {
       />
       <Faqs 
         {...dataLang.Faqs}
+      />
+      <Flavors 
+        title={flavorsData.homeTitle[langId]}        
+        langId={langId}
+        options={flavorsData.options}
+        isEditing={false}
+        scroll={false}
+        dynamicTitle={false}
+        text={flavorsData.homeText[langId]}
+        bigImage={false}
       />
     </RootLayout>
   )

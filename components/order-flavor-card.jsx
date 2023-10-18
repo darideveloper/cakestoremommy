@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import Loading from './loading'
 
-export default function OrderFlavorCard({ flavor, onClick, text, category, flavorStatus, isActive}) {
+export default function OrderFlavorCard({ flavor, onClick, text, category, flavorStatus, isActive, isInteractive}) {
 
   const imageName = flavor.replaceAll(" ", "-")
   const imagePath = `/images/order/flavors/${flavorStatus}/${category}/${imageName}.png`
@@ -22,6 +22,7 @@ export default function OrderFlavorCard({ flavor, onClick, text, category, flavo
         shadow-md
         flex flex-col items-center justify-center
         overflow-hidden
+        ${isInteractive ? 'cursor-pointer' : 'cursor-default'}
         ${isActive ? 'bg-pink text-brown' : 'bg-white text-brown hover:shadow-xl'}
       `}
       onClick={onClick}
