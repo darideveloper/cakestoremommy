@@ -43,10 +43,11 @@ export default function RootLayout({ children, customScroll = false}) {
       "Header": {
         "menuItems": [
           { name: 'Order Now', path: '/order' },
-          { name: 'Home', path: '/' },
           { name: 'About', path: '/#about' },
           { name: 'Gallery', path: '/#gallery' },
           { name: 'Contact', path: '/#contact' },
+          { name: 'Our Flavors', path: '/#flavors' },
+          { name: 'FAQs', path: '/#faqs'}
         ]
       },
       "Footer": {
@@ -61,10 +62,11 @@ export default function RootLayout({ children, customScroll = false}) {
       "Header": {
         "menuItems": [
           { name: 'Ordernar', path: '/order' },
-          { name: 'Inicio', path: '/' },
           { name: 'Acerca de', path: '/#about' },
           { name: 'Galería', path: '/#gallery' },
           { name: 'Contacto', path: '/#contact' },
+          { name: 'Sabores', path: '/#flavors' },
+          { name: 'FAQs', path: '/#faqs'}
         ]
       },
       "Footer": {

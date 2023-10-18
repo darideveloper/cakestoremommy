@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { titleFont } from '@/lib/fonts'
 import Link from 'next/link'
 import Line from '@/components/line'
@@ -24,7 +24,7 @@ export default function Header({ menuItems }) {
           className={`
             px-2 py-4
             flex flex-col justify-center items-start gap-1
-            md:hidden
+            lg:hidden
           `}
         >
           <Line
@@ -43,12 +43,12 @@ export default function Header({ menuItems }) {
             font-bold text-lg text-brown text-center line-clamp-3
             xs:text-2xl
             flex justify-center items-center
-            md:flex-col 
+            lg:flex-col 
           `}
           >
-            <span className='mx-1 md:-my-1'>CAKE</span>
-            <span className='mx-1 md:-my-1'>STORE</span>
-            <span className='mx-1 md:-my-1'>MOMMY</span>
+            <span className='mx-1 lg:-my-1'>CAKE</span>
+            <span className='mx-1 lg:-my-1'>STORE</span>
+            <span className='mx-1 lg:-my-1'>MOMMY</span>
           </h1>
         </Link>
 
@@ -59,21 +59,21 @@ export default function Header({ menuItems }) {
           w-52 h-screen 
           bg-pink text-xl text-brown
           shadow-2xl shadow-black
-          md:block md:static 
-          md:h-auto
-          md:shadow-none 
-          md:bg-transparent
-          md:translate-x-0
-          md:w-8/12 md:max-w-2xl
+          lg:block lg:static 
+          lg:h-auto
+          lg:shadow-none 
+          lg:bg-transparent
+          lg:translate-x-0
+          lg:w-8/12 lg:max-w-2xl
         `}>
-          <ul className={`md:flex items-center justify-between w-full`}>
+          <ul className={`lg:flex items-center justify-between w-full`}>
             {/* Close menu button */}
             <button
               onClick={() => { setMenuOpen(false) }}
               className={`
                 px-2 py-2
                 flex flex-col justify-center items-start gap-1
-                md:hidden
+                lg:hidden
               `}
             >
               <svg
