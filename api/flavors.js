@@ -1,7 +1,7 @@
 export const flavorsData = {
   "orderTitle": ["PICK A ", "ESCOGE UN "],
   "homeTitle": ["Our flavors", "Nuestros sabores"],
-  "homeText": ["When it comes to flavors are proud of provide a wide selection of options. If you have a specific flavor that is not listed please contact us to see if we can accommodate", "Cuando se trata de sabores, estamos orgullosos de ofrecer una amplia selección de opciones. Si tiene un sabor específico que no aparece en la lista, contáctenos para ver si podemos acomodarlo."],
+  "homeText": ["When it comes to flavors, we are proud to provide a wide selection of options. If you have a specific flavor that is not listed here. Please contact us to see if we can accommodate.", "En cuanto a sabores, estamos orgullosos de ofrecer una amplia selección de opciones. Si tiene un sabor específico que no aparece en esta lista. Por favor contáctenos para ver si podemos acomodarlo."],
   "options": {
     "CakeFlavor": {
       "names": ["Cake Flavor", "Sabor del pastel"],
