@@ -18,10 +18,16 @@ export default function Gallery({ imagesData }) {
   const [modalImage, setModalImage] = useState("")
   const [isGridLoading,  setIsGridLoading] = useState(true)
   const [isModalLoading, setIsModalLoading] = useState(false)
-
+  
+  // Move category "Regular Cakes & Peruvian Pastries" to last place
+  const regularCakesIndex = categories.indexOf("Regular Cakes & Peruvian Pastries")
+  const regularCakes = categories.splice(regularCakesIndex, 1)
+  categories.push(regularCakes[0])
+  
   useEffect(() => {
     // Hide grid loading
     setTimeout(() => {setIsGridLoading(false)}, 1000)
+
   }, [])
 
   function handleModalImage(image) {
