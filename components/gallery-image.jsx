@@ -42,8 +42,8 @@ export default function GalleryImage({ src, category, onClick, extraClasses }) {
           ${isLoading ? "opacity-0" : "opacity-100"}	
         `}
         src={imagePath}
-        width={500}
-        height={500}
+        width={300}
+        height={300}
         alt={`imagen de pastel de ${category}`}
         onLoad={() => {setIsLoading(false)}}
       />
