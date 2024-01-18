@@ -6,7 +6,9 @@ import Header from '@/sections/header'
 import Footer from '@/sections/footer'
 import AOS from 'aos'
 import Head from 'next/head'
+import { GoogleTagManager } from '@next/third-parties/google'
 import 'aos/dist/aos.css';
+
 
 export default function RootLayout({ children, customScroll = false}) {
   
@@ -109,6 +111,7 @@ export default function RootLayout({ children, customScroll = false}) {
   
   const content = (
     <>
+      <GoogleTagManager gaId="GTM-T5N6ZM6X" />
       <Header 
         {...dataLang.Header}
       />
@@ -127,7 +130,7 @@ export default function RootLayout({ children, customScroll = false}) {
         <title>{metaLang.title}</title>
         <meta name="description" content={metaLang.description} />
         <meta name="author" content={metaLang.author} />
-        <meta name="keywords" content={metaLang.keywords} />
+        <meta name="keywords" content={metaLang.keywords} />        
       </Head>
       {
         customScroll

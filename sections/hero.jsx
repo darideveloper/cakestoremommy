@@ -120,7 +120,7 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts=[] }) {
           width={640}
           height={640}
           className={`
-            w-full 
+            w-full
             xs:hidden 
             absolute 
             -bottom-28 left-0 -z-10
@@ -209,9 +209,7 @@ export default function Hero({ btnPrimaryText, btnSecondaryTexts=[] }) {
             extraClasses={`
               fill-white
               w-full
-              hidden
-              xs:block
-              sm:hidden
+              hidden xs:block sm:hidden
               ${!isBtnSecondaryTexts && 'xs:hidden'}
             `}
             type="circle"

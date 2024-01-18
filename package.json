@@ -10,10 +10,11 @@
   },
   "dependencies": {
     "@nestjs/config": "^3.1.1",
+    "@next/third-parties": "^14.0.4",
     "@splidejs/react-splide": "^0.7.12",
     "aos": "^2.3.4",
     "fs": "^0.0.1-security",
-    "next": "13.4.7",
+    "next": "^14.0.4",
     "path": "^0.12.7",
     "prop-types": "^15.8.1",
     "react": "18.2.0",
