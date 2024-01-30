@@ -245,6 +245,15 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
         />
 
         <H3>
+          {subtitles.budget[langId]}
+        </H3>
+
+        <Input
+          name="budget"
+          required={false}
+        />
+
+        <H3>
           {subtitles.contact[langId]}
         </H3>
 

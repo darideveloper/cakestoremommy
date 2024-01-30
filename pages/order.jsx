@@ -258,6 +258,7 @@ export async function getStaticProps() {
         "frosting": ["Frosting", "Cobertura"],
         "image": ["Upload photo references of the cake design", "Sube fotos de referencia del diseño del pastel"],
         "additional": ["Additional cake details", "Detalles adicionales del pastel"],
+        "budget": ["Budget (optional)", "Presupuesto (opcional)"],
         "contact": ["Contact information", "Información de contacto"],
         "orderType": ["Choose Order Type", "Elige el tipo de pedido"],
         "pickUp": ["Choose Pick Up Date", "Elige la fecha de recogida"],
