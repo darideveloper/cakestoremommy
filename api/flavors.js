@@ -46,6 +46,8 @@ export const flavorsData = {
         "basic": {
           "name": ["Basic", "Básico"],
           "options": [
+            ["strawberry buttercream", "buttercream de fresa"],
+            ["cream cheese", "queso crema"],
             ["caramel buttercream", "buttercream de caramelo"],
             ["vanilla buttercream", "buttercream de vainilla"],
             ["chocolate buttercream", "buttercream de chocolate"],
@@ -99,7 +101,6 @@ export const flavorsData = {
         "basic": {
           "name": ["Basic", "Básico"],
           "options": [
-            ["strawberry buttercream", "buttercream de fresa"],
             ["vanilla buttercream", "buttercream de vainilla"],
             ["chocolate buttercream", "buttercream de chocolate"],
             ["chocolate fudge", "fudge de chocolate"],
