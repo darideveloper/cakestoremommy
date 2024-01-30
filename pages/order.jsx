@@ -279,11 +279,11 @@ export async function getStaticProps() {
         "submit": ["Place Order", "Realizar pedido"],
       },
       "faqTextBefore": [
-        "We will contact you with a price after reviewing the information provided. <br> To begin your order, we kindly request a 50% deposit. The remaining balance is due on the delivery date. If you need tor reschedule your order, please do so at least 72 hours in advance. For more details on our policies, please refer to our FAQ section.",
+        "We will contact you with a price after reviewing the information provided. To begin your order, we kindly request a 50% deposit. The remaining balance is due on the delivery date. If you need tor reschedule your order, please do so at least 72 hours in advance. For more details on our policies, please refer to our FAQ section.",
         "Nos pondremos en contacto contigo con un precio después de revisar la información proporcionada. <br> Para comenzar tu pedido, solicitamos un depósito del 50%. El saldo restante se debe en la fecha de entrega. Si necesitas reprogramar tu pedido, hazlo al menos 72 horas antes. Para obtener más detalles sobre nuestras políticas, consulta nuestra sección de preguntas frecuentes."
       ],
       "faqLink": ["Click here", "Haz click aquí"],
-      "faqTextAfter": ["to larn more", "para obtener más información"],
+      "faqTextAfter": ["to learn more", "para obtener más información"],
 
     }
   }
