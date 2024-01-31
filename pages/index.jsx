@@ -118,6 +118,33 @@ export async function getStaticProps() {
       },
       "Faqs": {
         title: "FAQS",
+        questions: [
+          {
+            "question": "HOW TO ORDER",
+            "text": "YOU CAN PLACE YOUR ORDER TROUGH OUR ORDERING SYSTEM IN OUR WEBSITE OR YOU CAN JUST EMAIL US WITH THE NUMBER OF SERVINGS, CAKE FLAVOR, FROSTING CHOICE, FILLING PREFERENCE ANY PHOTO REFERENCE FOR DESIGN INSPIRATION, EVENT DATE. WE WILL REPLY WITH AN ESTIMATE AS SOON AS POSSIBLE. WE REQUIRED ORDERS TO BE AT LEAST 2 WEEKS IN ADVANCE",
+            "images": [],
+          },
+          {
+            "question": "CUTTING GUIDE",
+            "text": "",
+            "images": ["cutting-guide-1.png", "cutting-guide-2.png"],
+          },
+          {
+            "question": "ALLERGY POLICIES",
+            "text": "Please note that we operate from a home kitchen, and while we uphold strict cleanliness and hygiene standards, we cant guarantee that our products are allergy free. We kindly ask our customers to inform us of any allergies or dietary restrictions when placing an order. This will help us provide guidance to ensure your safety and satisfaction.",
+            "images": [],
+          },
+          {
+            "question": "PICK-UP POLICIES",
+            "text": "We kindly request that customers pick up their cakes at the scheduled time. We understand that delays can happen, but we can't promise to wait longer than 30 mins past the pick up time. If you need to change your pick-up time, please let us know in advance, and we'll do our best to accomodate",
+            "images": [],
+          },
+          {
+            "question": "CANCELLATION POLICIES",
+            "text": "Once a deposit has been received we regret that we cannot accomodate order cancellations. One change in the order is accepted as long is 72 hours before delivery date ",
+            "images": [],
+          },
+        ]
       }
     },
     "es": {
@@ -166,7 +193,34 @@ export async function getStaticProps() {
         textB: "Creemos que un pastel es más que un postre; es una pieza central que marca momentos de unión y crea recuerdos duraderos. Es por eso que vertimos nuestro corazón y alma en cada pastel que creamos, infundiéndolo con nuestra pasión por la repostería y nuestro compromiso con la excelencia.",
       },
       "Faqs": {
-        title: "FAQS",
+        title: "Preguntas Frecuentes",
+        questions: [
+          {
+            "question": "CÓMO ORDENAR",
+            "text": "PUEDES REALIZAR TU PEDIDO A TRAVÉS DE NUESTRO SISTEMA DE PEDIDOS EN NUESTRO SITIO WEB O SIMPLEMENTE PUEDES ENVIARNOS UN CORREO ELECTRÓNICO CON EL NÚMERO DE PORCIONES, SABOR DEL PASTEL, ELECCIÓN DE GLASEADO, PREFERENCIA DE RELLENO, CUALQUIER REFERENCIA FOTOGRÁFICA PARA INSPIRACIÓN DE DISEÑO, FECHA DEL EVENTO. RESPONDEREMOS CON UN PRESUPUESTO LO ANTES POSIBLE. REQUERIMOS QUE LOS PEDIDOS SE REALICEN CON AL MENOS 2 SEMANAS DE ANTICIPACIÓN",
+            "images": [],
+          },
+          {
+            "question": "GUÍA DE CORTE",
+            "text": "",
+            "images": ["cutting-guide-1.png", "cutting-guide-2.png"],
+          },
+          {
+            "question": "POLÍTICA DE ALERGIAS",
+            "text": "Tenga en cuenta que operamos desde una cocina casera y, si bien mantenemos estrictos estándares de limpieza e higiene, no podemos garantizar que nuestros productos estén libres de alérgenos. Pedimos amablemente a nuestros clientes que nos informen sobre cualquier alergia o restricción dietética al realizar un pedido. Esto nos ayudará a brindar orientación para garantizar su seguridad y satisfacción.",
+            "images": [],
+          },
+          {
+            "question": "POLÍTICAS DE RECOGIDA",
+            "text": "Solicitamos amablemente que los clientes recojan sus pasteles a la hora programada. Entendemos que pueden ocurrir retrasos, pero no podemos prometer esperar más de 30 minutos después de la hora de recogida. Si necesita cambiar la hora de recogida, avísenos con anticipación y haremos todo lo posible para acomodarlo",
+            "images": [],
+          },
+          {
+            "question": "POLÍTICAS DE CANCELACIÓN",
+            "text": "Una vez que se haya recibido un depósito, lamentamos no poder cancelar pedidos. Se acepta un cambio en el pedido siempre y cuando sea 72 horas antes de la fecha de entrega",
+            "images": [],
+          },
+        ]
       }
     }
   }
