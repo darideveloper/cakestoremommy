@@ -8,12 +8,41 @@ import { useState, useEffect } from 'react'
  * @param {array} [images=[]] 
  * @returns 
  */
-export default function Faq ({question, text="", images=[]}) {
+export default function Faq({ question, text = "", images = [] }) {
 
+  /**
+   * Open and close faqs using margin top
+   * @param {HTMLElement} pElem - paragraph element
+  */
+  function openCloseFaqs(pElem, isOpen) {
+
+    console.log({pElem, isOpen})
+
+    // Get element height
+    const height = pElem.getBoundingClientRect().height
+
+    // Set margin top to hide or show text
+    if (isOpen) {
+      pElem.style.marginTop = `0px`
+    } else {
+      pElem.style.marginTop = `-${height+20}px`
+    }
+  }
+
+  // Open state
   const [isOpen, setIsOpen] = useState(false)
 
+  // Close all faqs on load
+  useEffect(() => {
+    const pElems = document.querySelectorAll('.faq p')
+    console.log({pElems})
+    pElems.forEach(pElem => {
+      openCloseFaqs(pElem, isOpen)
+    })
+  }, [])
+
   return (
-    <div 
+    <div
       className={`
         faq
         w-11/12
@@ -29,9 +58,12 @@ export default function Faq ({question, text="", images=[]}) {
       `}
     >
       <button
-        onClick={() => {
+        onClick={(e) => {
           // Hide and show text
           setIsOpen(!isOpen)
+          const parent = e.target.parentElement.parentElement
+          const pElem = parent.querySelector('p')
+          openCloseFaqs(pElem, !isOpen)
         }}
         className={`
           w-full
@@ -50,13 +82,13 @@ export default function Faq ({question, text="", images=[]}) {
             w-full
             py-3
             rounded-2xl
-            mt-0
             border-black
             border-2
             border-opacity-40
             bg-white
             text-md
           `}
+          mt={0}
         >
           {question}
         </H3>
@@ -64,8 +96,9 @@ export default function Faq ({question, text="", images=[]}) {
       <p
         className={`
           text-center
-          py-6
-          px-8
+          ${images.length > 0 ? 'py-0' : 'py-6'}
+          ${images.length > 0 ? 'px-0' : 'px-8'}
+          ${images.length > 0 ? 'pb-8' : 'pb-6'}
           pt-20
           rounded-2xl
           -mt-8
@@ -75,25 +108,22 @@ export default function Faq ({question, text="", images=[]}) {
           border-2
           border-opacity-40
           bg-white
-          ${isOpen ? '-mt-0' : '-mt-96'}
         `}
       >
         {text}
+        {
+          images.map((image, index) => (
+            <img
+              key={index}
+              src={`/images/${image}`}
+              className={`
+                mx-auto
+                w-full max-w-md
+              `}
+            />
+          ))
+        }
       </p>
-      {
-        images.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            className={`
-              mx-auto
-              p-5
-              mt-10
-              w-full max-w-md
-            `}
-          />
-        ))
-      }
     </div>
   )
 }

@@ -16,6 +16,7 @@ export default function Faqs({ title, questions }) {
       extraClasses={`
         pt-28
         mb-32
+        max-w-6xl
       `}
       id="faqs"
     >
@@ -36,6 +37,7 @@ export default function Faqs({ title, questions }) {
               key={index}
               question={question.question}
               text={question.text}
+              images={question.images}
             />
           )
         })

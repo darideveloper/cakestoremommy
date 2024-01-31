@@ -1,6 +1,13 @@
 import { titleFont } from '@/lib/fonts'
 
-export default function H3({ children, className }) {
+/**
+ * H3 component
+ * @param {jsx} children
+ * @param {string} className
+ * @param {number} mt - margin top value
+ * @returns 
+ */
+export default function H3({ children, className, mt=14 }) {
   return (
     <h3
       className={`
@@ -9,9 +16,9 @@ export default function H3({ children, className }) {
         text-center
         ${titleFont.className}
         mb-5
-        mt-14
-        ${className}
+        mt-${mt}
         block
+        ${className}
       `}
     >
       {children}

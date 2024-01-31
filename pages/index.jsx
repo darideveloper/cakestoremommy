@@ -69,6 +69,10 @@ export async function getStaticProps() {
     "why-us-2.svg",
     "why-us-3.svg",
   ]
+  const cuttingGuideImages = [
+    "cutting-guide-1.webp",
+    "cutting-guide-2.webp",
+  ]
 
   const data = {
     "en": {
@@ -127,7 +131,7 @@ export async function getStaticProps() {
           {
             "question": "CUTTING GUIDE",
             "text": "",
-            "images": ["cutting-guide-1.png", "cutting-guide-2.png"],
+            "images": cuttingGuideImages,
           },
           {
             "question": "ALLERGY POLICIES",
@@ -203,7 +207,7 @@ export async function getStaticProps() {
           {
             "question": "GUÍA DE CORTE",
             "text": "",
-            "images": ["cutting-guide-1.png", "cutting-guide-2.png"],
+            "images": cuttingGuideImages,
           },
           {
             "question": "POLÍTICA DE ALERGIAS",
