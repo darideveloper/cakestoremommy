@@ -125,7 +125,7 @@ export async function getStaticProps() {
         questions: [
           {
             "question": "HOW TO ORDER",
-            "text": "YOU CAN PLACE YOUR ORDER TROUGH OUR ORDERING SYSTEM IN OUR WEBSITE OR YOU CAN JUST EMAIL US WITH THE NUMBER OF SERVINGS, CAKE FLAVOR, FROSTING CHOICE, FILLING PREFERENCE ANY PHOTO REFERENCE FOR DESIGN INSPIRATION, EVENT DATE. WE WILL REPLY WITH AN ESTIMATE AS SOON AS POSSIBLE. WE REQUIRED ORDERS TO BE AT LEAST 2 WEEKS IN ADVANCE",
+            "text": "Tou can place your order trough our ordering system in our website or you can just email us with the number of servings, cake flavor, frosting choice, filling preference any photo reference for design inspiration, event date. We will reply with an estimate as soon as possible. We required orders to be at least 2 weeks in advance",
             "images": [],
           },
           {
@@ -201,7 +201,7 @@ export async function getStaticProps() {
         questions: [
           {
             "question": "CÓMO ORDENAR",
-            "text": "PUEDES REALIZAR TU PEDIDO A TRAVÉS DE NUESTRO SISTEMA DE PEDIDOS EN NUESTRO SITIO WEB O SIMPLEMENTE PUEDES ENVIARNOS UN CORREO ELECTRÓNICO CON EL NÚMERO DE PORCIONES, SABOR DEL PASTEL, ELECCIÓN DE GLASEADO, PREFERENCIA DE RELLENO, CUALQUIER REFERENCIA FOTOGRÁFICA PARA INSPIRACIÓN DE DISEÑO, FECHA DEL EVENTO. RESPONDEREMOS CON UN PRESUPUESTO LO ANTES POSIBLE. REQUERIMOS QUE LOS PEDIDOS SE REALICEN CON AL MENOS 2 SEMANAS DE ANTICIPACIÓN",
+            "text": "Puedes realizar tu pedido a través de nuestro sistema de pedidos en nuestro sitio web o simplemente puedes enviarnos un correo electrónico con el número de porciones, sabor del pastel, elección de glaseado, preferencia de relleno, cualquier referencia fotográfica para inspiración de diseño, fecha del evento. Responderemos con un presupuesto lo antes posible. Requerimos que los pedidos se realicen con al menos 2 semanas de anticipación",
             "images": [],
           },
           {
