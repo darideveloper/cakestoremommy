@@ -7,7 +7,7 @@ import Loading from './loading'
 export default function OrderFlavorCard({ flavor, onClick, text, category, flavorStatus, isActive, isInteractive}) {
 
   const imageName = flavor.replaceAll(" ", "-")
-  const imagePath = `/images/order/flavors/${flavorStatus}/${category}/${imageName}.png`
+  const imagePath = `/images/order/flavors/${flavorStatus}/${category}/${imageName}.webp`
   const [isLoading, setIsLoading] = useState(true)
 
   return (
