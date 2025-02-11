@@ -79,7 +79,7 @@ export default function Footer({ title, subtitle, phone, copyright, socialIcons 
           `}>
             {copyright}
             <br />
-            Powered by <a href="https://www.darideveloper.com/">Dari Developer</a>
+            Powered by <a href="https://api.whatsapp.com/send?phone=5214493402622">Dari Developer</a>
           </small>
 
         </div>
