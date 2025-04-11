@@ -162,7 +162,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
 
         <OrderSummaryCard
           title={subtitles.cakeFlavor[langId]}
-          image={`/images/order/flavors/CakeFlavor/${cakeFlavorCategory}/${cakeFlavorImage}.png`}
+          image={`/images/order/flavors/CakeFlavor/${cakeFlavorCategory}/${cakeFlavorImage}.webp`}
           onClick={() => {
             changeStatus("flavors")
             setInitialFlavorStatus("CakeFlavor")
@@ -175,7 +175,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
 
         <OrderSummaryCard
           title={subtitles.filling[langId]}
-          image={`/images/order/flavors/Filling/${fillingCategory}/${fillingImage}.png`}
+          image={`/images/order/flavors/Filling/${fillingCategory}/${fillingImage}.webp`}
           onClick={() => {
             changeStatus("flavors")
             setInitialFlavorStatus("Filling")
@@ -188,7 +188,7 @@ export default function OrderFinalize({ title, langId, cakeFlavorId, cakeFlavorC
 
         <OrderSummaryCard
           title={subtitles.frosting[langId]}
-          image={`/images/order/flavors/Frosting/${frostingCategory}/${frostingImage}.png`}
+          image={`/images/order/flavors/Frosting/${frostingCategory}/${frostingImage}.webp`}
           onClick={() => {
             changeStatus("flavors")
             setInitialFlavorStatus("Frosting")
