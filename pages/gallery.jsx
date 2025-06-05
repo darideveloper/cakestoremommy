@@ -1,6 +1,4 @@
 import PropTypes from "prop-types"
-
-import { getImages } from "@/lib/gallery"
 import { titleFont } from "@/lib/fonts"
 import { useState, useEffect } from "react"
 
@@ -10,28 +8,56 @@ import RootLayout from "@/layouts/root-layout"
 import Image from "next/image"
 import Loading from "@/components/loading"
 
-export default function Gallery({ imagesData }) {
+const categories = [
+  {
+    "name": "$150 Cake special",
+    "id": 1
+},
+{
+  "name": "Characters",
+  "id": 2
+},
+{
+  "name": "Custom Cakes",
+  "id": 3
+},
+{
+  "name": "Wedding Cakes",
+  "id": 4
+},
+{
+  "name": "Regular Cakes & Peruvian Pastries",
+  "id": 5
+}
+]
 
-  const categories = imagesData.map(category => category.name)
-  const [currentCategory, setCurrentCategory] = useState(imagesData[3].name)
-  const [currentImages, setCurrentImages] = useState(imagesData[3].images)
+export default function Gallery({ initialImages }) {
+  const [images, setImages] = useState(initialImages.results || [])
+  const [currentCategory, setCurrentCategory] = useState(categories[0].id)
   const [modalImage, setModalImage] = useState("")
-  const [isGridLoading,  setIsGridLoading] = useState(true)
+  const [isGridLoading, setIsGridLoading] = useState(false)
   const [isModalLoading, setIsModalLoading] = useState(false)
-  
-  // Move category "Regular Cakes & Peruvian Pastries" to last place
-  const regularCakesIndex = categories.indexOf("Regular Cakes & Peruvian Pastries")
-  const regularCakes = categories.splice(regularCakesIndex, 1)
-  categories.push(regularCakes[0])
-  
-  useEffect(() => {
-    // Hide grid loading
-    setTimeout(() => {setIsGridLoading(false)}, 1000)
 
-  }, [])
+  async function handleCategoryChange(categoryId) {
+    if (!isGridLoading) {
+      setIsGridLoading(true)
+      try {
+        const response = await fetch(`/api/gallery?category=${categoryId}`)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const { data } = await response.json()
+        setImages(data.results)
+        setCurrentCategory(categoryId)
+      } catch (err) {
+        console.error('Error:', err)
+      } finally {
+        setIsGridLoading(false)
+      }
+    }
+  }
 
   function handleModalImage(image) {
-    // Set modal image
     setModalImage(image)
     setIsModalLoading(true)
   }
@@ -39,90 +65,35 @@ export default function Gallery({ imagesData }) {
   return (
     <RootLayout>
       <div className="content container mx-auto relative">
-        <h2
-          className={`
-            text-4xl text-center 
-            ${titleFont.className} 
-            my-10
-          `}
-        >
+        <h2 className={`text-4xl text-center ${titleFont.className} my-10`}>
           Gallery
         </h2>
 
-        <section className={`
-          category-buttons
-          flex items-center justify-center flex-wrap
-          py-5
-          w-10/12 mx-auto
-        `}>
-          {categories.map((category, index) => (
+        <section className="category-buttons flex items-center justify-center flex-wrap py-5 w-10/12 mx-auto">
+          {categories.map((category) => (
             <CategoryBtn
-              key={index}
-              text={category}
-              isActive={currentCategory == category}
-              onClick={() => {
-                if (!isGridLoading) {
-
-                  // Show loading
-                  setIsGridLoading(true)
-                  setTimeout(() => {
-                    // Update images
-                    setCurrentCategory(category)
-                    const categoryData = imagesData.find(categoryData => categoryData.name == category)
-                    setCurrentImages(categoryData.images)
-                  }, 100)
-
-                  // Hide loading
-                  setTimeout(() => {setIsGridLoading(false)}, 2000)
-
-                }
-              }}
+              key={category.id}
+              text={category.name}
+              isActive={currentCategory === category.id}
+              onClick={() => handleCategoryChange(category.id)}
             />
           ))}
         </section>
 
-        {
-          modalImage
-          &&
+        {modalImage && (
           <button
-            className={`
-              modal-image
-              fixed top-0 left-0 right-0 bottom-0
-              width-full height-full
-              bg-yellow
-              p-5
-              z-30
-            `}
+            className="modal-image fixed top-0 left-0 right-0 bottom-0 width-full height-full bg-yellow p-5 z-30"
             onClick={() => setModalImage("")}
           >
-            <div
-              className={`
-                content 
-                relative
-                w-full h-full
-                flex items-center justify-center
-              `}
-            >
-
+            <div className="content relative w-full h-full flex items-center justify-center">
               <Loading
                 isVisible={isModalLoading}
                 bgColor="bg-pink-light"
                 extraClasses="z-60 items-center"
                 alternative={true}
               />
-              <div
-                className={`
-                  close-icon
-                  absolute top-5 right-5
-                  Z-40
-                  w-10 h-10
-                `}
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  className={`
-                    fill-brown
-                  `}>
+              <div className="close-icon absolute top-5 right-5 Z-40 w-10 h-10">
+                <svg viewBox="0 0 24 24" className="fill-brown">
                   <path d="m12.002 2.005c5.518 0 9.998 4.48 9.998 9.997 0 5.518-4.48 9.998-9.998 9.998-5.517 0-9.997-4.48-9.997-9.998 0-5.517 4.48-9.997 9.997-9.997zm0 1.5c-4.69 0-8.497 3.807-8.497 8.497s3.807 8.498 8.497 8.498 8.498-3.808 8.498-8.498-3.808-8.497-8.498-8.497zm0 7.425 2.717-2.718c.146-.146.339-.219.531-.219.404 0 .75.325.75.75 0 .193-.073.384-.219.531l-2.717 2.717 2.727 2.728c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.384-.073-.53-.219l-2.729-2.728-2.728 2.728c-.146.146-.338.219-.53.219-.401 0-.751-.323-.751-.75 0-.192.073-.384.22-.531l2.728-2.728-2.722-2.722c-.146-.147-.219-.338-.219-.531 0-.425.346-.749.75-.749.192 0 .385.073.531.219z" />
                 </svg>
               </div>
@@ -130,40 +101,25 @@ export default function Gallery({ imagesData }) {
                 src={modalImage}
                 width={1000}
                 height={1000}
-                className={`
-                  w-full
-                  max-w-xl
-                  duation-300
-                  ${isModalLoading ? "opacity-0" : "opacity-100"}
-                `}
+                className={`w-full max-w-xl duation-300 ${isModalLoading ? "opacity-0" : "opacity-100"}`}
                 alt="modal image of a cake"
-                onLoad={() => setTimeout(() => {setIsModalLoading(false)}, 250) }
+                onLoad={() => setTimeout(() => {setIsModalLoading(false)}, 250)}
               />
             </div>
           </button>
-        }
+        )}
 
-        <section className={`
-            gallery-grid
-            w-fill lg:w-10/12 max-w-6xl
-            mx-auto
-            mb-10
-            grid 
-            grid-cols-3 lg:grid-cols-4
-            gap-4 
-            relative
-            p-5
-          `}>
+        <section className="gallery-grid w-fill lg:w-10/12 max-w-6xl mx-auto mb-10 grid grid-cols-3 lg:grid-cols-4 gap-4 relative p-5">
           <Loading
             isVisible={isGridLoading}
             bgColor="bg-white"
             extraClasses="z-20 items-start pt-10"
           />
-          {currentImages.map((image, index) => (
+          {images.map((image) => (
             <GalleryImage
-              key={index}
-              src={image}
-              category={currentCategory}
+              key={image.id}
+              src={image.image}
+              category={categories.find(cat => cat.id === currentCategory)?.name || ""}
               onClick={handleModalImage}
             />
           ))}
@@ -174,14 +130,43 @@ export default function Gallery({ imagesData }) {
 }
 
 Gallery.propTypes = {
-  imagesData: PropTypes.arrayOf(PropTypes.object),
+  initialImages: PropTypes.shape({
+    count: PropTypes.number,
+    next: PropTypes.string,
+    previous: PropTypes.string,
+    results: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
+      categories: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string,
+        id: PropTypes.number
+      })),
+      image: PropTypes.string,
+      description: PropTypes.string,
+      created_at: PropTypes.string,
+      updated_at: PropTypes.string
+    }))
+  })
 }
 
 export async function getStaticProps() {
-  const imagesData = getImages()
-  return {
-    props: {
-      imagesData
+  try {
+    const baseUrl = process.env.BASE_URL
+    const response = await fetch(`${baseUrl}/api/gallery?category=${categories[0].id}`)
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    const { data } = await response.json()
+    return {
+      props: {
+        initialImages: data
+      }
+    }
+  } catch (error) {
+    console.error('Error fetching initial images:', error)
+    return {
+      props: {
+        initialImages: { results: [] }
+      }
     }
   }
 }

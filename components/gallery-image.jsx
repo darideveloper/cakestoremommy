@@ -9,11 +9,6 @@ export default function GalleryImage({ src, category, onClick, extraClasses }) {
 
   const [isLoading, setIsLoading] = useState(true)
 
-  let imagePath = `/images/gallery/${category}/${src}`
-  if (category == "all") {
-    imagePath = `/images/gallery/${src}`
-  }
-
   return (
     <button className={`
         img-wrapper
@@ -25,7 +20,7 @@ export default function GalleryImage({ src, category, onClick, extraClasses }) {
         relative
         ${extraClasses}
       `}
-      onClick={() => onClick(imagePath)}
+      onClick={() => onClick(src)}
     >
       <Loading 
         isVisible={isLoading}
@@ -41,7 +36,7 @@ export default function GalleryImage({ src, category, onClick, extraClasses }) {
           duration-300
           ${isLoading ? "opacity-0" : "opacity-100"}	
         `}
-        src={imagePath}
+        src={src}
         width={300}
         height={300}
         alt={`imagen de pastel de ${category}`}
