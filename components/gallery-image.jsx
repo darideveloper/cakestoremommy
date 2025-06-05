@@ -10,14 +10,12 @@ export default function GalleryImage({ src, category, onClick, extraClasses }) {
   const [isLoading, setIsLoading] = useState(true)
 
   return (
-    <button className={`
-        img-wrapper
-        flex items-center justify-center
-        bg-yellow
-        rounded-xl
-        shadow-xl hover:shadow-2xl
-        duration-300
+    <button 
+      className={`
+        w-full h-full
         relative
+        overflow-hidden
+        bg-yellow
         ${extraClasses}
       `}
       onClick={() => onClick(src)}
@@ -25,23 +23,27 @@ export default function GalleryImage({ src, category, onClick, extraClasses }) {
       <Loading 
         isVisible={isLoading}
         bgColor="bg-pink-light"
-        extraClasses="z-10 items-center rounded-xl"
+        extraClasses="z-10 items-center"
         alternative={true}
         isRelative={true}
       />
 
-      <Image
-        className={`
-          gallery-image
-          duration-300
-          ${isLoading ? "opacity-0" : "opacity-100"}	
-        `}
-        src={src}
-        width={300}
-        height={300}
-        alt={`imagen de pastel de ${category}`}
-        onLoad={() => {setIsLoading(false)}}
-      />
+      <div className="w-full h-full flex items-center justify-center">
+        <Image
+          className={`
+            max-w-full max-h-full
+            object-contain
+            p-4
+            duration-300
+            ${isLoading ? "opacity-0" : "opacity-100"}	
+          `}
+          src={src}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          alt={`imagen de pastel de ${category}`}
+          onLoad={() => {setIsLoading(false)}}
+        />
+      </div>
     </button>
   )
 

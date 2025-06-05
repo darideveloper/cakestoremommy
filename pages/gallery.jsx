@@ -109,20 +109,34 @@ export default function Gallery({ initialImages }) {
           </button>
         )}
 
-        <section className="gallery-grid w-fill lg:w-10/12 max-w-6xl mx-auto mb-10 grid grid-cols-3 lg:grid-cols-4 gap-4 relative p-5">
+        <section className="gallery-grid w-full max-w-7xl mx-auto mb-10 relative p-4">
           <Loading
             isVisible={isGridLoading}
             bgColor="bg-white"
             extraClasses="z-20 items-start pt-10"
           />
-          {images.map((image) => (
-            <GalleryImage
-              key={image.id}
-              src={image.image}
-              category={categories.find(cat => cat.id === currentCategory)?.name || ""}
-              onClick={handleModalImage}
-            />
-          ))}
+          <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4">
+            {images.map((image, index) => {
+              // Determine image height based on index
+              const heightClass = index % 8 === 0 ? 'h-[350px]' : 
+                                index % 5 === 0 ? 'h-[300px]' : 
+                                'h-[250px]';
+              
+              return (
+                <div 
+                  key={image.id} 
+                  className={`mb-4 break-inside-avoid ${heightClass}`}
+                >
+                  <GalleryImage
+                    src={image.image}
+                    category={categories.find(cat => cat.id === currentCategory)?.name || ""}
+                    onClick={handleModalImage}
+                    extraClasses="rounded-lg shadow-md hover:shadow-xl transition-all duration-300"
+                  />
+                </div>
+              );
+            })}
+          </div>
         </section>
       </div>
     </RootLayout>
