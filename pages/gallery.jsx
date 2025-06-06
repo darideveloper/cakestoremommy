@@ -33,7 +33,7 @@ const categories = [
 
 export default function Gallery({ initialImages }) {
   const [images, setImages] = useState(initialImages.results || [])
-  const [currentCategory, setCurrentCategory] = useState(categories[0].id)
+  const [currentCategory, setCurrentCategory] = useState(3)
   const [modalImage, setModalImage] = useState("")
   const [isGridLoading, setIsGridLoading] = useState(false)
   const [isModalLoading, setIsModalLoading] = useState(false)
@@ -102,7 +102,7 @@ export default function Gallery({ initialImages }) {
                 width={1000}
                 height={1000}
                 className={`w-full max-w-xl duation-300 ${isModalLoading ? "opacity-0" : "opacity-100"}`}
-                alt="modal image of a cake"
+                alt={images.find(img => img.image === modalImage)?.description || "Cake image"}
                 onLoad={() => setTimeout(() => {setIsModalLoading(false)}, 250)}
               />
             </div>
@@ -165,7 +165,7 @@ Gallery.propTypes = {
 export async function getStaticProps() {
   try {
     const baseUrl = process.env.BASE_URL
-    const response = await fetch(`${baseUrl}/api/gallery?category=${categories[0].id}`)
+    const response = await fetch(`${baseUrl}/api/gallery?category=3`)
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
