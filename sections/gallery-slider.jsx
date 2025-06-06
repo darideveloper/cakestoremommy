@@ -4,16 +4,17 @@ import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide'
 import Image from 'next/image'
 import Section from "@/sections/section"
 import ButtonLink from "@/components/button-link"
+import Loading from "@/components/loading"
 
 // Default theme
 import '@splidejs/react-splide/css'
 
-export default function GallerySlider({ title, alt, images, viewAll }) {
-
+export default function GallerySlider({ title, alt, viewAll, initialImages }) {
   const [perPage, setPerPage] = useState(2)
+  const [images, setImages] = useState(initialImages?.results || [])
+  const [loadedImages, setLoadedImages] = useState({})
 
   useEffect(() => {
-
     function updatePerPage() {
       const width = window.innerWidth
       if (width < 640) {
@@ -26,12 +27,18 @@ export default function GallerySlider({ title, alt, images, viewAll }) {
     }
     updatePerPage()
 
-    // Actualizar el estado cuando el tamaño de la ventana cambie
+    // Update state when window size changes
     window.addEventListener('resize', () => {
       updatePerPage()
     })
-
   }, [])
+
+  const handleImageLoad = (imageId) => {
+    setLoadedImages(prev => ({
+      ...prev,
+      [imageId]: true
+    }))
+  }
 
   return (
     <Section
@@ -40,10 +47,7 @@ export default function GallerySlider({ title, alt, images, viewAll }) {
       extraClasses="pt-28"
       id="gallery"
     >
-
-      {images.length > 0
-        &&
-
+      {images.length > 0 && (
         <>
           <Splide hasTrack={false} options={{
             type: 'loop',
@@ -51,26 +55,34 @@ export default function GallerySlider({ title, alt, images, viewAll }) {
             perPage: perPage,
           }}>
             <SplideTrack>
-              {images.map((image, index) => (
+              {images.map((image) => (
                 <SplideSlide
-                  key={index}
+                  key={image.id}
                   className="flex items-center justify-center py-10 px-0"
                 >
-                  <Image
-                    src={`/images/${image}`}
-                    alt={alt}
-                    width={500}
-                    height={350}
-                    className={`
-                      w-10/12 h-10/12
-                      shadow-xl
-                      shadow-black
-                      rounded-2xl
-                      inline-block
-                    `}
-                    data-aos="zoom-in"
-                    data-aos-delay={100*index}
-                  />
+                  <div className="relative w-10/12 aspect-[4/3]">
+                    <Loading
+                      isVisible={!loadedImages[image.id]}
+                      bgColor="bg-white"
+                      extraClasses="z-20 items-center"
+                    />
+                    <Image
+                      src={image.image}
+                      alt={image.description || alt}
+                      fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                      className={`
+                        object-contain
+                        shadow-xl
+                        shadow-black
+                        rounded-2xl
+                        transition-opacity duration-300
+                        p-2
+                      `}
+                      onLoad={() => handleImageLoad(image.id)}
+                      data-aos="zoom-in"
+                    />
+                  </div>
                 </SplideSlide>
               ))}
             </SplideTrack>
@@ -86,7 +98,7 @@ export default function GallerySlider({ title, alt, images, viewAll }) {
             />
           </div>
         </>
-      }
+      )}
     </Section>
   )
 }
@@ -94,5 +106,21 @@ export default function GallerySlider({ title, alt, images, viewAll }) {
 GallerySlider.propTypes = {
   title: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
-  images: PropTypes.array.isRequired,
+  viewAll: PropTypes.string.isRequired,
+  initialImages: PropTypes.shape({
+    count: PropTypes.number,
+    next: PropTypes.string,
+    previous: PropTypes.string,
+    results: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
+      categories: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string,
+        id: PropTypes.number
+      })),
+      image: PropTypes.string,
+      description: PropTypes.string,
+      created_at: PropTypes.string,
+      updated_at: PropTypes.string
+    }))
+  })
 }
