@@ -57,6 +57,11 @@ export default function Gallery({ initialImages }) {
     }
   }
 
+  // Load initial images on component mount
+  useEffect(() => {
+    handleCategoryChange(currentCategory)
+  }, [])
+
   function handleModalImage(image) {
     setModalImage(image)
     setIsModalLoading(true)
