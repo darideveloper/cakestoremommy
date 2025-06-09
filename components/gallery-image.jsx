@@ -5,7 +5,16 @@ import Loading from '@/components/loading'
 
 import { useState } from 'react'	
 
-export default function GalleryImage({ src, category, onClick, extraClasses }) {
+/**
+ * GalleryImage component displays an image with a loading state and handles click events.
+ * @param {Object} props - Component properties.
+ * @param {string} props.src - The source URL of the image.
+ * @param {string} props.category - The category of the image, used for alt text.
+ * @param {Function} props.onClick - Function to call when the image is clicked.
+ * @param {string} props.extraClasses - Additional CSS classes to apply to the button.
+ * @param {string} props.loading - Loading strategy for the image, default is 'lazy'.
+ */
+export default function GalleryImage({ src, category, onClick, extraClasses, loading='lazy' }) {
 
   const [isLoading, setIsLoading] = useState(true)
 
@@ -37,12 +46,14 @@ export default function GalleryImage({ src, category, onClick, extraClasses }) {
             ${isLoading ? "opacity-0" : "opacity-100"}
             !static
             !h-auto
+            w-full
           `}
           src={src}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
           alt={`imagen de pastel de ${category}`}
           onLoad={() => {setIsLoading(false)}}
+          loading={loading}
+          width={300}
+          height={300}
         />
       </div>
     </button>

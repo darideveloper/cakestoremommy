@@ -142,6 +142,7 @@ export default function Gallery({ initialImages }) {
                     }
                     onClick={handleModalImage}
                     extraClasses='rounded-lg shadow-md hover:shadow-xl transition-all duration-300'
+                    loading={index < 8 ? 'eager' : 'lazy'}
                   />
                 </div>
               )
