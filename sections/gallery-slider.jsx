@@ -60,7 +60,7 @@ export default function GallerySlider({ title, alt, viewAll, initialImages }) {
                   key={image.id}
                   className="flex items-center justify-center py-10 px-0"
                 >
-                  <div className="relative w-10/12 aspect-[4/3]">
+                  <div className="relative w-10/12">
                     <Loading
                       isVisible={!loadedImages[image.id]}
                       bgColor="bg-white"
@@ -69,8 +69,6 @@ export default function GallerySlider({ title, alt, viewAll, initialImages }) {
                     <Image
                       src={image.image}
                       alt={image.description || alt}
-                      fill
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
                       className={`
                         object-contain
                         shadow-xl
@@ -78,9 +76,13 @@ export default function GallerySlider({ title, alt, viewAll, initialImages }) {
                         rounded-2xl
                         transition-opacity duration-300
                         p-2
+                        w-full
+                        h-[350px]
                       `}
                       onLoad={() => handleImageLoad(image.id)}
                       data-aos="zoom-in"
+                      width={image.width || 800}
+                      height={image.height || 600}
                     />
                   </div>
                 </SplideSlide>

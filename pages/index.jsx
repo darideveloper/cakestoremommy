@@ -13,11 +13,9 @@ import { useContext } from "react"
 import { flavorsData } from "@/api/flavors"
 import { fetchData } from '@/lib/fetchData'
 
-export default function Index({ data }) {
+export default function Index({ data, galleryImages }) {
   const { lang, langId } = useContext(LangContext)
-  console.log({lang, langId, data })
   const dataLang = data[lang]
-  console.log({dataLang})
 
   return (
     <RootLayout>
@@ -26,6 +24,7 @@ export default function Index({ data }) {
       />
       <GallerySlider
         {...dataLang.Gallery}
+        initialImages={galleryImages}
       />
       <CustomizeCake
         {...dataLang.CustomizeCake}
@@ -55,6 +54,19 @@ export default function Index({ data }) {
 
 export async function getServerSideProps() {
   try {
+    // Fetch gallery images
+    const { data: galleryData, error: galleryError } = await fetchData('/api/gallery-images')
+    if (galleryError) {
+      throw new Error(galleryError)
+    }
+
+    // Get only the first 10 images
+    const galleryImages = {
+      count: 10,
+      next: null,
+      previous: null,
+      results: galleryData.results.slice(0, 10)
+    }
 
     const whyUsImages = [
       "why-us-1.svg",
@@ -219,7 +231,8 @@ export async function getServerSideProps() {
 
     return {
       props: { 
-        data
+        data,
+        galleryImages
       }
     }
   } catch (error) {
