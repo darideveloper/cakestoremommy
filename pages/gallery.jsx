@@ -31,8 +31,8 @@ const categories = [
   },
 ]
 
-export default function Gallery({ initialImages }) {
-  const [images, setImages] = useState(initialImages.results || [])
+export default function Gallery({ }) {
+  const [images, setImages] = useState([])
   const [currentCategory, setCurrentCategory] = useState(3)
   const [modalImage, setModalImage] = useState('')
   const [isGridLoading, setIsGridLoading] = useState(false)
@@ -147,7 +147,9 @@ export default function Gallery({ initialImages }) {
                     }
                     onClick={handleModalImage}
                     extraClasses='rounded-lg shadow-md hover:shadow-xl transition-all duration-300'
-                    loading={index < 8 ? 'eager' : 'lazy'}
+                    width={image.width / 3 || 500}
+                    height={image.height / 3 || 500}
+                    alt={image.description || 'Cake image'}
                   />
                 </div>
               )

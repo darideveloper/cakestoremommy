@@ -13,8 +13,11 @@ import { useState } from 'react'
  * @param {Function} props.onClick - Function to call when the image is clicked.
  * @param {string} props.extraClasses - Additional CSS classes to apply to the button.
  * @param {string} props.loading - Loading strategy for the image, default is 'lazy'.
+ * @param {number} props.width - Width of the image, default is 300.
+ * @param {number} props.height - Height of the image, default is 300.
+ * @param {string} props.description - Description of the image for accessibility.
  */
-export default function GalleryImage({ src, category, onClick, extraClasses, loading='lazy' }) {
+export default function GalleryImage({ src, category, onClick, extraClasses, loading='lazy', width, height, description }) {
 
   const [isLoading, setIsLoading] = useState(true)
 
@@ -49,11 +52,11 @@ export default function GalleryImage({ src, category, onClick, extraClasses, loa
             w-full
           `}
           src={src}
-          alt={`imagen de pastel de ${category}`}
           onLoad={() => {setIsLoading(false)}}
           loading={loading}
-          width={300}
-          height={300}
+          width={width}
+          height={height}
+          alt={description || `Image of a ${category}`}
         />
       </div>
     </button>
