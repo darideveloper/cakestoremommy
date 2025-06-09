@@ -15,7 +15,9 @@ import { fetchData } from '@/lib/fetchData'
 
 export default function Index({ data }) {
   const { lang, langId } = useContext(LangContext)
+  console.log({lang, langId, data })
   const dataLang = data[lang]
+  console.log({dataLang})
 
   return (
     <RootLayout>
@@ -217,8 +219,7 @@ export async function getServerSideProps() {
 
     return {
       props: { 
-        data,
-        galleryImages
+        data
       }
     }
   } catch (error) {
