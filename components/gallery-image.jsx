@@ -12,7 +12,7 @@ export default function GalleryImage({ src, category, onClick, extraClasses }) {
   return (
     <button 
       className={`
-        w-full h-full
+        w-full
         relative
         overflow-hidden
         bg-yellow
@@ -28,14 +28,15 @@ export default function GalleryImage({ src, category, onClick, extraClasses }) {
         isRelative={true}
       />
 
-      <div className="w-full h-full flex items-center justify-center">
+      <div className="w-full h-auto min-h-[200px] flex items-center justify-center">
         <Image
           className={`
-            max-w-full max-h-full
-            object-contain
+            max-w-full
             p-4
             duration-300
-            ${isLoading ? "opacity-0" : "opacity-100"}	
+            ${isLoading ? "opacity-0" : "opacity-100"}
+            !static
+            !h-auto
           `}
           src={src}
           fill
