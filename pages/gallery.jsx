@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import { titleFont } from '@/lib/fonts'
 import { useState, useEffect } from 'react'
 
@@ -8,13 +7,14 @@ import RootLayout from '@/layouts/root-layout'
 import Image from 'next/image'
 import Loading from '@/components/loading'
 
-export default function Gallery({ categories }) {
+export default function Gallery({}) {
 
   const [images, setImages] = useState([])
   const [currentCategory, setCurrentCategory] = useState(3)
   const [modalImage, setModalImage] = useState('')
   const [isGridLoading, setIsGridLoading] = useState(false)
   const [isModalLoading, setIsModalLoading] = useState(false)
+  const [categories, setCategories] = useState([])
 
   async function handleCategoryChange(categoryId) {
     if (!isGridLoading) {
@@ -35,8 +35,20 @@ export default function Gallery({ categories }) {
     }
   }
 
-  // Load initial images on component mount
+  async function getCategories() {
+    const response = await fetch(`/api/categories`)
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    const { data } = await response.json()
+    return data['results'] || []
+  }
+
   useEffect(() => {
+    // Load categories from api, when mount
+    getCategories().then(setCategories).catch(console.error)
+
+    // Load initial images on component mount
     handleCategoryChange(currentCategory)
   }, [])
 
@@ -137,34 +149,4 @@ export default function Gallery({ categories }) {
       </div>
     </RootLayout>
   )
-}
-
-Gallery.propTypes = {
-  categories: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-  }).isRequired,
-}
-
-export async function getStaticProps() {
-  try {
-    const baseUrl = process.env.BASE_URL
-    const response = await fetch(`${baseUrl}/api/categories`)
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`)
-    }
-    const { data } = await response.json()
-    return {
-      props: {
-        categories: data['results'] || [],
-      },
-    }
-  } catch (error) {
-    console.error('Error fetching categories:', error)
-    return {
-      props: {
-        categories: [],
-      },
-    }
-  }
 }
