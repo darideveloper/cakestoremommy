@@ -8,30 +8,8 @@ import RootLayout from '@/layouts/root-layout'
 import Image from 'next/image'
 import Loading from '@/components/loading'
 
-const categories = [
-  {
-    name: '$150 Cake special',
-    id: 1,
-  },
-  {
-    name: 'Characters',
-    id: 2,
-  },
-  {
-    name: 'Custom Cakes',
-    id: 3,
-  },
-  {
-    name: 'Wedding Cakes',
-    id: 4,
-  },
-  {
-    name: 'Regular Cakes & Peruvian Pastries',
-    id: 5,
-  },
-]
+export default function Gallery({ categories }) {
 
-export default function Gallery({ }) {
   const [images, setImages] = useState([])
   const [currentCategory, setCurrentCategory] = useState(3)
   const [modalImage, setModalImage] = useState('')
@@ -162,46 +140,30 @@ export default function Gallery({ }) {
 }
 
 Gallery.propTypes = {
-  initialImages: PropTypes.shape({
-    count: PropTypes.number,
-    next: PropTypes.string,
-    previous: PropTypes.string,
-    results: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number,
-        categories: PropTypes.arrayOf(
-          PropTypes.shape({
-            name: PropTypes.string,
-            id: PropTypes.number,
-          })
-        ),
-        image: PropTypes.string,
-        description: PropTypes.string,
-        created_at: PropTypes.string,
-        updated_at: PropTypes.string,
-      })
-    ),
-  }),
+  categories: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+  }).isRequired,
 }
 
 export async function getStaticProps() {
   try {
     const baseUrl = process.env.BASE_URL
-    const response = await fetch(`${baseUrl}/api/gallery?category=3`)
+    const response = await fetch(`${baseUrl}/api/categories`)
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
     const { data } = await response.json()
     return {
       props: {
-        initialImages: data,
+        categories: data['results'] || [],
       },
     }
   } catch (error) {
-    console.error('Error fetching initial images:', error)
+    console.error('Error fetching categories:', error)
     return {
       props: {
-        initialImages: { results: [] },
+        categories: [],
       },
     }
   }

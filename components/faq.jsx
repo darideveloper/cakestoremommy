@@ -16,8 +16,6 @@ export default function Faq({ question, text = "", images = [] }) {
   */
   function openCloseFaqs(pElem, isOpen) {
 
-    console.log({pElem, isOpen})
-
     // Get element height
     const height = pElem.getBoundingClientRect().height
 
@@ -35,7 +33,6 @@ export default function Faq({ question, text = "", images = [] }) {
   // Close all faqs on load
   useEffect(() => {
     const pElems = document.querySelectorAll('.faq p')
-    console.log({pElems})
     pElems.forEach(pElem => {
       openCloseFaqs(pElem, isOpen)
     })
