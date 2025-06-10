@@ -1,5 +1,5 @@
 import { titleFont } from '@/lib/fonts'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 import CategoryBtn from '@/components/category-btn'
 import GalleryImage from '@/components/gallery-image'
@@ -8,13 +8,54 @@ import Image from 'next/image'
 import Loading from '@/components/loading'
 
 export default function Gallery({}) {
-
   const [images, setImages] = useState([])
   const [currentCategory, setCurrentCategory] = useState(3)
   const [modalImage, setModalImage] = useState('')
   const [isGridLoading, setIsGridLoading] = useState(false)
   const [isModalLoading, setIsModalLoading] = useState(false)
   const [categories, setCategories] = useState([])
+  const [columnImages, setColumnImages] = useState([[], [], [], []]) // Stores images split by column
+  const [numColumns, setNumColumns] = useState(2) // Current number of visible columns
+
+  // Distributes images evenly into specified number of columns
+  const distributeImagesIntoColumns = useCallback((imgs, cols) => {
+    const newColumnImages = Array.from({ length: cols }, () => [])
+    imgs.forEach((image, index) => {
+      newColumnImages[index % cols].push(image)
+    })
+    setColumnImages(newColumnImages)
+  }, [])
+
+  // Determines the number of columns based on window width
+  const getNumColumns = useCallback(() => {
+    if (typeof window === 'undefined') return 2; // Avoid hydration errors on server
+    const width = window.innerWidth
+    if (width >= 1024) return 4 // lg:columns-4
+    if (width >= 768) return 3 // md:columns-3
+    return 2 // columns-2
+  }, [])
+
+  useEffect(() => {
+    // Handles window resize: updates column count and redistributes images
+    const handleResize = () => {
+      const newNumColumns = getNumColumns();
+      setNumColumns(newNumColumns);
+      distributeImagesIntoColumns(images, newNumColumns);
+    };
+
+    // Attach resize listener only on client-side
+    if (typeof window !== 'undefined') {
+      handleResize(); // Set initial columns on mount
+      window.addEventListener('resize', handleResize);
+    }
+
+    // Clean up event listener
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', handleResize);
+      }
+    }
+  }, [distributeImagesIntoColumns, images, getNumColumns])
 
   async function handleCategoryChange(categoryId) {
     if (!isGridLoading) {
@@ -25,7 +66,9 @@ export default function Gallery({}) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
         const { data } = await response.json()
-        setImages(data.results)
+        const fetchedImages = data.results;
+        setImages(fetchedImages);
+        distributeImagesIntoColumns(fetchedImages, getNumColumns()); // Distribute new images
         setCurrentCategory(categoryId)
       } catch (err) {
         console.error('Error:', err)
@@ -45,10 +88,8 @@ export default function Gallery({}) {
   }
 
   useEffect(() => {
-    // Load categories from api, when mount
+    // Load categories and initial images on mount
     getCategories().then(setCategories).catch(console.error)
-
-    // Load initial images on component mount
     handleCategoryChange(currentCategory)
   }, [])
 
@@ -122,28 +163,32 @@ export default function Gallery({}) {
             bgColor='bg-white'
             extraClasses='z-20 items-start pt-10'
           />
-          <div className='columns-2 md:columns-3 lg:columns-4 gap-4'>
-            {images.map((image, index) => {
-              return (
-                <div
-                  key={image.id}
-                  className={`mb-4 break-inside-avoid h-auto`}
-                >
-                  <GalleryImage
-                    src={image.image}
-                    category={
-                      categories.find((cat) => cat.id === currentCategory)
-                        ?.name || ''
-                    }
-                    onClick={handleModalImage}
-                    extraClasses='rounded-lg shadow-md hover:shadow-xl transition-all duration-300'
-                    width={image.width / 3 || 500}
-                    height={image.height / 3 || 500}
-                    alt={image.description || 'Cake image'}
-                  />
-                </div>
-              )
-            })}
+          {/* Flex container for columns */}
+          <div className='flex justify-center gap-4'>
+            {/* Render only visible columns */}
+            {columnImages.slice(0, numColumns).map((col, colIndex) => (
+              <div key={colIndex} className='flex-1 flex flex-col gap-4'>
+                {col.map((image) => (
+                  <div
+                    key={image.id}
+                    className={`mb-4 break-inside-avoid h-auto`}
+                  >
+                    <GalleryImage
+                      src={image.image}
+                      category={
+                        categories.find((cat) => cat.id === currentCategory)
+                          ?.name || ''
+                      }
+                      onClick={handleModalImage}
+                      extraClasses='rounded-lg shadow-md hover:shadow-xl transition-all duration-300'
+                      width={image.width / 3 || 500}
+                      height={image.height / 3 || 500}
+                      alt={image.description || 'Cake image'}
+                    />
+                  </div>
+                ))}
+              </div>
+            ))}
           </div>
         </section>
       </div>
