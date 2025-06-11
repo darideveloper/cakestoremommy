@@ -209,7 +209,7 @@ export async function getStaticProps() {
       },
       "options": [
         {
-          "layers": ["one layer", "un piso"],
+          "layers": ["one tier", "un piso"],
           "diameters": [
             ['4"  2-4 servings', '4"  2-4 porciones'],
             ['6"  10-12 servings', '6"  10-12 porciones'],
@@ -220,7 +220,7 @@ export async function getStaticProps() {
           ]
         },
         {
-          "layers": ["two layers", "dos pisos"],
+          "layers": ["two tiers", "dos pisos"],
           "diameters": [
             ['4" & 6"  15 servings', '4" & 6"  15 porciones'],
             ['6" & 8"  40 servings', '6" & 8"  40 porciones'],
@@ -229,7 +229,7 @@ export async function getStaticProps() {
           ]
         },
         {
-          "layers": ["three layers", "tres pisos"],
+          "layers": ["three tiers", "tres pisos"],
           "diameters": [
             ['4", 6" & 8"  45 servings', '4", 6" & 8"  45 porciones'],
             ['6", 8" & 10"  75 servings', '6", 8" & 10"  75 porciones'],
