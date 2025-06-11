@@ -204,7 +204,7 @@ export async function getStaticProps() {
       "title": ["Size Selection", "Selección de tamaño"],
       "subtitle": ["Pick up a size from below", "Elige un tamaño a contunuación"],
       "labels": {
-        "layers": ["Select layers", "Elige los pisos"],
+        "layers": ["Select tiers", "Elige los pisos"],
         "diameter": ["Select diameter", "Elige el diámetro"]
       },
       "options": [

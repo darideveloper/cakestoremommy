@@ -44,7 +44,7 @@ export default function RootLayout({ children, customScroll = false }) {
     "en": {
       "Header": {
         "menuItems": [
-          { name: 'Order Now', path: '/order' },
+          { name: 'Get a quote', path: '/order' },
           { name: 'About', path: '/#about' },
           { name: 'Gallery', path: '/#gallery' },
           { name: 'Contact', path: '/#contact' },

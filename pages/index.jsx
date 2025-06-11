@@ -81,7 +81,7 @@ export async function getServerSideProps() {
     const data = {
       "en": {
         "Hero": {
-          btnPrimaryText: "Order Now",
+          btnPrimaryText: "Get a quote",
           btnSecondaryTexts: [],
         },
         "Gallery": {
