@@ -101,7 +101,7 @@ export default function Gallery({}) {
   return (
     <RootLayout>
       <div className='content container mx-auto relative'>
-        <h2 className={`text-4xl text-center ${titleFont.className} my-10`}>
+        <h2 className={`text-4xl text-center ${titleFont.className} my-10 text-brown`}>
           Gallery
         </h2>
 
