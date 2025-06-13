@@ -237,7 +237,7 @@ export async function getStaticProps() {
           ]
         },
         {
-          "layers": ["four layers", "cuatro pisos"],
+          "layers": ["four tiers", "cuatro pisos"],
           "diameters": [
             ["Custom", "Personalizado"],
           ]
