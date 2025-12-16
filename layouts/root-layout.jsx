@@ -158,6 +158,13 @@ export default function RootLayout({ children, customScroll = false }) {
         }}
       />
 
+      {/* Umami Analytics */}
+      <Script
+        strategy="afterInteractive"
+        src="https://umami.apps.darideveloper.com/script.js"
+        data-website-id="c654e035-2a49-4c49-b605-85bbfb56ae47"
+      />
+
       <Header
         {...dataLang.Header}
       />
@@ -180,8 +187,8 @@ export default function RootLayout({ children, customScroll = false }) {
 
         {/* CLient meta pixel */}
         <noscript>
-          <img 
-            height="1" 
+          <img
+            height="1"
             width="1"
             className='hidden'
             src="https://www.facebook.com/tr?id=624940397065465&ev=PageView&noscript=1"
@@ -189,7 +196,7 @@ export default function RootLayout({ children, customScroll = false }) {
         </noscript>
 
       </Head>
-      
+
       {
         customScroll
           ?
